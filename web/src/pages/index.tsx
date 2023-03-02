@@ -1,7 +1,13 @@
 import Head from 'next/head'
-import { Inter } from 'next/font/google'
-
-const inter = Inter({ subsets: ['latin'] })
+import {
+  About,
+  Footer,
+  Header,
+  Skills,
+  Testimonial,
+  Work
+} from '@/containers';
+import { Navbar } from '@/components';
 
 export default function Home() {
   return (
@@ -12,12 +18,15 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <h1
-        className="inline-block text-lg text-white m-4 p-4 rounded bg-violet-500 
-        hover:cursor-pointer"
-      >
-        Hello world
-      </h1>
+      <div className=''>
+        <Navbar />
+        <Header />
+        <About />
+        <Work />
+        <Skills />
+        <Testimonial />
+        <Footer />
+      </div>
     </>
   )
 }
