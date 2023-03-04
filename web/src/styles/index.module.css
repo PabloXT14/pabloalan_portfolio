@@ -57,6 +57,40 @@
 .app__social {
   @apply
     flex justify-end items-center flex-col p-4
-    [&>div]:w-10 [&>div]:h-10 [&>div]:rounded-full 
+
+    [&>div]:w-10 [&>div]:h-10 [&>div]:rounded-full [&>div]:bg-white [&>div]:my-1 
+    [&>div]:border [&>div]:border-solid [&>div]:border-lightGray
+    [&>div]:flex [&>div]:justify-center [&>div]:items-center
+    [&>div]:transition-all [&>div]:duration-300 [&>div]:ease-in-out
+
+    [&>div>svg]:w-4 [&>div>svg]:h-4 [&>div>svg]:text-gray
+
+  [&>div]:hover:bg-secondary [&>div]:hover:border-secondary
+
+  [&>div:hover>svg]:text-white
+
+    lg:[&>div]:w-16 lg:[&>div]:h-16 lg:[&>div]:my-2
+    lg:[&>div>svg]:w-7 lg:[&>div>svg]:h-7;
 }
 
+.app__navigation {
+  @apply
+    flex justify-center items-center flex-col p-4
+
+    [&>.app__navigation-dot]:w-3 [&>.app__navigation-dot]:h-3
+  [&>.app__navigation-dot]:bg-zinc-300
+    [&>.app__navigation-dot]:m-2
+    [&>.app__navigation-dot]:transition-colors [&>.app__navigation-dot]:duration-200
+    [&>.app__navigation-dot]:ease-in-out
+
+    [&>.app__navigation-dot]:hover:bg-secondary
+
+    lg:[&>.app__navigation-dot]:w-6 lg:[&>.app__navigation-dot]:h-6
+}
+
+body {
+  @apply
+    [&>.app_navigation]:hidden [&>.app_social]:hidden
+
+    md:[&>.app_navigation]:flex md:[&>.app_social]:flex
+}
