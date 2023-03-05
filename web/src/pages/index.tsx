@@ -9,7 +9,7 @@ import {
 } from '@/containers';
 import { Navbar } from '@/components';
 
-import styles from '../styles/index.module.css';
+import { styles } from '@/styles';
 
 export default function Home() {
 
@@ -21,10 +21,7 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <div>
-        <p>
-          Hello
-        </p>
+      <div className={styles.app}>
         <Navbar />
         <Header />
         <About />
