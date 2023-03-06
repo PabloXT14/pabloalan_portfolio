@@ -16,12 +16,16 @@ module.exports = {
         gray: "#6b7688",
         brown: "#46364a",
         white: "#ffffff",
+      },
+      backgroundImage: {
+        
       }
     },
     screens: {
       sm: "450px",
       md: "500px",
-      lg: "2000px"
+      '2md': '900px',
+      lg: "2000px",
     }
   },
   plugins: [],
