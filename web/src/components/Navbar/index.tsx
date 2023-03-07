@@ -17,7 +17,6 @@ export const Navbar = () => {
 
   const [toggle, setToggle] = useState(false);
 
-
   return (
     <nav
       className="fixed z-20 flex items-center justify-between w-full px-8 py-4 border border-solid bg-white/25 backdrop-blur-sm border-white/20"
@@ -57,34 +56,39 @@ export const Navbar = () => {
       </ul>
 
       <div
-        className="relative flex items-center justify-center rounded-full cursor-pointer w-9 h-9 bg-secondary"
+        className="relative flex items-center justify-center rounded-full 2md:hidden w-9 h-9 bg-secondary"
       >
         <HiMenuAlt4
           onClick={() => setToggle(true)}
-          className="w-3/4 text-white h-3/4"
+          className="w-3/4 text-white cursor-pointer h-3/4"
         />
 
         {toggle && (
           <motion.div
-            whileInView={{ x: [300, 0] }}
+            whileInView={{ x: [200, 0] }}
             transition={{ duration: 0.85, ease: 'easeOut' }}
-            className="fixed top-0 bottom-0 right-0 z-50 flex flex-col items-end justify-end w-4/5 h-screen p-4 bg-repeat bg-cover bg-violet-600"
+            className={`fixed top-0 bottom-0 right-0 z-50 flex flex-col items-end justify-end w-4/5 h-screen p-4 bg-white bg-repeat bg-cover shadow-menu-mobile bg-menu-mobile`}
           >
             <HiX
               onClick={() => setToggle(false)}
-              className="w-3/4 text-white h-3/4"
+              className="mx-4 my-2 cursor-pointer text-secondary w-9 h-9"
             />
-            {menuItems.map((item) => (
-              <li key={item}>
-                <a
-                  href={`#${item}`}
-                  className="flex-col font-medium no-underline uppercase transition-all duration-300 ease-in-out text-gray hover:text-secondary"
-                  onClick={() => setToggle(false)}
+            <ul className="flex flex-col items-start justify-start w-full h-full p-0 m-0 list-none">
+              {menuItems.map((item) => (
+                <li
+                  key={item}
+                  className="m-4"
                 >
-                  {item}
-                </a>
-              </li>
-            ))}
+                  <a
+                    href={`#${item}`}
+                    onClick={() => setToggle(false)}
+                    className="text-base font-medium no-underline uppercase transition-all duration-300 ease-in-out text-gray hover:text-secondary"
+                  >
+                    {item}
+                  </a>
+                </li>
+              ))}
+            </ul>
           </motion.div>
         )}
       </div>

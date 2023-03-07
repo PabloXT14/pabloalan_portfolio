@@ -18,7 +18,10 @@ module.exports = {
         white: "#ffffff",
       },
       backgroundImage: {
-        
+        'menu-mobile': "url('/assets/bgWhite.png')",
+      },
+      boxShadow: {
+        'menu-mobile': "0 0 20px rgba(168, 168, 168, 0.15)",
       }
     },
     screens: {
