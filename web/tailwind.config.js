@@ -19,15 +19,18 @@ module.exports = {
       },
       backgroundImage: {
         'menu-mobile': "url('/assets/bgWhite.png')",
+        'header-cover': "url('/assets/bgIMG.png')",
       },
       boxShadow: {
         'menu-mobile': "0 0 20px rgba(168, 168, 168, 0.15)",
+        'header-badge': "0 0 20px rgba(0, 0, 0, 0.1)",
       }
     },
     screens: {
       sm: "450px",
       md: "500px",
       '2md': '900px',
+      '3md': '1200px',
       lg: "2000px",
     }
   },
