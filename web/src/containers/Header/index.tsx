@@ -2,6 +2,7 @@ import Image from 'next/image';
 import { motion, Variants } from 'framer-motion';
 import { images } from '../../constants';
 import { styles } from '@/styles';
+import { clsx } from 'clsx';
 
 const scaleVariants: Variants = {
   whileInView: {
@@ -14,14 +15,19 @@ const scaleVariants: Variants = {
   }
 }
 
-const languagesImages = [images.react, images.node, images.typescript];
+const languagesImages = [images.node, images.react, images.typescript];
 
 export const Header = () => {
 
   return (
     <div
       id='home'
-      className="relative flex flex-row flex-1 w-full h-full px-4 pt-24 pb-8 bg-center bg-repeat bg-cover bg-header-cover lg:pt-32 max-3md:flex-col sm:pt-24 sm:px-8 sm:pb-0"
+      className={clsx(
+        'relative flex flex-row flex-1 w-full h-full px-4 pt-24 pb-8 bg-center bg-repeat bg-cover bg-header-cover',
+        'lg:pt-32', 
+        'max-3md:flex-col',
+        'sm:pt-24 sm:px-8 sm:pb-0'
+      )}
     >
       <motion.div
         whileInView={{ x: [-100, 0], opacity: [0, 1] }}
@@ -56,11 +62,16 @@ export const Header = () => {
       <motion.div
         whileInView={{ opacity: [0, 1] }}
         transition={{ duration: 0.5, delayChildren: 0.5 }}
-        className=""
+        className={clsx(
+          'flex-1 h-full flex justify-end items-end relative',
+          'max-3md:my-8 max-3md:mx-0 max-3md:justify-center'
+        )}
       >
         <Image
           src={images.profile}
           alt="profile_bg"
+          quality={100}
+          className="z-10 object-contain w-full max-3md:w-3/5"
         />
 
         <motion.img
@@ -68,7 +79,7 @@ export const Header = () => {
           transition={{ duration: 1, ease: 'easeInOut' }}
           src={images.circle.src}// imagens svg no nextjs precisa importar a prop <src>
           alt="profile_circle"
-          className=""
+          className="absolute bottom-0 left-0 right-0 z-0 w-full h-[90%]"
         />
 
       </motion.div>
@@ -76,15 +87,27 @@ export const Header = () => {
       <motion.div
         variants={scaleVariants}
         whileInView={scaleVariants}
-        className=""
+        className={clsx(
+          'flex-[0.75] flex flex-col justify-evenly items-start h-full ml-4',
+          'max-3md:w-full max-3md:flex-row max-3md:flex-wrap max-3md:ml-0'
+        )}
       >
         {languagesImages.map((circleImg, index) => (
-          <div className="flex items-center justify-center" key={`circle-${index}`}>
+          <div
+            key={`circle-${index}`}
+            className={clsx(
+              'flex items-center justify-center w-[100px] h-[100px] rounded-full bg-white shadow-header-badge',
+              'even:m-7 even:w-[150px] even:h-[150px] last:w-[70px] last:h-[70px]',
+              ' lg:first:w-[200px] lg:first:h-[200px] lg:even:w-[400px] lg:even:h-[400px] lg:last:w-[170px] lg:last:h-[170px]',
+              'max-3md:m-4'
+            )}
+          >
             <Image
               src={circleImg}
               alt="circle_img"
               width={50}
               height={50}
+              className="w-3/5 h-3/5"
             />
           </div>
         ))}
