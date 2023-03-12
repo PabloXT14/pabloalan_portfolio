@@ -1,23 +1,34 @@
+import { GetStaticProps } from 'next'; 
 import Image from 'next/image';
 import { useState, useEffect } from "react";
 import { motion } from 'framer-motion';
 import { styles } from '../../styles';
 import { clsx } from 'clsx';
 import { images } from '@/constants';
+import { client } from '@/services/sanity-client';
 
-export const About = () => {
-  const [abouts, setAbouts] = useState([
-    { title: 'Web Developer', description: 'I am a good web developer.', imgUrl: images.about01 },
-    { title: 'Front-end Development', description: 'I am a good web developer.', imgUrl: images.about02 },
-    { title: 'Back-end Development', description: 'I am a good web developer.', imgUrl: images.about03 },
-    { title: 'Javascript Stack', description: 'I am a good web developer.', imgUrl: images.about04 }
-  ]);
+interface AboutProps {
+  aboutsData?: {
+    title: string;
+    description: string;
+    imgUrl: string;
+  }[];
+}
 
+// const fakeAbouts = [
+//   { title: 'Web Developer', description: 'I am a good web developer.', imgUrl: images.about01 },
+//   { title: 'Front-end Development', description: 'I am a good web developer.', imgUrl: images.about02 },
+//   { title: 'Back-end Development', description: 'I am a good web developer.', imgUrl: images.about03 },
+//   { title: 'Javascript Stack', description: 'I am a good web developer.', imgUrl: images.about04 }
+// ]
+
+export const About = ({ aboutsData = [] }: AboutProps) => {
+  const [abouts, setAbouts] = useState(aboutsData);
 
   useEffect(() => {
     const query = '*[_type == "abouts"]';
-
-  }, []);
+    client.fetch(query).then((data) => setAbouts(data));
+  }, [])
 
   return (
     <>
@@ -59,4 +70,19 @@ export const About = () => {
       </div>
     </>
   )
+}
+
+
+export const getStaticProps: GetStaticProps = async () => {
+  const query = '*[_type == "abouts"]';
+
+  const aboutsData = await client.fetch(query).then(data => data);
+
+  console.log(`Static Side: ${process.env.SANITY_TOKEN}`);
+
+  return {
+    props: {
+      aboutsData
+    }
+  };
 }
