@@ -1,38 +1,20 @@
-import { GetStaticProps } from 'next'; 
 import Image from 'next/image';
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { motion } from 'framer-motion';
 import { styles } from '../../styles';
 import { clsx } from 'clsx';
-import { images } from '@/constants';
-import { client } from '@/services/sanity-client';
+import { IAbout } from '@/types/about';
 
 interface AboutProps {
-  aboutsData?: {
-    title: string;
-    description: string;
-    imgUrl: string;
-  }[];
+  aboutsData: IAbout[];
 }
-
-// const fakeAbouts = [
-//   { title: 'Web Developer', description: 'I am a good web developer.', imgUrl: images.about01 },
-//   { title: 'Front-end Development', description: 'I am a good web developer.', imgUrl: images.about02 },
-//   { title: 'Back-end Development', description: 'I am a good web developer.', imgUrl: images.about03 },
-//   { title: 'Javascript Stack', description: 'I am a good web developer.', imgUrl: images.about04 }
-// ]
 
 export const About = ({ aboutsData = [] }: AboutProps) => {
   const [abouts, setAbouts] = useState(aboutsData);
 
-  useEffect(() => {
-    const query = '*[_type == "abouts"]';
-    client.fetch(query).then((data) => setAbouts(data));
-  }, [])
-
   return (
     <>
-      <h2 className={clsx(styles.headText, 'mt-8')}>
+      <h2 className={clsx(styles.headText, 'mt-8')} id="about">
         I Know that <span>Good Development</span> <br />
         means <span>Good Business</span>
       </h2>
@@ -51,6 +33,8 @@ export const About = ({ aboutsData = [] }: AboutProps) => {
           >
             <Image
               src={about.imgUrl}
+              width={1200}
+              height={900}
               alt={about.title}
               className={clsx(
                 'object-cover w-full h-44 rounded-2xl',
@@ -70,19 +54,4 @@ export const About = ({ aboutsData = [] }: AboutProps) => {
       </div>
     </>
   )
-}
-
-
-export const getStaticProps: GetStaticProps = async () => {
-  const query = '*[_type == "abouts"]';
-
-  const aboutsData = await client.fetch(query).then(data => data);
-
-  console.log(`Static Side: ${process.env.SANITY_TOKEN}`);
-
-  return {
-    props: {
-      aboutsData
-    }
-  };
 }
