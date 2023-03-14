@@ -8,8 +8,8 @@ const styles = {
   appFlex: clsx('flex justify-center items-center'),
   appWrapper: clsx(
     'flex-1 w-full flex-col',
-    'pt-16 px-4 pb-8',
-    'sm:py-16 sm:px-8',
+    'pt-16 px-8',
+    'max-sm:pt-16 max-sm:px-4 max-sm:mb-8',
   ),
   copyright: clsx(
     'w-full pt-8',
@@ -33,31 +33,26 @@ const styles = {
     'lg:text-3xl'
   ),
   appSocial: clsx(
-    'hidden justify-end items-center flex-col p-4',
-    'md:flex',
-    '[&>div]:w-10 [&>div]:h-10 [&>div]:rounded-full [&>div]:bg-white [&>div]:my-1',
-    '[&>div]:border [&>div]:border-solid [&>div]:border-lightGray',
-    '[&>div]:flex [&>div]:justify-center [&>div]:items-center',
-    '[&>div]:transition-all [&>div]:duration-300 [&>div]:ease-in-out',
-    '[&>div>svg]:w-4 [&>div>svg]:h-4 [&>div>svg]:text-gray',
-    '[&>div]:hover:bg-secondary [&>div]:hover:border-secondary',
-    '[&>div:hover>svg]:text-white',
-    'lg:[&>div]:w-16 lg:[&>div]:h-16 lg:[&>div]:my-2',
-    'lg:[&>div>svg]:w-7 lg:[&>div>svg]:h-7',
+    'flex justify-end items-center flex-col p-4',
+  ),
+  appSocialLink: clsx(
+    'flex justify-center items-center',
+    'w-10 h-10 rounded-full bg-white mt-1 border border-solid border-lightGray',
+    'transition-all duration-300 ease-in-out',
+    '[&>svg]:w-4 [&>svg]:h-4 [&>svg]:text-gray',
+    'hover:bg-secondary hover:border-secondary [&:hover>svg]:text-white',
+    'lg:w-16 lg:h-16 lg:my-2',
+    'lg:[&>svg]:w-7 lg:[&>svg]:h-7',
   ),
   appNavigation: clsx(
     'hidden justify-center items-center flex-col p-4',
     'md:flex',
-    '[&>.app__navigation-dot]:w-3 [&>.app__navigation-dot]:h-3',
-    '[&>.app__navigation-dot]:bg-zinc-300',
-    '[&>.app__navigation-dot]:m-2',
-    '[&>.app__navigation-dot]:transition-colors [&>.app__navigation-dot]:duration-200',
-    '[&>.app__navigation-dot]:ease-in-out',
-
-    '[&>.app__navigation-dot]:hover:bg-secondary',
-
-    'lg:[&>.app__navigation-dot]:w-6 lg:[&>.app__navigation-dot]:h-6',
   ),
+  appNavigationDot: clsx(
+    'w-3 h-3 bg-zinc-300 rounded-full m-2 transition-colors duration-200 ease-in-out',
+    'hover:bg-secondary',
+    'lg:w-6 lg:h-6'
+  )
 }
 
 export { styles };

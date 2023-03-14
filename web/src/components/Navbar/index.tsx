@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { useState } from 'react';
 import Image from 'next/image';
 import { HiMenuAlt4, HiX } from 'react-icons/hi';
@@ -5,15 +6,9 @@ import { motion } from 'framer-motion';
 
 import { images } from '@/constants/';
 import { styles } from '@/styles';
+import { menuItems } from '@/constants';
 
 export const Navbar = () => {
-  const menuItems = [
-    'home',
-    'about',
-    'work',
-    'skills',
-    'contact',
-  ];
 
   const [toggle, setToggle] = useState(false);
 
@@ -79,13 +74,13 @@ export const Navbar = () => {
                   key={item}
                   className="m-4"
                 >
-                  <a
+                  <Link
                     href={`#${item}`}
                     onClick={() => setToggle(false)}
                     className="text-base font-medium no-underline uppercase transition-all duration-300 ease-in-out text-gray hover:text-secondary"
                   >
                     {item}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>

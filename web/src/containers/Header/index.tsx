@@ -3,6 +3,7 @@ import { motion, Variants } from 'framer-motion';
 import { images } from '../../constants';
 import { styles } from '@/styles';
 import { clsx } from 'clsx';
+import { AppWrap } from '@/wrapper';
 
 const scaleVariants: Variants = {
   whileInView: {
@@ -17,13 +18,12 @@ const scaleVariants: Variants = {
 
 const languagesImages = [images.node, images.react, images.typescript];
 
-export const Header = () => {
+const Header = () => {
 
   return (
     <div
-      id='home'
       className={clsx(
-        'relative flex flex-row flex-1 w-full h-full px-4 pt-24 pb-8 bg-center bg-repeat bg-cover bg-header-cover',
+        'flex flex-row flex-1 w-full h-full px-4 pt-24 pb-8',
         'lg:pt-32', 
         'max-3md:flex-col',
         'sm:pt-24 sm:px-8 sm:pb-0'
@@ -115,3 +115,8 @@ export const Header = () => {
     </div>
   )
 }
+
+export default AppWrap({ 
+  ChildrenComponent: Header,
+  idName: 'home',
+});
