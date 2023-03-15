@@ -9,13 +9,14 @@ const styles = {
   appWrapper: clsx(
     'flex-1 w-full flex-col',
     'pt-16 px-8',
-    'max-sm:pt-16 max-sm:px-4 max-sm:mb-8',
+    'max-sm:pt-16 max-sm:px-4 max-sm:pb-8',
   ),
   copyright: clsx(
     'w-full pt-8',
     'flex flex-col',
     'justify-center items-center',
     '[&>p]:uppercase [&>p]:text-black',
+    'max-md:p-8'
   ),
   headText: clsx(
     'text-4xl font-extrabold text-center text-black capitalize',
@@ -33,7 +34,8 @@ const styles = {
     'lg:text-3xl'
   ),
   appSocial: clsx(
-    'flex justify-end items-center flex-col p-4',
+    'hidden justify-end items-center flex-col p-4',
+    'md:flex'
   ),
   appSocialLink: clsx(
     'flex justify-center items-center',

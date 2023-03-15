@@ -1,16 +1,36 @@
 import Image from 'next/image';
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { motion } from 'framer-motion';
 import { styles } from '../../styles';
 import { clsx } from 'clsx';
 import { IAbout } from '@/types/about';
+import { AppWrap } from '@/wrapper';
+import { client, urlFor } from '@/services/sanity-client';
 
 interface AboutProps {
   aboutsData: IAbout[];
 }
 
-export const About = ({ aboutsData = [] }: AboutProps) => {
-  const [abouts, setAbouts] = useState(aboutsData);
+const About = () => {
+  const [abouts, setAbouts] = useState<IAbout[]>([]);
+
+  async function fetchData() {
+    const aboutsQuery = '*[_type == "abouts"]';
+
+    let aboutsData = await client.fetch(aboutsQuery).then(data => data);
+    aboutsData = aboutsData.map((about: IAbout) => {
+      return {
+        ...about,
+        imgUrl: urlFor(about.imgUrl).url()
+      }
+    });
+    setAbouts(aboutsData);
+  }
+
+  useEffect(() => {
+    
+    fetchData();
+  }, [])
 
   return (
     <>
@@ -55,3 +75,8 @@ export const About = ({ aboutsData = [] }: AboutProps) => {
     </>
   )
 }
+
+export default AppWrap({
+  ChildrenComponent: About,
+  idName: 'about',
+})

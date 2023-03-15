@@ -23,10 +23,10 @@ const Header = () => {
   return (
     <div
       className={clsx(
-        'flex flex-row flex-1 w-full h-full px-4 pt-24 pb-8',
+        'flex flex-row flex-1 w-full h-full pt-16 px-8 pb-0',
         'lg:pt-32', 
         'max-3md:flex-col',
-        'sm:pt-24 sm:px-8 sm:pb-0'
+        'max-sm:pt-20 max-sm:px-4 max-sm:pb-8'
       )}
     >
       <motion.div

@@ -31,7 +31,7 @@ export default function Home({ aboutsData }: HomeProps) {
       <div className={styles.app}>
         <Navbar />
         <Header />
-        <About aboutsData={aboutsData} />
+        <About />
         <Work />
         <Skills />
         <Testimonial />
