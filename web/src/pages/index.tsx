@@ -9,6 +9,7 @@ import {
   Testimonial,
   Work
 } from '@/containers';
+import { AppWrap } from '@/wrapper';
 import { Navbar } from '@/components';
 
 import { styles } from '@/styles';
@@ -31,7 +32,7 @@ export default function Home({ aboutsData }: HomeProps) {
       <div className={styles.app}>
         <Navbar />
         <Header />
-        <About />
+        <About aboutsData={aboutsData} />
         <Work />
         <Skills />
         <Testimonial />

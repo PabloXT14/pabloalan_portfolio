@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { motion } from 'framer-motion';
 import { styles } from '../../styles';
 import { clsx } from 'clsx';
@@ -11,29 +11,29 @@ interface AboutProps {
   aboutsData: IAbout[];
 }
 
-const About = () => {
-  const [abouts, setAbouts] = useState<IAbout[]>([]);
+export const About = ({ aboutsData }: AboutProps) => {
+  const [abouts, setAbouts] = useState<IAbout[]>(aboutsData);
 
-  async function fetchData() {
-    const aboutsQuery = '*[_type == "abouts"]';
+  // async function fetchData() {
+  //   const aboutsQuery = '*[_type == "abouts"]';
 
-    let aboutsData = await client.fetch(aboutsQuery).then(data => data);
-    aboutsData = aboutsData.map((about: IAbout) => {
-      return {
-        ...about,
-        imgUrl: urlFor(about.imgUrl).url()
-      }
-    });
-    setAbouts(aboutsData);
-  }
+  //   let aboutsData = await client.fetch(aboutsQuery).then(data => data);
+  //   aboutsData = aboutsData.map((about: IAbout) => {
+  //     return {
+  //       ...about,
+  //       imgUrl: urlFor(about.imgUrl).url()
+  //     }
+  //   });
+  //   setAbouts(aboutsData);
+  // }
 
-  useEffect(() => {
+  // useEffect(() => {
     
-    fetchData();
-  }, [])
+  //   fetchData();
+  // }, [])
 
   return (
-    <>
+    <AppWrap idName='about'>
       <h2 className={clsx(styles.headText, 'mt-8')} id="about">
         I Know that <span>Good Development</span> <br />
         means <span>Good Business</span>
@@ -72,11 +72,11 @@ const About = () => {
           </motion.div>
         ))}
       </div>
-    </>
+    </AppWrap>
   )
 }
 
-export default AppWrap({
-  ChildrenComponent: About,
-  idName: 'about',
-})
+// export default AppWrap({
+//   ChildrenComponent: About,
+//   idName: 'about',
+// })
