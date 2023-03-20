@@ -14,7 +14,7 @@ const styles = {
   copyright: clsx(
     'w-full pt-8',
     'flex flex-col',
-    'justify-center items-center',
+    'justify-end items-end',
     '[&>p]:uppercase [&>p]:text-black',
     'max-md:p-8'
   ),

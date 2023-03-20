@@ -9,7 +9,6 @@ import {
   Testimonial,
   Work
 } from '@/containers';
-import { AppWrap } from '@/wrapper';
 import { Navbar } from '@/components';
 
 import { styles } from '@/styles';
@@ -46,17 +45,20 @@ export default function Home({ aboutsData }: HomeProps) {
 export const getStaticProps: GetStaticProps = async () => {
   const aboutsQuery = '*[_type == "abouts"]';
 
-  let aboutsData = await client.fetch(aboutsQuery).then(data => data);
-  aboutsData = aboutsData.map((about: IAbout) => {
-    return {
-      ...about,
-      imgUrl: urlFor(about.imgUrl).url()
-    }
+  const aboutsData = await client.fetch(aboutsQuery).then(data => {
+    const dataRefactored = data.map((about: IAbout) => {
+      return {
+        ...about,
+        imgUrl: urlFor(about.imgUrl).url()
+      }
+    });
+
+    return dataRefactored;
   });
 
-  return {
-    props: {
-      aboutsData
-    }
-  };
-}
+    return {
+      props: {
+        aboutsData
+      }
+    };
+  }
