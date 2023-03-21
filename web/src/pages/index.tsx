@@ -1,6 +1,4 @@
-import { GetStaticProps } from 'next';
 import Head from 'next/head'
-import { client, urlFor } from '@/services/sanity-client';
 import {
   About,
   Footer,
@@ -31,7 +29,7 @@ export default function Home({ aboutsData }: HomeProps) {
       <div className={styles.app}>
         <Navbar />
         <Header />
-        <About aboutsData={aboutsData} />
+        <About />
         <Work />
         <Skills />
         <Testimonial />
@@ -40,25 +38,3 @@ export default function Home({ aboutsData }: HomeProps) {
     </>
   )
 }
-
-
-export const getStaticProps: GetStaticProps = async () => {
-  const aboutsQuery = '*[_type == "abouts"]';
-
-  const aboutsData = await client.fetch(aboutsQuery).then(data => {
-    const dataRefactored = data.map((about: IAbout) => {
-      return {
-        ...about,
-        imgUrl: urlFor(about.imgUrl).url()
-      }
-    });
-
-    return dataRefactored;
-  });
-
-    return {
-      props: {
-        aboutsData
-      }
-    };
-  }

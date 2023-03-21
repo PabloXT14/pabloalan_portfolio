@@ -5,35 +5,18 @@ import { styles } from '../../styles';
 import { clsx } from 'clsx';
 import { IAbout } from '@/types/about';
 import { AppWrap } from '@/wrapper';
+import { GetStaticProps } from 'next';
 import { client, urlFor } from '@/services/sanity-client';
 
 interface AboutProps {
-  aboutsData: IAbout[];
+  aboutsData?: IAbout[];
 }
 
-export const About = ({ aboutsData }: AboutProps) => {
+const About = ({ aboutsData = []}: AboutProps) => {
   const [abouts, setAbouts] = useState<IAbout[]>(aboutsData);
 
-  // async function fetchData() {
-  //   const aboutsQuery = '*[_type == "abouts"]';
-
-  //   let aboutsData = await client.fetch(aboutsQuery).then(data => data);
-  //   aboutsData = aboutsData.map((about: IAbout) => {
-  //     return {
-  //       ...about,
-  //       imgUrl: urlFor(about.imgUrl).url()
-  //     }
-  //   });
-  //   setAbouts(aboutsData);
-  // }
-
-  // useEffect(() => {
-    
-  //   fetchData();
-  // }, [])
-
   return (
-    <AppWrap idName='about'>
+    <>
       <h2 className={clsx(styles.headText, 'mt-8')} id="about">
         I Know that <span>Good Development</span> <br />
         means <span>Good Business</span>
@@ -72,11 +55,32 @@ export const About = ({ aboutsData }: AboutProps) => {
           </motion.div>
         ))}
       </div>
-    </AppWrap>
+    </>
   )
 }
 
-// export default AppWrap({
-//   ChildrenComponent: About,
-//   idName: 'about',
-// })
+export const getStaticProps: GetStaticProps = async () => {
+  const aboutsQuery = '*[_type == "abouts"]';
+
+  const aboutsData = await client.fetch(aboutsQuery).then(data => {
+    const dataRefactored = data.map((about: IAbout) => {
+      return {
+        ...about,
+        imgUrl: urlFor(about.imgUrl).url()
+      }
+    });
+
+    return dataRefactored;
+  });
+
+  return {
+    props: {
+      aboutsData
+    }
+  };
+}
+
+export default AppWrap({
+  WrappedComponent: About,
+  idName: 'about',
+})

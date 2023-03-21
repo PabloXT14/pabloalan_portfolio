@@ -18,10 +18,10 @@ const scaleVariants: Variants = {
 
 const languagesImages = [images.node, images.react, images.typescript];
 
-export const Header = () => {
+const Header = () => {
 
   return (
-    <AppWrap idName="home">
+    <>
       <div
         className={clsx(
           'flex flex-row flex-1 w-full h-full pt-16 px-8 pb-0',
@@ -114,11 +114,11 @@ export const Header = () => {
           ))}
         </motion.div>
       </div>
-    </AppWrap>
+    </>
   )
 }
 
-// export default AppWrap({
-//   ChildrenComponent: Header,
-//   idName: 'home',
-// });
+export default AppWrap({
+  WrappedComponent: Header,
+  idName: 'home',
+});
