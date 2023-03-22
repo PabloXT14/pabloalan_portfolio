@@ -11,12 +11,8 @@ interface AppWrapProps {
 }
 
 // HOC => Higher Order Component
-export const AppWrap = ({
-  WrappedComponent,
-  idName,
-  classNames
-}: AppWrapProps) => {
-  function HOC() {
+const AppWrap = ({ WrappedComponent, idName, classNames }: AppWrapProps) => {
+  return function HOC() {
     return (
       <div id={idName} className={clsx(
         styles.appContainer,
@@ -31,18 +27,19 @@ export const AppWrap = ({
         )}>
           <WrappedComponent />
 
-          <div className={clsx(
+          {/* <div className={clsx(
             styles.copyright,
             idName === 'home' ? 'hidden' : ''
           )}>
             <p className={styles.pText}>@2023 Pablo Alan</p>
             <p className={styles.pText}>All rights reserved</p>
-          </div>
+          </div> */}
+
         </div>
         <NavigationDots active={idName} />
       </div>
     )
   }
-
-  return HOC;
 }
+
+export { AppWrap };

@@ -1,19 +1,35 @@
 import Image from 'next/image';
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { motion } from 'framer-motion';
 import { styles } from '../../styles';
 import { clsx } from 'clsx';
 import { IAbout } from '@/types/about';
 import { AppWrap } from '@/wrapper';
-import { GetStaticProps } from 'next';
 import { client, urlFor } from '@/services/sanity-client';
 
-interface AboutProps {
-  aboutsData?: IAbout[];
-}
+const About = () => {
+  const [abouts, setAbouts] = useState<IAbout[]>([]);
 
-const About = ({ aboutsData = []}: AboutProps) => {
-  const [abouts, setAbouts] = useState<IAbout[]>(aboutsData);
+  async function fetchAboutsData() {
+    const aboutsQuery = '*[_type == "abouts"]';
+
+    const aboutsData = await client.fetch(aboutsQuery).then(data => {
+      const dataRefactored = data.map((about: IAbout) => {
+        return {
+          ...about,
+          imgUrl: urlFor(about.imgUrl).url()
+        }
+      });
+  
+      return dataRefactored;
+    });
+
+    setAbouts(aboutsData);
+  }
+
+  useEffect(() => {
+    fetchAboutsData();
+  }, []);
 
   return (
     <>
@@ -57,27 +73,6 @@ const About = ({ aboutsData = []}: AboutProps) => {
       </div>
     </>
   )
-}
-
-export const getStaticProps: GetStaticProps = async () => {
-  const aboutsQuery = '*[_type == "abouts"]';
-
-  const aboutsData = await client.fetch(aboutsQuery).then(data => {
-    const dataRefactored = data.map((about: IAbout) => {
-      return {
-        ...about,
-        imgUrl: urlFor(about.imgUrl).url()
-      }
-    });
-
-    return dataRefactored;
-  });
-
-  return {
-    props: {
-      aboutsData
-    }
-  };
 }
 
 export default AppWrap({

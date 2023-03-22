@@ -10,13 +10,8 @@ import {
 import { Navbar } from '@/components';
 
 import { styles } from '@/styles';
-import { IAbout } from '@/types/about';
 
-interface HomeProps {
-  aboutsData: IAbout[];
-}
-
-export default function Home({ aboutsData }: HomeProps) {
+export default function Home() {
 
   return (
     <>

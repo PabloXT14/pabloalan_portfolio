@@ -21,7 +21,6 @@ const languagesImages = [images.node, images.react, images.typescript];
 const Header = () => {
 
   return (
-    <>
       <div
         className={clsx(
           'flex flex-row flex-1 w-full h-full pt-16 px-8 pb-0',
@@ -114,7 +113,6 @@ const Header = () => {
           ))}
         </motion.div>
       </div>
-    </>
   )
 }
 
