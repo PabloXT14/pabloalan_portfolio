@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import { useEffect, useState } from "react";
+import { useQuery } from 'react-query';
 import { motion } from 'framer-motion';
 import { styles } from '../../styles';
 import { clsx } from 'clsx';
@@ -7,39 +8,40 @@ import { IAbout } from '@/types/about';
 import { AppWrap } from '@/wrapper';
 import { client, urlFor } from '@/services/sanity-client';
 
-const About = () => {
-  const [abouts, setAbouts] = useState<IAbout[]>([]);
+async function getAbouts() {
+  const aboutsQuery = '*[_type == "abouts"]';
 
-  async function fetchAboutsData() {
-    const aboutsQuery = '*[_type == "abouts"]';
-
-    const aboutsData = await client.fetch(aboutsQuery).then(data => {
-      const dataRefactored = data.map((about: IAbout) => {
-        return {
-          ...about,
-          imgUrl: urlFor(about.imgUrl).url()
-        }
-      });
-  
-      return dataRefactored;
+  const aboutsData = await client.fetch(aboutsQuery).then(data => {
+    const dataRefactored = data.map((about: IAbout) => {
+      return {
+        ...about,
+        imgUrl: urlFor(about.imgUrl).url()
+      }
     });
 
-    setAbouts(aboutsData);
-  }
+    return dataRefactored;
+  });
 
-  useEffect(() => {
-    fetchAboutsData();
-  }, []);
+  return aboutsData as IAbout[];
+}
+
+const About = () => {
+  const aboutsQuery = useQuery({
+    queryKey: ['abouts'],
+    queryFn: getAbouts,
+  });
+
+  const { data: abouts } = aboutsQuery;
 
   return (
     <>
-      <h2 className={clsx(styles.headText, 'mt-8')} id="about">
+      <h2 className={clsx(styles.headText)}>
         I Know that <span>Good Development</span> <br />
         means <span>Good Business</span>
       </h2>
 
       <div className="flex flex-wrap items-start justify-center mt-8">
-        {abouts.map((about, index) => (
+        {abouts && abouts.map((about, index) => (
           <motion.div
             key={about.title + index}
             whileInView={{ opacity: 1 }}

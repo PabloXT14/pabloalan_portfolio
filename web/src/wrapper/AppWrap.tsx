@@ -16,8 +16,8 @@ const AppWrap = ({ WrappedComponent, idName, classNames }: AppWrapProps) => {
     return (
       <div id={idName} className={clsx(
         styles.appContainer,
+        idName === 'home' ? 'relative bg-center bg-repeat bg-cover bg-header-cover' : '',
         classNames,
-        idName === 'home' ? 'relative bg-center bg-repeat bg-cover bg-header-cover' : ''
       )}>
         <SocialMedia />
         <div className={clsx(
@@ -27,13 +27,13 @@ const AppWrap = ({ WrappedComponent, idName, classNames }: AppWrapProps) => {
         )}>
           <WrappedComponent />
 
-          {/* <div className={clsx(
+          <div className={clsx(
             styles.copyright,
             idName === 'home' ? 'hidden' : ''
           )}>
             <p className={styles.pText}>@2023 Pablo Alan</p>
             <p className={styles.pText}>All rights reserved</p>
-          </div> */}
+          </div>
 
         </div>
         <NavigationDots active={idName} />

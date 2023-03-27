@@ -17,6 +17,7 @@ export const NavigationDots = ({ active }: NavigationDotsProps) => {
         <Link
           key={item + index}
           href={`#${item}`}
+          scroll={false}
           className={clsx(
             styles.appNavigationDot,
             active === item ? 'bg-secondary' : ''

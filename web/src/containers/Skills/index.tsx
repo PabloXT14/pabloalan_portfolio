@@ -1,7 +1,13 @@
-import React from 'react'
+import { AppWrap } from "@/wrapper"
 
-export const Skills = () => {
+
+const Skills = () => {
   return (
     <div>Skills</div>
   )
 }
+
+export default AppWrap({
+  WrappedComponent: Skills,
+  idName: "skills"
+})

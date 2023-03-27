@@ -7,6 +7,7 @@ import { motion } from 'framer-motion';
 import { images } from '@/constants/';
 import { styles } from '@/styles';
 import { menuItems } from '@/constants';
+import { clsx } from 'clsx';
 
 export const Navbar = () => {
 
@@ -30,22 +31,23 @@ export const Navbar = () => {
         {menuItems.map((item) => (
           <li
             key={`link=${item}`}
-            className={`
-              ${styles.pText}
-              flex justify-center items-center
-              mx-4 cursor-pointer flex-col
-              group
-          `}
+            className={clsx(
+              styles.pText,
+              'flex justify-center items-center',
+              'mx-4 cursor-pointer flex-col',
+              'group',
+            )}
           >
             <div
               className="w-2 h-2 mb-1 duration-200 bg-transparent rounded-full group-hover:bg-secondary"
             />
-            <a
+            <Link
               href={`#${item}`}
+              scroll={false}
               className="flex-col font-medium no-underline uppercase transition-all duration-300 ease-in-out text-gray hover:text-secondary"
             >
               {item}
-            </a>
+            </Link>
           </li>
         ))}
       </ul>
@@ -76,6 +78,7 @@ export const Navbar = () => {
                 >
                   <Link
                     href={`#${item}`}
+                    scroll={false}
                     onClick={() => setToggle(false)}
                     className="text-base font-medium no-underline uppercase transition-all duration-300 ease-in-out text-gray hover:text-secondary"
                   >

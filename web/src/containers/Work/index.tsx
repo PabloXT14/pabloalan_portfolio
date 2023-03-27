@@ -1,8 +1,9 @@
 import { useState } from "react";
 import { workOptions } from "@/constants"
 import { styles } from "@/styles"
+import { AppWrap } from "@/wrapper";
 
-export const Work = () => {
+const Work = () => {
   const [activeFilter, setActiveFilter] = useState<typeof workOptions[number]>('All');
 
   function handleWorkFilter(option: string) {
@@ -27,3 +28,8 @@ export const Work = () => {
     </>
   )
 }
+
+export default AppWrap({
+  WrappedComponent: Work,
+  idName: "work",
+})

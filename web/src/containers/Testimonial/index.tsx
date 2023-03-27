@@ -1,7 +1,13 @@
-import React from 'react'
+import { AppWrap } from "@/wrapper"
 
-export const Testimonial = () => {
+
+const Testimonial = () => {
   return (
     <div>Testimonial</div>
   )
 }
+
+export default AppWrap({
+  WrappedComponent: Testimonial,
+  idName: "testimonials",
+})

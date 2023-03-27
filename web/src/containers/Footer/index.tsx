@@ -1,7 +1,13 @@
-import React from 'react'
+import { AppWrap } from "@/wrapper"
 
-export const Footer = () => {
+
+const Footer = () => {
   return (
     <div>Footer</div>
   )
 }
+
+export default AppWrap({
+  WrappedComponent: Footer,
+  idName: "contact"
+})
