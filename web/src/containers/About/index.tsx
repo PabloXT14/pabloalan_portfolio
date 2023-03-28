@@ -1,5 +1,4 @@
 import Image from 'next/image';
-import { useEffect, useState } from "react";
 import { useQuery } from 'react-query';
 import { motion } from 'framer-motion';
 import { styles } from '../../styles';
