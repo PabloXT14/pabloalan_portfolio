@@ -1,3 +1,5 @@
+import Image from "next/image";
+import Link from "next/link";
 import { useState } from "react";
 import { workOptions } from "@/constants"
 import { useQuery } from "react-query";
@@ -27,21 +29,24 @@ async function getWorks() {
 }
 
 const Work = () => {
+  const worksQuery = useQuery({
+    queryKey: ['works'],
+    queryFn: getWorks,
+  });
+  const { data: works } = worksQuery;
+
+  const filterWork: IWork[] = works || [];
   const [activeFilter, setActiveFilter] = useState<typeof workOptions[number]>('All');
   const [animateCard, setAnimateCard] = useState<TargetAndTransition>({
     y: 0,
     opacity: 1
   });
 
-  function handleWorkFilter(option: string) {
-
+  function handleWorkFilter(option: typeof workOptions[number]) {
+    setActiveFilter(option);
   }
 
-  const worksQuery = useQuery({
-    queryKey: ['works'],
-    queryFn: getWorks,
-  });
-  const { data: works } = worksQuery;
+  // console.log(filterWork);
 
   return (
     <>
@@ -70,13 +75,74 @@ const Work = () => {
           ''
         )}
       >
-        {works && works.map((work, index) => (
+        {filterWork.map((work, index) => (
           <div
             key={index}
-            className=""
+            className={clsx('flex justify-center items-center')}
           >
-            <div className="">
-              
+            <div className={clsx('flex justify-center items-center')}>
+              <Image
+                src={work.imgUrl}
+                alt={work.title}
+                width={1200}
+                height={900}
+                className={clsx('')}
+              />
+
+              <motion.div
+                whileHover={{ opacity: [0, 1] }}
+                transition={{ duration: 0.25, ease: 'easeInOut', staggerChildren: 0.5 }}
+                className={clsx(
+                  'flex justify-center items-center'
+                )}
+              >
+                <Link
+                  href={work.projectLink}
+                  target="_blank"
+                  rel="noreferrer"
+                  prefetch={false}
+                >
+                  <motion.div
+                    whileInView={{ scale: [0, 1] }}
+                    whileHover={{ scale: [1, 0.9] }}
+                    transition={{ duration: 0.25 }}
+                    className={clsx('flex justify-center items-center')}
+                  >
+                    <AiFillEye />
+                  </motion.div>
+                </Link>
+
+                <Link
+                  href={work.codeLink}
+                  target="_blank"
+                  rel="noreferrer"
+                  prefetch={false}
+                >
+                  <motion.div
+                    whileInView={{ scale: [0, 1] }}
+                    whileHover={{ scale: [1, 0.9] }}
+                    transition={{ duration: 0.25 }}
+                    className={clsx('flex justify-center items-center')}
+                  >
+                    <AiFillGithub />
+                  </motion.div>
+                </Link>
+              </motion.div>
+            </div>
+
+            <div
+              className={clsx('flex justify-center items-center')}
+            >
+              <h4 className={clsx(styles.boldText)}>
+                {work.title}
+              </h4>
+              <p className={clsx(styles.pText, 'mt-2')}>
+                {work.description}
+              </p>
+
+              <div className={clsx('flex justify-center items-center')}>
+                <p className={clsx(styles.pText)}>{work.tags[0]}</p>
+              </div>
             </div>
           </div>
         ))}
