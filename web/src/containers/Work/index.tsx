@@ -49,10 +49,10 @@ const Work = () => {
   // console.log(filterWork);
 
   return (
-    <>
+    <div className="flex flex-col items-center justify-center flex-1 w-full">
       <h2 className={styles.headText}>My Creative <span>Portfolio</span> Section</h2>
 
-      <div className="">
+      <div className="flex flex-wrap items-center justify-start mx-0 mt-16 mb-8">
         {workOptions.map((option, index) => (
           <div
             key={index}
@@ -60,7 +60,10 @@ const Work = () => {
             className={clsx(
               styles.pText,
               styles.appFlex,
-              activeFilter === option && 'bg-secondary'
+              'py-2 px-4 rounded-lg bg-white text-zinc-900 font-extrabold cursor-pointer m-2 transition-all duration-300 ease-in-out',
+              'hover:bg-secondary hover:text-white',
+              'lg:py-4 lg:px-8 lg:rounded-xl',
+              activeFilter === option ? 'text-white bg-secondary' : '',
             )}
           >
             {option}
@@ -147,7 +150,7 @@ const Work = () => {
           </div>
         ))}
       </motion.div>
-    </>
+    </div>
   )
 }
 
