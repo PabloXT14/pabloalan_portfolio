@@ -34,8 +34,8 @@ const styles = {
     'max-sm:text-sm',
   ),
   appSocial: clsx(
-    'hidden justify-end items-center flex-col p-4',
-    'md:flex'
+    'flex justify-end items-center flex-col p-4',
+    'max-md:hidden'
   ),
   appSocialLink: clsx(
     'flex justify-center items-center',
@@ -47,8 +47,8 @@ const styles = {
     'lg:[&>svg]:w-7 lg:[&>svg]:h-7',
   ),
   appNavigation: clsx(
-    'hidden justify-center items-center flex-col p-4',
-    'md:flex',
+    'flex justify-center items-center flex-col p-4',
+    'max-md:hidden',
   ),
   appNavigationDot: clsx(
     'w-3 h-3 bg-zinc-300 rounded-full m-2 transition-colors duration-200 ease-in-out',

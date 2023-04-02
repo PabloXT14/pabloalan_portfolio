@@ -15,7 +15,7 @@ const WorkItem = ({ work }: WorkItemProps) => {
     <div
       className={clsx(
         styles.appFlex,
-        'w-[270px] flex-col m-8 p-4 rounded-lg bg-white text-zinc-900 cursor-pointer',
+        'max-w-[270px] w-full flex-col m-8 p-4 rounded-lg bg-white text-zinc-900 cursor-pointer',
         'transition-all duration-300 ease-in-out',
         'hover:shadow-work-item',
         'lg:w-[470px] lg:p-5 lg:rounded-xl',

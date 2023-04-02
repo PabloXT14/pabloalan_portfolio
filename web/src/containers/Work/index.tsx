@@ -1,10 +1,7 @@
-import Image from "next/image";
-import Link from "next/link";
 import { useState } from "react";
 import { workOptions } from "@/constants"
 import { useQuery } from "react-query";
 import { urlFor, client } from "@/services/sanity-client";
-import { AiFillEye, AiFillGithub } from "react-icons/ai";
 import { motion, TargetAndTransition } from "framer-motion";
 import { styles } from "@/styles";
 import { clsx } from "clsx";
@@ -30,21 +27,29 @@ async function getWorks() {
 }
 
 const Work = () => {
-  const worksQuery = useQuery({
-    queryKey: ['works'],
-    queryFn: getWorks,
-  });
-  const { data: works } = worksQuery;
-
-  const filterWork: IWork[] = works || [];
   const [activeFilter, setActiveFilter] = useState<typeof workOptions[number]>('All');
   const [animateCard, setAnimateCard] = useState<TargetAndTransition>({
     y: 0,
     opacity: 1
   });
 
+  const worksQuery = useQuery({
+    queryKey: ['works'],
+    queryFn: getWorks,
+  });
+  const { data: works } = worksQuery;
+
+  let filterWork: IWork[] = works
+    ? works.filter(work => work.tags.includes(activeFilter))
+    : [];
+
   function handleWorkFilter(option: typeof workOptions[number]) {
-    setActiveFilter(option);
+    setAnimateCard({ y: 100, opacity: 0 });
+
+    setTimeout(() => {
+      setAnimateCard({ y: 0, opacity: 1 });
+      setActiveFilter(option);
+    }, 500);
   }
 
   return (
