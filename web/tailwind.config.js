@@ -25,6 +25,7 @@ module.exports = {
         'menu-mobile': "0 0 20px rgba(168, 168, 168, 0.15)",
         'header-badge': "0 0 20px rgba(0, 0, 0, 0.1)",
         'work-item': "0 0 25px rgba(0, 0, 0, 0.2)",
+        'skill-item': "0 0 25px rgba(0, 0, 0, 0.2)",
       }
     },
     screens: {
