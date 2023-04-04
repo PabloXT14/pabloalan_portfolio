@@ -56,7 +56,7 @@ const Work = () => {
     <div className="flex flex-col items-center justify-center flex-1 w-full">
       <h2 className={styles.headText}>My Creative <span>Portfolio</span> Section</h2>
 
-      <div className="flex flex-wrap items-center justify-start mx-0 mt-16 mb-8">
+      <div className="flex flex-wrap items-center justify-center mx-0 mt-16 mb-8">
         {workOptions.map((option, index) => (
           <div
             key={index}

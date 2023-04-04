@@ -5,6 +5,6 @@ export interface IWorkExperience {
 }
 
 export interface IExperience {
-  yeat: string;
+  year: string;
   works: IWorkExperience[];
 }

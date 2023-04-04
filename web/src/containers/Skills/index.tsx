@@ -1,13 +1,13 @@
-import Image from "next/image";
 import { client, urlFor } from "@/services/sanity-client";
 import { ISkill } from "@/types/skill";
 import { IExperience } from "@/types/experience";
 import { AppWrap } from "@/wrapper"
 import { useQuery } from "react-query";
-import { Tooltip } from "react-tooltip";
 import { motion } from "framer-motion";
 import { clsx } from "clsx";
 import { styles } from "@/styles";
+import { SkillItem } from "./components/SkillItem";
+import { ExperienceItem } from "./components/ExperienceItem";
 
 async function getSkills() {
   const skillsQuery = '*[_type == "skills"]';
@@ -62,45 +62,15 @@ const Skills = () => {
           )}
         >
           {skills && skills.map(skill => (
-            <motion.div
-              key={skill.name}
-              whileInView={{ opacity: [0, 1] }}
-              transition={{ duration: 0.5 }}
-              className={clsx(
-                styles.appFlex,
-                'flex-col text-center m-4',
-                'lg:my-4 lg:mx-8',
-              )}
-            >
-              <div className={clsx(
-                styles.appFlex, 
-                'w-[90px] h-[90px] rounded-full bg-[#fef4f5]',
-                'transition-all duration-300 ease-in-out',
-                'hover:shadow-skill-item',
-                'lg:w-[150px] lg:h-[150px]',
-                'max-sm:w-[70px] max-sm:h-[70px]',
-                `bg-[${skill.bgColor}]`,
-              )}>
-                <Image
-                  src={skill.icon}
-                  alt={skill.name}
-                  width={100}
-                  height={100}
-                  className={clsx(
-                    'w-1/2 h-1/2'
-                  )}
-                />
-              </div>
-              <p className={clsx(
-                styles.pText,
-                'font-medium mt-2',
-                'lg:mt-4',
-              )}>
-                {skill.name}
-                </p>
-            </motion.div>
+            <SkillItem skill={skill} />
           ))}
         </motion.div>
+
+        <div>
+          {experiences && experiences.map(experience => (
+            <ExperienceItem experience={experience} />
+          ))}
+        </div>
       </div>
     </>
   )
