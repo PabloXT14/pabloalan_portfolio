@@ -62,13 +62,16 @@ const Skills = () => {
           )}
         >
           {skills && skills.map(skill => (
-            <SkillItem skill={skill} />
+            <SkillItem key={skill.name} skill={skill} />
           ))}
         </motion.div>
 
         <div>
-          {experiences && experiences.map(experience => (
-            <ExperienceItem experience={experience} />
+          {experiences && experiences.map((experience) => (
+            <ExperienceItem
+              key={experience.year}
+              experience={experience} 
+            />
           ))}
         </div>
       </div>

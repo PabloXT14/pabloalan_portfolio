@@ -1,4 +1,3 @@
-import { useId } from "react";
 import { motion } from "framer-motion";
 import { IExperience } from "@/types/experience";
 import { Tooltip } from "react-tooltip";
@@ -10,27 +9,42 @@ interface ExperienceItemProps {
 }
 
 const ExperienceItem = ({ experience }: ExperienceItemProps) => {
-  const randomId = useId();
 
   return (
     <motion.div
-      key={randomId}
+      className={clsx(
+
+      )}
     >
       <div className="">
-        <p>{experience.year}</p>
+        <p className={styles.boldText}>{experience.year}</p>
       </div>
 
-      <div>
-        {experience.works.map((work) => (
-          <>
-            <motion.div>
-              <h4>{work.name}</h4>
-              <p>{work.company}</p>
+      <motion.div className={clsx(
+
+      )}>
+        {experience.works.map((work, index) => (
+          <div key={`${work.name}_${index}`}>
+            <motion.div
+              whileInView={{ opacity: [0, 1] }}
+              transition={{ duration: 0.5 }}
+              className={clsx()}
+              data-tip
+              data-for={work.name}
+            >
+              <h4 className={styles.boldText}>{work.name}</h4>
+              <p className={styles.boldText}>{work.company}</p>
             </motion.div>
-            
-          </>
+            <Tooltip
+              id={work.name}     
+              classNameArrow={clsx('text-white')}
+              className={clsx()}
+            >
+              {work.description}
+            </Tooltip>
+          </div>
         ))}
-      </div>
+      </motion.div>
     </motion.div>
   )
 }
