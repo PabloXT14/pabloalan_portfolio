@@ -5,7 +5,7 @@ import { urlFor, client } from "@/services/sanity-client";
 import { motion, TargetAndTransition } from "framer-motion";
 import { styles } from "@/styles";
 import { clsx } from "clsx";
-import { AppWrap } from "@/wrapper";
+import { AppWrap, MotionWrap } from "@/wrapper";
 import { IWork } from "@/types/work";
 import { WorkItem } from "./components/WorkItem";
 
@@ -91,6 +91,10 @@ const Work = () => {
 }
 
 export default AppWrap({
-  WrappedComponent: Work,
+  WrappedComponent: MotionWrap({
+    WrappedComponent: Work,
+    classNames: ''
+  }),
   idName: "work",
+  classNames: styles.appPrimaryBg
 })

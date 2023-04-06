@@ -42,4 +42,4 @@ const AppWrap = ({ WrappedComponent, idName, classNames }: AppWrapProps) => {
   }
 }
 
-export { AppWrap };
+export default AppWrap;

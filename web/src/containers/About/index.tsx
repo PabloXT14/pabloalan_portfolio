@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 import { styles } from '../../styles';
 import { clsx } from 'clsx';
 import { IAbout } from '@/types/about';
-import { AppWrap } from '@/wrapper';
+import { AppWrap, MotionWrap } from '@/wrapper';
 import { client, urlFor } from '@/services/sanity-client';
 
 async function getAbouts() {
@@ -33,7 +33,7 @@ const About = () => {
   const { data: abouts } = aboutsQuery;
 
   return (
-    <>
+    <div className={clsx('flex-1 w-full flex-col')}>
       <h2 className={clsx(styles.headText)}>
         I Know that <span>Good Development</span> <br />
         means <span>Good Business</span>
@@ -72,11 +72,15 @@ const About = () => {
           </motion.div>
         ))}
       </div>
-    </>
+    </div>
   )
 }
 
 export default AppWrap({
-  WrappedComponent: About,
+  WrappedComponent: MotionWrap({
+    WrappedComponent: About,
+    classNames: '',
+  }),
   idName: 'about',
+  classNames: styles.appWhiteBg
 })

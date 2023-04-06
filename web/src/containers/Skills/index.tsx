@@ -1,7 +1,7 @@
 import { client, urlFor } from "@/services/sanity-client";
 import { ISkill } from "@/types/skill";
 import { IExperience } from "@/types/experience";
-import { AppWrap } from "@/wrapper"
+import { AppWrap, MotionWrap } from "@/wrapper"
 import { useQuery } from "react-query";
 import { motion } from "framer-motion";
 import { clsx } from "clsx";
@@ -48,7 +48,7 @@ const Skills = () => {
   const { data: experiences } = experiencesQuery;
 
   return (
-    <>
+    <div className={clsx('flex flex-1 w-full flex-col bg-orange-500')}>
       <h2 className={clsx(styles.headText)}>Skills & Experiences</h2>
 
       <div className={clsx(
@@ -66,7 +66,10 @@ const Skills = () => {
           ))}
         </motion.div>
 
-        <div>
+        <div className={clsx(
+          'flex-1 flex justify-start items-start flex-col',
+          'max-2md:mt-8'
+        )}>
           {experiences && experiences.map((experience) => (
             <ExperienceItem
               key={experience.year}
@@ -75,11 +78,15 @@ const Skills = () => {
           ))}
         </div>
       </div>
-    </>
+    </div>
   )
 }
 
 export default AppWrap({
-  WrappedComponent: Skills,
-  idName: "skills"
+  WrappedComponent: MotionWrap({
+    WrappedComponent: Skills,
+    classNames: '',
+  }),
+  idName: "skills",
+  classNames: styles.appWhiteBg
 })
