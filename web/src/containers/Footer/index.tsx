@@ -1,3 +1,4 @@
+import { styles } from "@/styles"
 import { AppWrap } from "@/wrapper"
 
 
@@ -9,5 +10,6 @@ const Footer = () => {
 
 export default AppWrap({
   WrappedComponent: Footer,
-  idName: "contact"
+  idName: "contact",
+  classNames: styles.appWhiteBg
 })

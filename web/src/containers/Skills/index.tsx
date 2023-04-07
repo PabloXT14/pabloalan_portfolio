@@ -48,7 +48,7 @@ const Skills = () => {
   const { data: experiences } = experiencesQuery;
 
   return (
-    <div className={clsx('flex flex-1 w-full flex-col bg-orange-500')}>
+    <div className={clsx('flex flex-col flex-1 w-full items-center')}>
       <h2 className={clsx(styles.headText)}>Skills & Experiences</h2>
 
       <div className={clsx(
@@ -57,7 +57,7 @@ const Skills = () => {
       )}>
         <motion.div
           className={clsx(
-            'flex-1 flex flex-wrap justify-start items-start mr-20',
+            'flex-1 flex flex-wrap justify-start items-start mr-12',
             'max-2md:mr-0 max-2md:justify-center max-2md:items-center',
           )}
         >
@@ -68,7 +68,7 @@ const Skills = () => {
 
         <div className={clsx(
           'flex-1 flex justify-start items-start flex-col',
-          'max-2md:mt-8'
+          'max-2md:mt-8',
         )}>
           {experiences && experiences.map((experience) => (
             <ExperienceItem
@@ -85,7 +85,7 @@ const Skills = () => {
 export default AppWrap({
   WrappedComponent: MotionWrap({
     WrappedComponent: Skills,
-    classNames: '',
+    classNames: clsx('flex flex-col flex-1 w-full'),
   }),
   idName: "skills",
   classNames: styles.appWhiteBg

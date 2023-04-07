@@ -22,12 +22,12 @@ const SkillItem = ({ skill }: SkillItemProps) => {
     >
       <div className={clsx(
         styles.appFlex,
-        'w-[90px] h-[90px] rounded-full bg-white',
+        'w-[90px] h-[90px] rounded-full',
         'transition-all duration-300 ease-in-out',
         'hover:shadow-skill-item',
         'lg:w-[150px] lg:h-[150px]',
         'max-sm:w-[70px] max-sm:h-[70px]',
-        `bg-[${skill.bgColor}]`,
+        skill.bgColor ? `bg-[${skill.bgColor}]` : 'bg-primary',
       )}>
         <Image
           src={skill.icon}
