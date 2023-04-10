@@ -27,11 +27,13 @@ module.exports = {
         'work-item': "0 0 25px rgba(0, 0, 0, 0.2)",
         'skill-item': "0 0 25px rgba(0, 0, 0, 0.2)",
         'tootip': "0 0 25px rgba(0, 0, 0, 0.1)",
+        'testimonial-item': "0 0 30px rgba(0, 0, 0, 0.1)",
       }
     },
     screens: {
       sm: "450px",
       md: "500px",
+      '1.5md': "700px",
       '2md': '900px',
       '3md': '1200px',
       lg: "2000px",
