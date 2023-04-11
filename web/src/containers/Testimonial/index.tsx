@@ -125,6 +125,8 @@ const Testimonial = () => {
 
       <div className={clsx(
         styles.appFlex,
+        'w-4/5 flex-wrap mt-4',
+        'max-2md:w-full',
       )}>
         {brands && brands.map((brand, index) => (
           <BrandItem brand={brand} key={brand.name + index} />

@@ -13,7 +13,7 @@ const TestimonialItem = ({ testimonial }: TestimonialItemProps) => {
     <div className={clsx(
       styles.appFlex,
       'flex flex-row p-8',
-      'w-3/5 min-h-[320px] bg-white rounded-2xl shadow-testimonial-item',
+      'w-3/5 min-h-[250px] bg-white rounded-2xl shadow-testimonial-item',
       'transition-all duration-300 ease-in-out',
       'max-2md:w-full',
       'max-1.5md:flex-col',
@@ -36,7 +36,7 @@ const TestimonialItem = ({ testimonial }: TestimonialItemProps) => {
       )}>
         <p className={clsx(
           styles.pText,
-          'text-xl text-black font-sans',
+          'text-xl text-black font-sans line-clamp-3',
           'lg:text-4xl'
         )}>
           {testimonial.feedback}

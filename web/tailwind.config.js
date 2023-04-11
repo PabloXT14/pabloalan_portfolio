@@ -39,5 +39,5 @@ module.exports = {
       lg: "2000px",
     }
   },
-  plugins: [],
+  plugins: [require('@tailwindcss/line-clamp')],
 }
