@@ -3,5 +3,14 @@
 @tailwind utilities;
 
 * {
-  @apply box-border p-0 m-0 scroll-smooth
+  @apply
+    box-border
+    p-0 
+    m-0 
+    scroll-smooth
+    scrollbar
+    scrollbar-w-2
+  scrollbar-thumb-secondary
+    scrollbar-thumb-rounded-md
+    scrollbar-track-transparent
 }

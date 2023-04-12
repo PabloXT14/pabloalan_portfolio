@@ -19,10 +19,10 @@ const styles = {
     'max-md:p-8'
   ),
   headText: clsx(
-    'text-4xl font-extrabold text-center text-black capitalize',
+    'text-5xl font-extrabold text-center text-black capitalize break-words',
     '[&>span]:text-secondary',
     'lg:text-6xl',
-    'max-sm:text-5xl',
+    'max-sm:text-3xl',
   ),
   pText: clsx(
     'text-sm text-left text-gray leading-normal',

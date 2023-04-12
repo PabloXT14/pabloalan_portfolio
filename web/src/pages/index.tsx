@@ -1,4 +1,6 @@
 import Head from 'next/head'
+import { clsx } from 'clsx';
+
 import {
   About,
   Footer,
@@ -21,7 +23,7 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <div className={styles.app}>
+      <div className={clsx(styles.app)}>
         <Navbar />
         <Header />
         <About />

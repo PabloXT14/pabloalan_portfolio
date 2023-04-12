@@ -7,6 +7,8 @@ import { AppWrap, MotionWrap } from "@/wrapper"
 import { images } from "@/constants";
 import { clsx } from "clsx";
 import { styles } from "@/styles"
+import { FooterCardsContainer } from "./components/FooterCardsContainer";
+import { FooterForm } from "./components/FooterForm";
 
 
 const Footer = () => {
@@ -47,62 +49,22 @@ const Footer = () => {
 
   return (
     <div className={clsx('flex flex-col flex-1 w-full items-center')}>
-      <h2>Take a coffe & chat with me</h2>
+      <h2 className={clsx(styles.headText)}>
+        Take a coffe & chat with me
+      </h2>
 
-      <div>
-        <div>
-          <Image src={images.email} alt="email" />
-          <Link href="mailto:pabloxt14@gmail.com">pabloxt14@gmail.com</Link>
-        </div>
-
-        <div>
-          <Image src={images.mobile} alt="phone" />
-          <Link href="tel:+55 (19) 971540560">+55 (19) 971540560</Link>
-        </div>
-      </div>
+      <FooterCardsContainer />
 
       {!isFormSubmitted ? (
-        <div>
-          <div>
-            <input
-              type="text"
-              placeholder="Your Name"
-              name="username"
-              value={username}
-              onChange={handleChangeInput}
-            />
-          </div>
-
-          <div>
-            <input
-              type="email"
-              placeholder="Your Email"
-              name="email"
-              value={email}
-              onChange={handleChangeInput}
-            />
-          </div>
-
-          <div>
-            <textarea
-              placeholder="Your Message"
-              name="message"
-              value={message}
-              onChange={handleChangeInput}
-            />
-          </div>
-
-          <button
-            type="button"
-            onClick={handleSubmit}
-            disabled={isFormLoading}
-          >
-            {isFormLoading ? 'Sending...' : 'Send Message'}
-          </button>
-        </div>
+        <FooterForm 
+          formData={formData}
+          onHandleChangeInput={handleChangeInput}
+          onHandleSubmit={handleSubmit}
+          isFormLoading={isFormLoading}
+        />
       ) : (
         <div>
-          <h3>
+          <h3 className={clsx(styles.headText)}>
             Thank you for your message! I will get back to you as soon as possible
           </h3>
         </div>
