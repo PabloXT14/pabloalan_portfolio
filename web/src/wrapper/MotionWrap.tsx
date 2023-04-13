@@ -1,6 +1,5 @@
 import { FunctionComponent } from "react";
 import { motion } from "framer-motion";
-import { styles } from "@/styles";
 import { clsx } from "clsx";
 
 interface MotionWrapProps {

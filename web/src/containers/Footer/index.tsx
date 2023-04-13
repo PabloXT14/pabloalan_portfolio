@@ -1,10 +1,6 @@
-import Image from "next/image";
-import Link from "next/link";
 import { FormEvent, useState } from "react";
 
-import { client } from "@/services/sanity-client";
 import { AppWrap, MotionWrap } from "@/wrapper"
-import { images } from "@/constants";
 import { clsx } from "clsx";
 import { styles } from "@/styles"
 import { FooterCardsContainer } from "./components/FooterCardsContainer";
@@ -15,8 +11,6 @@ const Footer = () => {
   const [formData, setFormData] = useState({ username: '', email: '', message: '' });
   const [isFormSubmitted, setIsFormSubmitted] = useState(false);
   const [isFormLoading, setIsFormLoading] = useState(false);
-
-  const { username, email, message } = formData;
 
   function handleChangeInput(event: FormEvent) {
     const { name, value } = event.target as HTMLInputElement;

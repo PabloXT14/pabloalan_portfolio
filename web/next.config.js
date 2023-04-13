@@ -4,6 +4,7 @@ const nextConfig = {
   images: {
     domains: ['github.com', 'cdn.sanity.io']
   },
+  swcMinify: false,
 }
 
 module.exports = nextConfig
