@@ -1,4 +1,4 @@
-import { FormEvent, useState } from "react";
+import { FormEvent } from "react";
 
 import { AppWrap, MotionWrap } from "@/wrapper"
 import { clsx } from "clsx";
@@ -8,22 +8,11 @@ import { FooterForm } from "./components/FooterForm";
 
 
 const Footer = () => {
-  const [formData, setFormData] = useState({ username: '', email: '', message: '' });
-  const [isFormSubmitted, setIsFormSubmitted] = useState(false);
-  const [isFormLoading, setIsFormLoading] = useState(false);
-
-  function handleChangeInput(event: FormEvent) {
-    const { name, value } = event.target as HTMLInputElement;
-
-    setFormData({ ...formData, [name]: value });
-  }
 
   function handleSubmit(event: FormEvent) {
-    setIsFormLoading(true);
 
     setTimeout(() => {
-      setIsFormLoading(false);
-      setIsFormSubmitted(true);
+      
     }, 2000);
 
     // const contact = {
@@ -49,20 +38,7 @@ const Footer = () => {
 
       <FooterCardsContainer />
 
-      {!isFormSubmitted ? (
-        <FooterForm 
-          formData={formData}
-          onHandleChangeInput={handleChangeInput}
-          onHandleSubmit={handleSubmit}
-          isFormLoading={isFormLoading}
-        />
-      ) : (
-        <div>
-          <h3 className={clsx(styles.headText)}>
-            Thank you for your message! I will get back to you as soon as possible
-          </h3>
-        </div>
-      )}
+      <FooterForm />
     </div>
   )
 }
