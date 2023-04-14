@@ -12,7 +12,7 @@ const FooterCardsContainer = () => {
       'max-2md:w-full',
     )}>
       <div className={clsx(
-        'max-w-[290px] w-full flex flex-row justify-start items-center my-4 p-4 rounded-xl cursor-pointer bg-lightPink',
+        'max-w-[290px] w-full flex flex-row justify-start items-center my-4 p-4 rounded-xl cursor-pointer bg-primary',
         'transition-all duration-300 ease-in-out',
         'hover:shadow-footer-card',
         'max-sm:w-full',
@@ -36,7 +36,7 @@ const FooterCardsContainer = () => {
       </div>
 
       <div className={clsx(
-        'max-w-[290px] w-full flex flex-row justify-start items-center my-4 p-4 rounded-xl cursor-pointer bg-lightPink',
+        'max-w-[290px] w-full flex flex-row justify-start items-center my-4 p-4 rounded-xl cursor-pointer bg-primary',
         'transition-all duration-300 ease-in-out',
         'hover:shadow-footer-card',
         'max-sm:w-full',

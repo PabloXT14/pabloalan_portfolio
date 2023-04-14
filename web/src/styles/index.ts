@@ -51,7 +51,7 @@ const styles = {
     'max-md:hidden',
   ),
   appNavigationDot: clsx(
-    'w-3 h-3 bg-zinc-300 rounded-full m-2 transition-colors duration-200 ease-in-out',
+    'w-3 h-3 rounded-full m-2 transition-colors duration-200 ease-in-out',
     'hover:bg-secondary',
     'lg:w-5 lg:h-5'
   )

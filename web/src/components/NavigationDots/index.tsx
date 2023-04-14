@@ -20,7 +20,7 @@ export const NavigationDots = ({ active }: NavigationDotsProps) => {
           scroll={false}
           className={clsx(
             styles.appNavigationDot,
-            active === item ? 'bg-secondary' : ''
+            active === item ? 'bg-secondary' : 'bg-lightGray'
           )}
         />
       ))}

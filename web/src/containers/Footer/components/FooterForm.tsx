@@ -2,8 +2,10 @@ import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { clsx } from "clsx";
+import emailjs from "@emailjs/browser";
 
 import { styles } from "@/styles";
+import { useRef } from "react";
 
 const sendContactMessageSchema = z.object({
   username: z.string()
@@ -24,25 +26,46 @@ const sendContactMessageSchema = z.object({
 type SendContactMessageData = z.infer<typeof sendContactMessageSchema>;
 
 const FooterForm = () => {
+  const formRef = useRef<HTMLFormElement>(null);
   const {
     register,
     handleSubmit,
-    formState: { errors, isSubmitSuccessful, isSubmitting, isValid }
+    formState: { errors, isSubmitSuccessful, isSubmitting, isValid },
+    reset,
   } = useForm<SendContactMessageData>({
     resolver: zodResolver(sendContactMessageSchema),
+    mode: "onChange"
   });
 
-  function sendContactMessage(data: SendContactMessageData) {
-    setTimeout(() => {
-
-    }, 2000);
-    console.log(data);
+  async function sendContactMessage(data: SendContactMessageData) {
+    
+    await emailjs.send(
+      process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!,
+      process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID!,
+      {
+        from_name: data.username,
+        to_name: "Pablo Alan",
+        from_email: data.email,
+        to_email: "pabloxt14@gmail.com",
+        message: data.message,
+      },
+      process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY,
+    )
+    .then(() => {
+      alert('Mensagem enviada com sucesso!');
+    })
+    .catch((error) => {
+      console.log(error);
+      alert('Ocorreu um erro ao enviar a mensagem!');
+      reset();
+    });
   }
 
   return (
     <>
       {!isSubmitSuccessful || !isValid ? (
         <form
+          ref={formRef}
           onSubmit={handleSubmit(sendContactMessage)}
           className={clsx(
             styles.appFlex,
@@ -119,9 +142,11 @@ const FooterForm = () => {
       ) : null}
 
       {isSubmitSuccessful ? (
-        <div>
-          <h3 className={clsx(styles.headText)}>
-            Thank you for your message! I will get back to you as soon as possible
+        <div className="my-auto">
+          <h3 className={clsx(styles.headText, 'text-3xl')}>
+            Thank you for your message!
+            <br/>
+            I will get back to you as soon as possible
           </h3>
         </div>
       ) : null}

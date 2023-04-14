@@ -16,7 +16,6 @@ module.exports = {
         gray: "#6b7688",
         brown: "#46364a",
         white: "#ffffff",
-        lightPink: "#fef4f5",
       },
       backgroundImage: {
         'menu-mobile': "url('/assets/bgWhite.png')",
@@ -29,7 +28,7 @@ module.exports = {
         'skill-item': "0 0 25px rgba(0, 0, 0, 0.2)",
         'tootip': "0 0 25px rgba(0, 0, 0, 0.1)",
         'testimonial-item': "0 0 30px rgba(0, 0, 0, 0.1)",
-        'footer-card': "0 0 25px lightPink",
+        'footer-card': "0 0 25px secondary",
         'form-input': "0 0 25px primary",
       },
       transitionTimingFunction: {
