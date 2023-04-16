@@ -123,7 +123,7 @@ const Testimonial = () => {
         </>
       )}
 
-      <div className={clsx(
+      {/* <div className={clsx(
         styles.appFlex,
         'w-4/5 flex-wrap mt-4',
         'max-2md:w-full',
@@ -132,7 +132,7 @@ const Testimonial = () => {
           <BrandItem brand={brand} key={brand.name + index} />
         ))
         }
-      </div>
+      </div> */}
     </div>
   )
 }

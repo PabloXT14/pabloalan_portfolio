@@ -4,7 +4,8 @@ import { clsx } from "clsx";
 import { IconType } from "react-icons";
 
 const ThemeSwitch = () => {
-  const [theme, setTheme] = useState('system');
+  const themeKeyLocalStorage = '@pabloalan-portfolio:theme';
+  const [theme, setTheme] = useState('');
   let htmlElement: HTMLElement;
   let darkQuery: MediaQueryList | undefined;
 
@@ -12,7 +13,7 @@ const ThemeSwitch = () => {
     htmlElement = document.documentElement;
     darkQuery = window.matchMedia('(prefers-color-scheme: dark)');
   }
-  
+
   const themeOptions = [
     {
       title: 'light',
@@ -20,7 +21,7 @@ const ThemeSwitch = () => {
       handlerSwitch: () => {
         setTheme('light');
         htmlElement.classList.remove('dark');
-        localStorage.setItem('@pabloalan-portfolio:theme', 'light');
+        localStorage.setItem(themeKeyLocalStorage, 'light');
       },
     },
     {
@@ -29,7 +30,7 @@ const ThemeSwitch = () => {
       handlerSwitch: () => {
         setTheme('dark');
         htmlElement.classList.add('dark');
-        localStorage.setItem('@pabloalan-portfolio:theme', 'dark');
+        localStorage.setItem(themeKeyLocalStorage, 'dark');
       }
     },
     {
@@ -37,31 +38,44 @@ const ThemeSwitch = () => {
       icon: <IoDesktopOutline />,
       handlerSwitch: () => {
         setTheme('system');
-        localStorage.removeItem('@pabloalan-portfolio:theme');
+        localStorage.removeItem(themeKeyLocalStorage);
+        onWindowMatch();
       }
     }
   ]
 
   function onWindowMatch() {
-    const themeStorage = localStorage.getItem('@pabloalan-portfolio:theme');
+    const themeStorage = localStorage.getItem(themeKeyLocalStorage);
 
     if (
-      themeStorage === 'dark' || 
-      (!('@pabloalan-portfolio:theme' in localStorage) && darkQuery?.matches)
+      themeStorage === 'dark' ||
+      (!(themeKeyLocalStorage in localStorage) && darkQuery?.matches)
     ) {
       htmlElement.classList.add('dark');
     } else {
       htmlElement.classList.remove('dark');
-    } 
-
+    }
   }
 
-  //onWindowMatch();
+  useEffect(() => {
+    setTheme(localStorage.getItem(themeKeyLocalStorage) || 'system');
+    onWindowMatch();
+  }, []);
 
   useEffect(() => {
     const themeOption = themeOptions.find(option => option.title === theme);
     themeOption?.handlerSwitch();
   }, [theme]);
+
+  darkQuery?.addEventListener('change', (event) => {
+    if (!(themeKeyLocalStorage in localStorage)) {
+      if (event.matches) {
+        htmlElement.classList.add('dark');
+      } else {
+        htmlElement.classList.remove('dark');
+      }
+    }
+  });
 
   return (
     <div className={clsx(
@@ -76,9 +90,9 @@ const ThemeSwitch = () => {
             key={option.title}
             onClick={() => setTheme(option.title)}
             className={clsx(
-              theme === option.title 
-              ? 'text-secondary' 
-              : 'text-zinc-800 dark:text-zinc-100',
+              theme === option.title
+                ? 'text-secondary'
+                : 'text-zinc-800 dark:text-zinc-100',
             )}
           >
             <Icon />
