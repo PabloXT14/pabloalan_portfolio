@@ -23,9 +23,9 @@ export const Navbar = () => {
     >
       <div className="flex items-center justify-start">
         <Image
-          src={images.logo}
+          src={images.logoPabloAlan}
           alt="logo"
-          className="w-24 h-5 lg:w-48 lg:h-10"
+          className="w-32 h-6 lg:w-48 lg:h-10"
         />
       </div>
 
@@ -60,7 +60,7 @@ export const Navbar = () => {
         'flex items-center gap-2'
       )}>
         {/* THEME SWITCH */}
-        <ThemeSwitch />
+        {/* <ThemeSwitch /> */}
 
         {/* MOBILE MENU */}
         <div

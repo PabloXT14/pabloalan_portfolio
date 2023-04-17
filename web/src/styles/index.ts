@@ -19,9 +19,9 @@ const styles = {
     'max-md:p-8'
   ),
   headText: clsx(
-    'text-5xl font-extrabold text-center text-black capitalize break-words',
+    'text-4xl font-extrabold text-center text-black capitalize break-words',
     '[&>span]:text-secondary',
-    'lg:text-6xl',
+    'lg:text-5xl',
     'max-sm:text-3xl',
   ),
   pText: clsx(
@@ -40,7 +40,7 @@ const styles = {
   appSocialLink: clsx(
     'flex justify-center items-center',
     'w-10 h-10 rounded-full bg-white my-1 border border-solid border-lightGray',
-    'transition-all duration-300 ease-in-out',
+    'transition-all duration-300 ease-in-out cursor-pointer',
     '[&>svg]:w-4 [&>svg]:h-4 [&>svg]:text-gray',
     'hover:bg-secondary hover:border-secondary [&:hover>svg]:text-white',
     'lg:w-16 lg:h-16 lg:my-2',
