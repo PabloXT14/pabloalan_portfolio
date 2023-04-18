@@ -38,7 +38,10 @@ const Header = () => {
         )}
       >
         <div
-          className="flex flex-col items-end justify-end w-full max-3md:justify-start max-3md:items-start"
+          className={clsx(
+            'flex flex-col items-end justify-end w-full gap-12',
+            'max-3md:justify-start max-3md:items-start',
+          )}
         >
           <div className="flex flex-row items-center justify-center w-auto py-4 bg-white px-7 rounded-2xl shadow-header-badge">
             <span className="text-4xl lg:text-7xl">
@@ -52,7 +55,7 @@ const Header = () => {
             </div>
           </div>
 
-          <div className="flex flex-col items-center justify-center w-auto px-8 py-4 mt-12 bg-white rounded-2xl shadow-header-badge">
+          <div className="flex flex-col items-center justify-center w-auto px-8 py-4 bg-white rounded-2xl shadow-header-badge">
             <p className={`${styles.pText} w-full uppercase text-right`}>
               Web Developer
             </p>

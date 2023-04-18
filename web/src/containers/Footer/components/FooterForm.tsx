@@ -84,7 +84,7 @@ const FooterForm = () => {
               {...register("username")}
               className={clsx(
                 styles.pText,
-                'w-full p-4 border-0 rounded-md bg-primary font-sans text-secondary outline-0',
+                'w-full p-4 border-0 rounded-md bg-white font-sans text-secondary outline-0',
                 errors.username && 'border-2 border-red-500 placeholder:text-red-500'
               )}
             />
@@ -102,7 +102,7 @@ const FooterForm = () => {
               {...register("email")}
               className={clsx(
                 styles.pText,
-                'w-full p-4 border-0 rounded-md bg-primary font-sans text-secondary outline-0',
+                'w-full p-4 border-0 rounded-md bg-white font-sans text-secondary outline-0',
                 errors.email && 'border-2 border-red-500 placeholder:text-red-500'
               )}
             />
@@ -119,7 +119,7 @@ const FooterForm = () => {
               {...register("message")}
               className={clsx(
                 styles.pText,
-                'w-full h-[170px] p-4 border-0 rounded-md bg-primary font-sans text-secondary outline-0 overflow-y-auto resize-none',
+                'w-full h-[170px] p-4 border-0 rounded-md bg-white font-sans text-secondary outline-0 overflow-y-auto resize-none',
                 errors.message && 'border-2 border-red-500 placeholder:text-red-500'
               )}
             />

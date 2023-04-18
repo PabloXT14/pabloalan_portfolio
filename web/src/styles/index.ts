@@ -12,9 +12,9 @@ const styles = {
     'max-sm:pt-16 max-sm:px-4 max-sm:pb-8',
   ),
   copyright: clsx(
-    'w-full pt-8',
+    'w-full py-4',
     'flex flex-col',
-    'justify-end items-end',
+    'justify-center items-center',
     '[&>p]:uppercase [&>p]:text-black',
     'max-md:p-8'
   ),

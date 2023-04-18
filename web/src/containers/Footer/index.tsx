@@ -49,5 +49,5 @@ export default AppWrap({
     classNames: clsx('flex flex-col flex-1 w-full'),
   }),
   idName: "contact",
-  classNames: styles.appWhiteBg
+  classNames: styles.appPrimaryBg
 });
