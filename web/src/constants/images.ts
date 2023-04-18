@@ -24,6 +24,7 @@ import about03 from '../../public/assets/about03.png';
 import about04 from '../../public/assets/about04.png';
 
 import profile from '../../public/assets/profile.png';
+import profile3D from '../../public/assets/profile3D.png';
 import circle from '../../public/assets/circle.svg';
 import logo from '../../public/assets/logo.png';
 import logoPabloAlan from '../../public/assets/logo-pablo-alan.svg';
@@ -61,6 +62,7 @@ export default {
   about03,
   about04,
   profile,
+  profile3D,
   circle,
   logo,
   logoPabloAlan,

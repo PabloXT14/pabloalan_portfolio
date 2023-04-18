@@ -45,8 +45,10 @@ const Header = () => {
               👋
             </span>
             <div className="ml-5">
-              <p className={`${styles.pText}`}>Hello I'm</p>
-              <h1 className={`${styles.headText}`}>Pablo</h1>
+              <p className={`${styles.pText}`}>Olá eu me chamo</p>
+              <h1 className={`${styles.headText}`}>
+                Pablo
+              </h1>
             </div>
           </div>
 
@@ -70,10 +72,10 @@ const Header = () => {
         )}
       >
         <Image
-          src={images.profile}
+          src={images.profile3D}
           alt="profile_bg"
           quality={100}
-          className="z-10 object-contain w-full max-3md:w-3/5"
+          className="z-10 object-cover w-full h-full max-3md:w-4/5"
         />
 
         <motion.img

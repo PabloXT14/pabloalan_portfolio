@@ -35,11 +35,22 @@ const About = () => {
   return (
     <div className={clsx('flex-1 w-full flex-col')}>
       <h2 className={clsx(styles.headText)}>
-        I Know that <span>Good Development</span> <br />
-        means <span>Good Business</span>
+        <span>Visão</span> geral sobre <span>Mim</span>
       </h2>
 
-      <div className="flex flex-wrap items-start justify-center mt-8">
+      <div className={clsx(
+        'flex justify-center mt-6 mx-auto w-4/5',
+        'max-1.5md:w-full'
+      )}>
+        <p className={clsx(
+          styles.pText,
+          'text-base'
+        )}>
+          Sou um desenvolvedor de software apaixonado pela área de tecnologia, com foco em web e experiência em JavaScript e TypeScript, incluindo o uso de React e Node.js. Sempre em busca de soluções inovadoras para resolver problemas usando a tecnologia como ferramenta. Sou dedicado, curioso e comprometido em aprender continuamente, sempre buscando me atualizar nas últimas tendências e melhores práticas da indústria. Vamos juntos construir algo incrível!
+        </p>
+      </div>
+
+      <div className="flex flex-wrap items-start justify-center">
         {abouts && abouts.map((about, index) => (
           <motion.div
             key={about.title + index}

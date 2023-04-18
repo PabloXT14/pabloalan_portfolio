@@ -27,13 +27,12 @@ const AppWrap = ({ WrappedComponent, idName, classNames }: AppWrapProps) => {
         )}>
           <WrappedComponent />
 
-          <div className={clsx(
-            styles.copyright,
-            idName === 'home' ? 'hidden' : ''
-          )}>
-            <p className={styles.pText}>@2023 Pablo Alan</p>
-            <p className={styles.pText}>All rights reserved</p>
-          </div>
+          {idName === 'contact' && (
+            <div className={clsx(styles.copyright)}>
+              <p className={styles.pText}>@2023 Pablo Alan</p>
+              <p className={styles.pText}>All rights reserved</p>
+            </div>
+          )}
 
         </div>
         <NavigationDots active={idName} />
