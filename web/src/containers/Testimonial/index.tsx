@@ -123,11 +123,11 @@ const Testimonial = () => {
   )
 }
 
-// export default AppWrap({
-//   WrappedComponent: MotionWrap({
-//     WrappedComponent: Testimonial,
-//     classNames: clsx('flex flex-col flex-1 w-full')
-//   }),
-//   idName: '',
-//   classNames: styles.appPrimaryBg
-// });
+export default AppWrap({
+  WrappedComponent: MotionWrap({
+    WrappedComponent: Testimonial,
+    classNames: clsx('flex flex-col flex-1 w-full')
+  }),
+  idName: "",
+  classNames: styles.appPrimaryBg
+});

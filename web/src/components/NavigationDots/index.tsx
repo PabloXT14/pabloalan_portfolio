@@ -6,7 +6,7 @@ import { clsx } from 'clsx';
 type MenuItemType = typeof menuItems[number];// typeof array[number] é usado para obter um tipo de união das strings dentro do array(que tem as const)
 
 interface NavigationDotsProps {
-  active: MenuItemType;
+  active: MenuItemType | string;
 }
 
 export const NavigationDots = ({ active }: NavigationDotsProps) => {

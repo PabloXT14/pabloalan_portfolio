@@ -6,7 +6,7 @@ import { clsx } from "clsx";
 
 interface AppWrapProps {
   WrappedComponent: FunctionComponent;
-  idName: typeof menuItems[number];
+  idName: typeof menuItems[number] | string;
   classNames?: string;
 }
 
