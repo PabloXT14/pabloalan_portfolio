@@ -96,7 +96,7 @@ const About = () => {
             <p className={clsx(
               styles.pText,
               'mt-3 line-clamp-4',
-              'transition-all duration-300 ease-in-out',
+              'transition-all duration-300 ease-in-out cursor-pointer',
               'hover:line-clamp-none'
             )}>
               {about.description}

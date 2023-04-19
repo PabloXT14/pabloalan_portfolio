@@ -56,11 +56,20 @@ const Header = () => {
           </div>
 
           <div className="flex flex-col items-center justify-center w-auto px-8 py-4 bg-white rounded-2xl shadow-header-badge">
-            <p className={`${styles.pText} w-full uppercase text-right`}>
+            <p className={clsx(
+              'w-full uppercase text-center text-zinc-900 font-bold',
+              styles.pText,
+            )}>
               Web Developer
             </p>
-            <p className={`${styles.pText} w-full uppercase text-right`}>
-              Freelancer
+            <p className={`${styles.pText} w-full text-center`}>
+              especializado em
+            </p>
+            <p className={clsx(
+              'w-full uppercase text-center text-zinc-900 font-bold',
+              styles.pText,
+            )}>
+              Front-end
             </p>
           </div>
         </div>
