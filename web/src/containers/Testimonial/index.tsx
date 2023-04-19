@@ -1,7 +1,5 @@
-import Image from "next/image";
 import { useState } from "react";
 import { clsx } from "clsx";
-import { motion } from "framer-motion";
 import { useQuery } from "react-query";
 
 import { ITestimonial } from "@/types/testimonial";
@@ -11,7 +9,6 @@ import { AppWrap, MotionWrap } from "@/wrapper"
 import { styles } from "@/styles";
 import { IBrand } from "@/types/brand";
 import { TestimonialItem } from "./components/TestimonialItem";
-import { BrandItem } from "./components/BrandItem";
 
 async function getTestimonials() {
   const testimonialsQuery = '*[_type == "testimonials"]';
@@ -126,11 +123,11 @@ const Testimonial = () => {
   )
 }
 
-export default AppWrap({
-  WrappedComponent: MotionWrap({
-    WrappedComponent: Testimonial,
-    classNames: clsx('flex flex-col flex-1 w-full')
-  }),
-  idName: "testimonials",
-  classNames: styles.appPrimaryBg
-})
+// export default AppWrap({
+//   WrappedComponent: MotionWrap({
+//     WrappedComponent: Testimonial,
+//     classNames: clsx('flex flex-col flex-1 w-full')
+//   }),
+//   idName: '',
+//   classNames: styles.appPrimaryBg
+// });
