@@ -12,7 +12,7 @@ const Footer = () => {
   function handleSubmit(event: FormEvent) {
 
     setTimeout(() => {
-      
+
     }, 2000);
 
     // const contact = {
@@ -33,7 +33,7 @@ const Footer = () => {
   return (
     <div className={clsx('flex flex-col flex-1 w-full items-center')}>
       <h2 className={clsx(styles.headText)}>
-        Take a coffe & chat with me
+        <span>Gostaria</span> de bater um <span>papo</span> comigo?
       </h2>
 
       <FooterCardsContainer />

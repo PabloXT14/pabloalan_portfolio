@@ -28,11 +28,17 @@ const MobileMenu = () => {
       <Dialog.Portal>
         <Dialog.Overlay className='fixed inset-0 bg-black/50 2md:hidden' />
         <Dialog.Content>
-          <div className={clsx(
-            'fixed top-0 bottom-0 right-0 z-50 w-3/5 h-screen p-4',
-            'bg-white bg-repeat bg-cover shadow-menu-mobile bg-menu-mobile',
-            '2md:hidden'
-          )}>
+          <motion.div
+            initial={{ x: '100%' }}
+            animate={{ x: 0 }}
+            exit={{ x: '100%' }}
+            transition={{ type: 'spring', bounce: 0, duration: 0.4 }}
+            className={clsx(
+              'fixed top-0 bottom-0 right-0 z-50 w-3/5 h-screen p-4',
+              'bg-white bg-repeat bg-cover shadow-menu-mobile bg-menu-mobile',
+              '2md:hidden'
+            )}
+          >
             <Dialog.Close asChild>
               <button
                 className={clsx(
@@ -63,18 +69,13 @@ const MobileMenu = () => {
                     href={`#${item}`}
                     scroll={false}
                     onClick={() => setOpen(false)}
-                  // className={clsx(
-                  //   'text-base text-gray font-sans font-medium no-underline uppercase',
-                  //   'transition-all duration-300 ease-in-out',
-                  //   'hover:text-secondary'
-                  // )}
                   >
                     {item}
                   </Link>
                 </li>
               ))}
             </ul>
-          </div>
+          </motion.div>
 
         </Dialog.Content>
       </Dialog.Portal>

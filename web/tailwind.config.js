@@ -1,4 +1,4 @@
-const { fontFamily } = require('tailwindcss/defaultTheme') 
+const { fontFamily } = require('tailwindcss/defaultTheme')
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
@@ -26,7 +26,7 @@ module.exports = {
         'menu-mobile': "0 0 20px rgba(168, 168, 168, 0.15)",
         'header-badge': "0 0 20px rgba(0, 0, 0, 0.1)",
         'work-item': "0 0 25px rgba(0, 0, 0, 0.2)",
-        'skill-item': "0 0 25px rgba(0, 0, 0, 0.2)",
+        'skill-item': "rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset",
         'tootip': "0 0 25px rgba(0, 0, 0, 0.1)",
         'testimonial-item': "0 0 30px rgba(0, 0, 0, 0.1)",
         'footer-card': "0 0 25px secondary",

@@ -10,10 +10,7 @@ interface SkillItemProps {
 
 const SkillItem = ({ skill }: SkillItemProps) => {
   return (
-    <motion.div
-      key={skill.name}
-      whileInView={{ opacity: [0, 1] }}
-      transition={{ duration: 0.5 }}
+    <div
       className={clsx(
         styles.appFlex,
         'flex-col text-center m-4',
@@ -22,12 +19,12 @@ const SkillItem = ({ skill }: SkillItemProps) => {
     >
       <div className={clsx(
         styles.appFlex,
-        'w-[90px] h-[90px] rounded-full',
+        'w-[90px] h-[90px] rounded-full shadow-skill-item',
         'transition-all duration-300 ease-in-out',
-        'hover:shadow-skill-item',
+        'hover:-translate-y-2',
         'lg:w-[150px] lg:h-[150px]',
         'max-sm:w-[70px] max-sm:h-[70px]',
-        skill.bgColor ? `bg-[${skill.bgColor}]` : 'bg-primary',
+        skill.bgColor ? `bg-[${skill.bgColor}]` : 'bg-white',
       )}>
         <Image
           src={skill.icon}
@@ -46,7 +43,7 @@ const SkillItem = ({ skill }: SkillItemProps) => {
       )}>
         {skill.name}
       </p>
-    </motion.div>
+    </div>
   )
 }
 

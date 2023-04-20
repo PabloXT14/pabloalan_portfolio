@@ -80,11 +80,11 @@ const FooterForm = () => {
           )}>
             <input
               type="text"
-              placeholder="Your Name"
+              placeholder="Seu Nome"
               {...register("username")}
               className={clsx(
                 styles.pText,
-                'w-full p-4 border-0 rounded-md bg-white font-sans text-secondary outline-0',
+                'w-full p-4 border-0 rounded-md bg-white font-sans text-secondary outline-0 shadow-md',
                 errors.username && 'border-2 border-red-500 placeholder:text-red-500'
               )}
             />
@@ -98,11 +98,11 @@ const FooterForm = () => {
           )}>
             <input
               type="email"
-              placeholder="Your Email"
+              placeholder="Seu Email"
               {...register("email")}
               className={clsx(
                 styles.pText,
-                'w-full p-4 border-0 rounded-md bg-white font-sans text-secondary outline-0',
+                'w-full p-4 border-0 rounded-md bg-white font-sans text-secondary outline-0 shadow-md',
                 errors.email && 'border-2 border-red-500 placeholder:text-red-500'
               )}
             />
@@ -115,11 +115,11 @@ const FooterForm = () => {
             'hover:shadow-form-input'
           )}>
             <textarea
-              placeholder="Your Message"
+              placeholder="Sua Mensagem"
               {...register("message")}
               className={clsx(
                 styles.pText,
-                'w-full h-[170px] p-4 border-0 rounded-md bg-white font-sans text-secondary outline-0 overflow-y-auto resize-none',
+                'w-full h-[170px] p-4 border-0 rounded-md bg-white font-sans text-secondary outline-0  shadow-md overflow-y-auto resize-none',
                 errors.message && 'border-2 border-red-500 placeholder:text-red-500'
               )}
             />
@@ -136,7 +136,7 @@ const FooterForm = () => {
               'max-1.5md:w-full max-1.5md:my-4 max-1.5md:mx-0'
             )}
           >
-            {isSubmitting ? 'Sending...' : 'Send Message'}
+            {isSubmitting ? 'Enviando...' : 'Enviar'}
           </button>
         </form>
       ) : null}
@@ -144,9 +144,9 @@ const FooterForm = () => {
       {isSubmitSuccessful ? (
         <div className="my-auto">
           <h3 className={clsx(styles.headText, 'text-3xl')}>
-            Thank you for your message!
+            Obrigado pela mensagem!
             <br/>
-            I will get back to you as soon as possible
+            Te retornarei o mais breve possivel
           </h3>
         </div>
       ) : null}

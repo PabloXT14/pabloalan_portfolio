@@ -5,4 +5,5 @@ export interface IWork {
   codeLink: string;
   imgUrl: string;
   tags: string[];
+  techs: string[];
 }

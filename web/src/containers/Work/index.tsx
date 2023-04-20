@@ -8,9 +8,10 @@ import { clsx } from "clsx";
 import { AppWrap, MotionWrap } from "@/wrapper";
 import { IWork } from "@/types/work";
 import { WorkItem } from "./components/WorkItem";
+import { WorkMenuOptions } from "./components/WorkMenuOptions";
 
 async function getWorks() {
-  const worksQuery = '*[_type == "works"]';
+  const worksQuery = '*[_type == "works"] | order(_updatedAt desc)';
 
   const worksData = await client.fetch(worksQuery).then(data => {
     const dataRefactored = data.map((work: IWork) => {
@@ -54,36 +55,27 @@ const Work = () => {
 
   return (
     <div className="flex flex-col items-center justify-center flex-1 w-full">
-      <h2 className={styles.headText}>My Creative <span>Portfolio</span> Section</h2>
+      <h2 className={styles.headText}>
+        Minha Seção de <span>Portfólio</span> Criativo
+      </h2>
 
-      <div className="flex flex-wrap items-center justify-center mx-0 mt-16 mb-8">
-        {workOptions.map((option, index) => (
-          <div
-            key={index}
-            onClick={() => handleWorkFilter(option)}
-            className={clsx(
-              styles.pText,
-              styles.appFlex,
-              'py-2 px-4 rounded-lg font-extrabold cursor-pointer m-2 transition-all duration-300 ease-in-out',
-              'hover:bg-secondary hover:text-white',
-              'lg:py-4 lg:px-8 lg:rounded-xl',
-              activeFilter === option ? 'bg-secondary text-white' : 'bg-white text-zinc-900',
-            )}
-          >
-            {option}
-          </div>
-        ))}
-      </div>
+      <WorkMenuOptions
+        activeFilter={activeFilter}
+        onHandleWorkFilter={handleWorkFilter}
+      />
 
       <motion.div
         animate={animateCard}
         transition={{ duration: 0.5, delayChildren: 0.5 }}
         className={clsx(
-          'flex flex-wrap justify-center items-center',
+          'flex flex-wrap justify-center',
         )}
       >
         {filterWork.map((work, index) => (
-          <WorkItem key={index} work={work} />
+          <WorkItem
+            key={work.title+index}
+            work={work}
+          />
         ))}
       </motion.div>
     </div>

@@ -3,7 +3,6 @@ import Image from "next/image";
 import { IWork } from "@/types/work";
 import { clsx } from "clsx";
 import { AiFillEye, AiFillGithub } from "react-icons/ai";
-import { motion } from "framer-motion";
 import { styles } from "@/styles";
 
 interface WorkItemProps {
@@ -14,8 +13,8 @@ const WorkItem = ({ work }: WorkItemProps) => {
   return (
     <div
       className={clsx(
-        styles.appFlex,
-        'max-w-[270px] w-full flex-col m-8 p-4 rounded-lg bg-white text-zinc-900 cursor-pointer',
+        'flex flex-col justify-start items-center',
+        'max-w-[270px] w-full flex-col m-8 p-4 rounded-lg bg-white text-zinc-900 shadow-md',
         'transition-all duration-300 ease-in-out',
         'hover:shadow-work-item',
         'lg:w-[470px] lg:p-5 lg:rounded-xl',
@@ -35,59 +34,48 @@ const WorkItem = ({ work }: WorkItemProps) => {
           className={clsx('w-full h-full object-cover rounded-lg')}
         />
 
-        <motion.div
-          whileHover={{ opacity: [0, 1] }}
-          transition={{ duration: 0.25, ease: 'easeInOut', staggerChildren: 0.5 }}
-          className={clsx(
-            styles.appFlex,
-            'absolute inset-0 w-full h-full bg-black/50 rounded-lg opacity-0',
-            'transition-all duration-300 ease-in-out',
-          )}
-        >
-          <Link
-            href={work.projectLink}
-            target="_blank"
-            rel="noreferrer"
-            prefetch={false}
-          >
-            <motion.div
-              whileInView={{ scale: [0, 1] }}
-              whileHover={{ scale: [1, 0.9] }}
-              transition={{ duration: 0.25 }}
+        <div className={clsx(
+          'absolute top-2 right-2 flex items-center justify-center gap-2'
+        )}>
+          {work.projectLink && (
+            <Link
+              href={work.projectLink}
+              target="_blank"
+              rel="noreferrer"
+              prefetch={false}
               className={clsx(
                 styles.appFlex,
-                'w-[50px] h-[50px] rounded-full bg-black/50 text-white m-4 font-sans font-extrabold cursor-pointer',
+                'w-[30px] h-[30px] rounded-full bg-black/70 text-white font-sans font-extrabold cursor-pointer',
                 'transition-all duration-300 ease',
+                'hover:scale-110'
               )}
             >
               <AiFillEye
-                className="w-1/2 text-white h-1/2"
+                className="w-3/5 text-white h-3/5"
               />
-            </motion.div>
-          </Link>
+            </Link>
+          )}
 
-          <Link
-            href={work.codeLink}
-            target="_blank"
-            rel="noreferrer"
-            prefetch={false}
-          >
-            <motion.div
-              whileInView={{ scale: [0, 1] }}
-              whileHover={{ scale: [1, 0.90] }}
-              transition={{ duration: 0.25 }}
+          {work.codeLink && (
+            <Link
+              href={work.codeLink}
+              target="_blank"
+              rel="noreferrer"
+              prefetch={false}
               className={clsx(
                 styles.appFlex,
-                'w-[50px] h-[50px] rounded-full bg-black/50 text-white m-4 font-sans font-extrabold cursor-pointer',
+                'w-[30px] h-[30px] rounded-full bg-black/70 text-white font-sans font-extrabold cursor-pointer',
                 'transition-all duration-300 ease',
+                'hover:scale-110'
               )}
             >
               <AiFillGithub
-                className="w-1/2 text-white h-1/2"
+                className="w-3/5 text-white h-3/5"
               />
-            </motion.div>
-          </Link>
-        </motion.div>
+            </Link>
+          )}
+
+        </div>
       </div>
 
       <div
@@ -102,7 +90,38 @@ const WorkItem = ({ work }: WorkItemProps) => {
         )}>
           {work.title}
         </h4>
-        <p className={clsx(styles.pText, 'mt-2')}>
+
+        {(work.techs) && (
+          <div
+            className={clsx(
+              styles.pText,
+              'my-1 flex'
+            )}
+          >
+            {
+              work.techs.map((tech, index) => (
+                <div
+                  key={`${work.title}-${tech}`}
+                >
+                  <span
+                    className={clsx(
+                      'mx-1 uppercase text-xs text-gray font-semibold'
+                    )}
+                  >
+                    {tech}
+                  </span>
+                  {index !== work.techs.length - 1 && '|'}
+                </div>
+              ))
+            }
+          </div>
+        )}
+
+        <p className={clsx(
+          styles.pText,
+          'mt-2 line-clamp-1',
+          'hover:line-clamp-none'
+        )}>
           {work.description}
         </p>
 

@@ -75,4 +75,4 @@ export default {
   nb,
   skype,
   spotify,
-};
+}
