@@ -26,6 +26,7 @@ const FooterCardsContainer = () => {
         />
         <Link
           href="mailto:pabloxt14@gmail.com"
+          target="_blank"
           className={clsx(
             styles.pText,
             'no-underline font-medium',
@@ -55,7 +56,7 @@ const FooterCardsContainer = () => {
             'no-underline font-medium'
           )}
         >
-          +55 (19) 971540560
+          +55 (19) 971540562
         </Link>
       </div>
     </div>

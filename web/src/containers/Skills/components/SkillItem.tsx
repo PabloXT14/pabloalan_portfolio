@@ -38,7 +38,7 @@ const SkillItem = ({ skill }: SkillItemProps) => {
       </div>
       <p className={clsx(
         styles.pText,
-        'font-medium mt-2',
+        'font-medium mt-2 text-center max-w-[90px] break-words',
         'lg:mt-4',
       )}>
         {skill.name}

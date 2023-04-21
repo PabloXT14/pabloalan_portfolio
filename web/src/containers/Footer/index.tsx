@@ -1,34 +1,12 @@
-import { FormEvent } from "react";
+import { clsx } from "clsx";
 
 import { AppWrap, MotionWrap } from "@/wrapper"
-import { clsx } from "clsx";
 import { styles } from "@/styles"
 import { FooterCardsContainer } from "./components/FooterCardsContainer";
 import { FooterForm } from "./components/FooterForm";
 
 
 const Footer = () => {
-
-  function handleSubmit(event: FormEvent) {
-
-    setTimeout(() => {
-
-    }, 2000);
-
-    // const contact = {
-    //   _type: 'contact',
-    //   name: formData.name,
-    //   email: formData.email,
-    //   message: formData.message,
-    // };
-
-    // client.create(contact)
-    //   .then(() => {
-    //     setIsFormLoading(false);
-    //     setIsFormSubmitted(true);
-    //   })
-    //   .catch((error) => console.log(error));
-  }
 
   return (
     <div className={clsx('flex flex-col flex-1 w-full items-center')}>

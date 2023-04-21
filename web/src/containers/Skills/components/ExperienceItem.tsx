@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { HiCursorClick } from 'react-icons/hi';
 import { IExperience } from "@/types/experience";
 import { Tooltip } from "react-tooltip";
 import { clsx } from "clsx";
@@ -44,9 +45,10 @@ const ExperienceItem = ({ experience }: ExperienceItemProps) => {
             >
               <h4 className={clsx(
                 styles.boldText,
-                'font-medium'
+                'font-medium flex gap-2'
               )}>
                 {work.name}
+                <HiCursorClick />
               </h4>
               <p className={clsx(
                 styles.pText,
@@ -59,8 +61,9 @@ const ExperienceItem = ({ experience }: ExperienceItemProps) => {
               id={`${work.name}_${index}`}
               classNameArrow={clsx('!bg-secondary')}
               className={clsx(
-                '!max-w-xs !bg-white !shadow-tootip !rounded-md !p-4 !text-gray !text-center !opacity-100',
-                'lg:!text-3xl lg:!max-w-lg'
+                '!max-w-xs !bg-white !shadow-2xl !rounded-md !p-4 !text-gray !text-center !opacity-100',
+                'lg:!text-3xl lg:!max-w-lg',
+                'max-sm:!w-11/12',
               )}
             />
           </div>

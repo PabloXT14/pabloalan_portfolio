@@ -10,7 +10,7 @@ import { SkillItem } from "./components/SkillItem";
 import { ExperienceItem } from "./components/ExperienceItem";
 
 async function getSkills() {
-  const skillsQuery = '*[_type == "skills"] | order(_updatedAt desc)';
+  const skillsQuery = '*[_type == "skills"] | order(_updatedAt asc)';
 
   const skillsData = await client.fetch(skillsQuery).then(data => {
     const dataRefactored = data.map((skill: ISkill) => {
@@ -52,12 +52,12 @@ const Skills = () => {
       <h2 className={clsx(styles.headText)}>Habilidades & Experiências</h2>
 
       <div className={clsx(
-        'w-4/5 mt-12 flex flex-row',
+        'w-11/12 mt-12 flex flex-col items-center',
         'max-2md:w-full max-2md:flex-col',
       )}>
         <motion.div
           className={clsx(
-            'flex-1 flex flex-wrap justify-start items-start mr-12',
+            'flex-1 flex flex-wrap items-start justify-center mr-12',
             'max-2md:mr-0 max-2md:justify-center max-2md:items-center',
           )}
         >
@@ -67,7 +67,7 @@ const Skills = () => {
         </motion.div>
 
         <div className={clsx(
-          'flex-1 flex justify-start items-start flex-col',
+          'flex-1 flex justify-start items-start flex-col mt-8',
           'max-2md:mt-8',
         )}>
           {experiences && experiences.map((experience) => (

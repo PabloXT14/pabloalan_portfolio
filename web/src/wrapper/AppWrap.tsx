@@ -3,6 +3,7 @@ import { NavigationDots, SocialMedia } from "@/components";
 import { menuItems } from "@/constants";
 import { styles } from "@/styles";
 import { clsx } from "clsx";
+import Link from "next/link";
 
 interface AppWrapProps {
   WrappedComponent: FunctionComponent;
@@ -29,8 +30,16 @@ const AppWrap = ({ WrappedComponent, idName, classNames }: AppWrapProps) => {
 
           {idName === 'contact' && (
             <div className={clsx(styles.copyright)}>
-              <p className={styles.pText}>@2023 Pablo Alan</p>
-              <p className={styles.pText}>All rights reserved</p>
+              <p className={styles.pText}>
+                Credits to {' '}
+                <Link
+                  href="https://www.youtube.com/@javascriptmastery"
+                  target="_blank"                  
+                  className="text-secondary"
+                >
+                  JavaScript Mastery
+                </Link>
+              </p>
             </div>
           )}
 
