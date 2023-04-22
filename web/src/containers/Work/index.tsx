@@ -11,13 +11,13 @@ import { WorkItem } from "./components/WorkItem";
 import { WorkMenuOptions } from "./components/WorkMenuOptions";
 
 async function getWorks() {
-  const worksQuery = '*[_type == "works"] | order(_updatedAt desc)';
+  const worksQuery = '*[_type == "works"] | order(_createdAt desc)';
 
   const worksData = await client.fetch(worksQuery).then(data => {
     const dataRefactored = data.map((work: IWork) => {
       return {
         ...work,
-        imgUrl: urlFor(work.imgUrl).url()
+        imgUrl: work.imgUrl ? urlFor(work.imgUrl).url() : work.imgUrl,
       }
     })
 
@@ -68,7 +68,7 @@ const Work = () => {
         animate={animateCard}
         transition={{ duration: 0.5, delayChildren: 0.5 }}
         className={clsx(
-          'flex flex-wrap justify-center',
+          'flex flex-wrap justify-center w-full',
         )}
       >
         {filterWork.map((work, index) => (
@@ -85,7 +85,7 @@ const Work = () => {
 export default AppWrap({
   WrappedComponent: MotionWrap({
     WrappedComponent: Work,
-    classNames: ''
+    classNames: clsx('w-full')
   }),
   idName: "work",
   classNames: styles.appPrimaryBg

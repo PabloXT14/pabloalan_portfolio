@@ -1,28 +1,28 @@
 import Link from 'next/link';
-import { BsTwitter, BsLinkedin, BsGithub } from 'react-icons/bs';
+import { FaEnvelope, FaGithub, FaLinkedin } from 'react-icons/fa';
 import { styles } from "../../styles";
 
 export const SocialMedia = () => {
   return (
     <div className={styles.appSocial}>
       <Link
-        href="https://twitter.com/PabloAl73579607"
+        href="mailto:pabloxt14@gmail.com"
         target="_blank"
         className={styles.appSocialLink}
       >
-        <BsTwitter />
+        <FaEnvelope />
       </Link>
       <Link
         href="https://www.linkedin.com/in/pabloalan/"
         target="_blank"
         className={styles.appSocialLink}>
-        <BsLinkedin />
+        <FaLinkedin />
       </Link>
       <Link
         href="https://github.com/PabloXT14"
         target="_blank"
         className={styles.appSocialLink}>
-        <BsGithub />
+        <FaGithub />
       </Link>
     </div>
   )

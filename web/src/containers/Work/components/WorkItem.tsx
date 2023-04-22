@@ -3,6 +3,7 @@ import Image from "next/image";
 import { IWork } from "@/types/work";
 import { clsx } from "clsx";
 import { AiFillEye, AiFillGithub } from "react-icons/ai";
+import { MdImageNotSupported } from 'react-icons/md';
 import { styles } from "@/styles";
 
 interface WorkItemProps {
@@ -26,13 +27,23 @@ const WorkItem = ({ work }: WorkItemProps) => {
         'w-full h-[230px] relative',
         'lg:h-[350px]'
       )}>
-        <Image
-          src={work.imgUrl}
-          alt={work.title}
-          width={1200}
-          height={900}
-          className={clsx('w-full h-full object-cover rounded-lg')}
-        />
+        {work.imgUrl ? (
+          <Image
+            src={work.imgUrl}
+            alt={work.title}
+            width={1200}
+            height={900}
+            className={clsx('w-full h-full object-cover rounded-lg')}
+          />
+        ) : (
+          <div className={clsx(
+            'w-full h-full object-cover rounded-lg bg-lightGray flex flex-col items-center justify-center',
+          )}>
+            <MdImageNotSupported className="w-8 h-8" />
+            <p>Sem imagem</p>
+          </div>
+        )}
+
 
         <div className={clsx(
           'absolute top-2 right-2 flex items-center justify-center gap-2'
@@ -86,7 +97,7 @@ const WorkItem = ({ work }: WorkItemProps) => {
       >
         <h4 className={clsx(
           styles.boldText,
-          'mt-4'
+          'mt-4 text-center'
         )}>
           {work.title}
         </h4>
@@ -95,7 +106,7 @@ const WorkItem = ({ work }: WorkItemProps) => {
           <div
             className={clsx(
               styles.pText,
-              'my-1 flex'
+              'my-1 flex flex-wrap justify-center'
             )}
           >
             {

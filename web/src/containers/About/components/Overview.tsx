@@ -28,7 +28,7 @@ const Overview = () => {
       </div>
       <p className={clsx(
         styles.pText,
-        'flex-1 text-base'
+        'flex-1 text-base',
       )}>
         Sou um desenvolvedor de software apaixonado pela área de tecnologia, com foco em web e experiência em JavaScript e TypeScript, incluindo o uso de React e Node.js. Sempre em busca de soluções inovadoras para resolver problemas usando a tecnologia como ferramenta. Sou dedicado, curioso e comprometido em aprender continuamente, sempre buscando me atualizar nas últimas tendências e melhores práticas da indústria. Segue algumas das principais ferramentas e ambientes que tenho me expecializado atualmente!
       </p>

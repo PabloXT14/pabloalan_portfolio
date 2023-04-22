@@ -31,7 +31,7 @@ const CardAbout = ({ about }: CardAboutProps) => {
         )}
       />
 
-      <h3 className={clsx(styles.boldText, 'mt-5')}>
+      <h3 className={clsx(styles.boldText, 'mt-5 mx-auto')}>
         {about.title}
       </h3>
 

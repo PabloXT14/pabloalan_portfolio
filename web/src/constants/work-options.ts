@@ -1,9 +1,8 @@
 const workOptions = [
   'All',
-  'UI/UX',
-  'Web App',
   'Mobile App',
-  'React JS',
+  'Web App',
+  'Back-end',
 ] as const;
 
 export default workOptions;

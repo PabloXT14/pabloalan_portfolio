@@ -8,8 +8,8 @@ const styles = {
   appFlex: clsx('flex justify-center items-center'),
   appWrapper: clsx(
     'w-full flex-col',
-    'pt-16 px-8',
-    'max-sm:pt-16 max-sm:px-4 max-sm:pb-8',
+    'pt-16',
+    'max-sm:pt-16 max-md:px-4 max-sm:pb-8',
   ),
   copyright: clsx(
     'w-full py-4',
@@ -41,13 +41,13 @@ const styles = {
     'flex justify-center items-center',
     'w-10 h-10 rounded-full bg-white my-1 border border-solid border-lightGray',
     'transition-all duration-300 ease-in-out cursor-pointer',
-    '[&>svg]:w-4 [&>svg]:h-4 [&>svg]:text-gray',
+    '[&>svg]:w-5 [&>svg]:h-5 [&>svg]:text-gray',
     'hover:bg-secondary hover:border-secondary [&:hover>svg]:text-white',
     'lg:w-16 lg:h-16 lg:my-2',
-    'lg:[&>svg]:w-7 lg:[&>svg]:h-7',
+    'lg:[&>svg]:w-8 lg:[&>svg]:h-8',
   ),
   appNavigation: clsx(
-    'flex justify-center items-center flex-col p-4',
+    'flex justify-center items-center flex-col p-4 ',
     'max-md:hidden',
   ),
   appNavigationDot: clsx(

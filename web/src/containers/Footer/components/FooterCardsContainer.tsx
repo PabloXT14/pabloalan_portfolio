@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { FaWhatsapp } from 'react-icons/fa';
 import { clsx } from "clsx";
 
 import { images } from "@/constants";
@@ -11,12 +12,16 @@ const FooterCardsContainer = () => {
       'w-3/5 flex justify-evenly items-center flex-wrap gap-2 mt-16 mb-8',
       'max-2md:w-full',
     )}>
-      <div className={clsx(
-        'max-w-[290px] w-full flex flex-row justify-start items-center my-4 p-4 rounded-xl cursor-pointer bg-white shadow-md',
-        'transition-all duration-300 ease-in-out',
-        'hover:-translate-y-2',
-        'max-sm:w-full',
-      )}>
+      <Link
+        href="mailto:pabloxt14@gmail.com"
+        target="_blank"
+        className={clsx(
+          'max-w-[290px] w-full flex flex-row justify-start items-center my-4 p-4 rounded-xl cursor-pointer bg-white shadow-md',
+          'transition-all duration-300 ease-in-out',
+          'hover:-translate-y-2',
+          'max-sm:w-full',
+        )}
+      >
         <Image
           src={images.email}
           alt="email"
@@ -24,41 +29,37 @@ const FooterCardsContainer = () => {
             'w-10 h-10 mx-3'
           )}
         />
-        <Link
-          href="mailto:pabloxt14@gmail.com"
-          target="_blank"
-          className={clsx(
-            styles.pText,
-            'no-underline font-medium',
-          )}
+        <p className={clsx(
+          styles.pText,
+          'no-underline font-medium',
+        )}
         >
           pabloxt14@gmail.com
-        </Link>
-      </div>
+        </p>
+      </Link>
 
-      <div className={clsx(
-        'max-w-[290px] w-full flex flex-row justify-start items-center my-4 p-4 rounded-xl cursor-pointer bg-white shadow-md',
-        'transition-all duration-300 ease-in-out',
-        'hover:-translate-y-2',
-        'max-sm:w-full',
-      )}>
-        <Image
-          src={images.mobile}
-          alt="phone"
-          className={clsx(
-            'w-10 h-10 mx-3'
-          )}
-        />
-        <Link
-          href="tel:+55 (19) 971540560"
+      <Link
+        href="https://wa.me/5519971540560"
+        target="_blank"
+        className={clsx(
+          'max-w-[290px] w-full flex flex-row justify-start items-center my-4 p-4 rounded-xl cursor-pointer bg-white shadow-md',
+          'transition-all duration-300 ease-in-out',
+          'hover:-translate-y-2',
+          'max-sm:w-full',
+        )}
+      >
+        <FaWhatsapp className={clsx(
+          'w-10 h-10 mx-3 text-green-500',
+        )} />
+        <p
           className={clsx(
             styles.pText,
             'no-underline font-medium'
           )}
         >
-          +55 (19) 971540562
-        </Link>
-      </div>
+          Conversar no Whatsapp
+        </p>
+      </Link>
     </div>
   )
 }
