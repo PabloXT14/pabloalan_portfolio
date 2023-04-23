@@ -60,7 +60,7 @@ const Header = () => {
               'w-full uppercase text-center text-zinc-900 font-bold',
               styles.pText,
             )}>
-              Web Developer
+              Desenvolvedor
             </p>
             <p className={`${styles.pText} w-full text-center`}>
               especializado em

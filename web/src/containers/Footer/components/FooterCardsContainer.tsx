@@ -39,7 +39,7 @@ const FooterCardsContainer = () => {
       </Link>
 
       <Link
-        href="https://wa.me/5519971540560"
+        href="https://wa.me/message/KHI7YP3U7DFZP1"
         target="_blank"
         className={clsx(
           'max-w-[290px] w-full flex flex-row justify-start items-center my-4 p-4 rounded-xl cursor-pointer bg-white shadow-md',

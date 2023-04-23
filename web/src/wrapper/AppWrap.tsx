@@ -30,7 +30,7 @@ const AppWrap = ({ WrappedComponent, idName, classNames }: AppWrapProps) => {
 
           {idName === 'contact' && (
             <div className={clsx(styles.copyright)}>
-              <p className={styles.pText}>
+              <p className={clsx(styles.pText, 'text-center')}>
                 Credits to {' '}
                 <Link
                   href="https://www.youtube.com/@javascriptmastery"
