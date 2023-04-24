@@ -15,7 +15,7 @@ const WorkItem = ({ work }: WorkItemProps) => {
     <div
       className={clsx(
         'flex flex-col justify-start items-center',
-        'max-w-[270px] w-full flex-col m-8 p-4 rounded-lg bg-white text-zinc-900 shadow-md',
+        'max-w-[270px] w-full m-8 p-4 rounded-lg bg-white text-zinc-900 shadow-md',
         'transition-all duration-300 ease-in-out',
         'hover:shadow-work-item',
         'lg:w-[470px] lg:p-5 lg:rounded-xl',
@@ -92,7 +92,7 @@ const WorkItem = ({ work }: WorkItemProps) => {
       <div
         className={clsx(
           styles.appFlex,
-          'relative flex-col w-full p-2'
+          'relative flex-col w-full h-fit p-2'
         )}
       >
         <h4 className={clsx(
@@ -105,36 +105,31 @@ const WorkItem = ({ work }: WorkItemProps) => {
         {(work.techs) && (
           <div
             className={clsx(
-              styles.pText,
-              'my-1 flex flex-wrap justify-center'
+              'my-1 flex flex-wrap w-full justify-center',
+              'group'
             )}
           >
             {
               work.techs.map((tech, index) => (
                 <div
                   key={`${work.title}-${tech}`}
+                  className="flex items-center"
                 >
                   <span
                     className={clsx(
-                      'mx-1 uppercase text-xs text-gray font-semibold'
+                      'mx-1 uppercase text-xs text-gray font-semibold',
+                      'inline-block max-w-[70px] overflow-hidden text-ellipsis whitespace-nowrap',
+                      'group-hover:overflow-visible group-hover:whitespace-normal group-hover:max-w-none'
                     )}
                   >
                     {tech}
                   </span>
-                  {index !== work.techs.length - 1 && '|'}
+                  {index !== work.techs.length - 1 && <span>{'|'}</span>}
                 </div>
               ))
             }
           </div>
         )}
-
-        <p className={clsx(
-          styles.pText,
-          'mt-2 line-clamp-1',
-          'hover:line-clamp-none'
-        )}>
-          {work.description}
-        </p>
 
         <div className={clsx(
           styles.appFlex,
@@ -143,6 +138,14 @@ const WorkItem = ({ work }: WorkItemProps) => {
           <p className={clsx(styles.pText)}>{work.tags[0]}</p>
         </div>
       </div>
+
+      <p className={clsx(
+        styles.pText,
+        'mt-auto line-clamp-2',
+        'hover:line-clamp-none'
+      )}>
+        {work.description}
+      </p>
     </div>
   )
 }

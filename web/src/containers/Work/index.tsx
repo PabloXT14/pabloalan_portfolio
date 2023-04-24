@@ -68,7 +68,7 @@ const Work = () => {
         animate={animateCard}
         transition={{ duration: 0.5, delayChildren: 0.5 }}
         className={clsx(
-          'flex flex-wrap justify-center w-full',
+          'flex flex-wrap justify-center items-start w-full',
         )}
       >
         {filterWork.map((work, index) => (

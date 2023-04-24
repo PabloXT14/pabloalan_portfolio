@@ -7,7 +7,7 @@ import { styles } from "@/styles"
 const Overview = () => {
   return (
     <div className={clsx(
-      'flex items-start gap-4 mt-6 mx-auto w-10/12 ',
+      'flex items-start gap-4 mt-6 mx-auto w-[78%] ',
       'max-2md:flex-col max-2md:w-full',
     )}>
       <div className={clsx(
@@ -21,7 +21,7 @@ const Overview = () => {
           height={900}
           alt={'profile'}
           className={clsx(
-            'object-cover w-full h-44 rounded-2xl',
+            'object-cover w-full h-52 rounded-2xl',
             'lg:h-80'
           )}
         />
