@@ -2,8 +2,9 @@ import Link from "next/link";
 import { styles } from "@/styles";
 import { menuItems } from "@/constants";
 import { clsx } from 'clsx';
+import { twMerge } from 'tailwind-merge'
 
-type MenuItemType = typeof menuItems[number];// typeof array[number] é usado para obter um tipo de união das strings dentro do array(que tem as const)
+type MenuItemType = typeof menuItems[number];
 
 interface NavigationDotsProps {
   active: MenuItemType | string;
@@ -18,9 +19,10 @@ export const NavigationDots = ({ active }: NavigationDotsProps) => {
           key={item + index}
           href={`#${item}`}
           scroll={false}
-          className={clsx(
+          className={twMerge(
             styles.appNavigationDot,
-            active === item ? 'bg-secondary' : 'bg-lightGray'
+            'bg-lightGray',
+            active === item && 'bg-secondary'
           )}
         />
       ))}

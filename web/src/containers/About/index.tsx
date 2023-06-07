@@ -1,6 +1,4 @@
-import Image from 'next/image';
 import { useQuery } from 'react-query';
-import { motion } from 'framer-motion';
 import { styles } from '../../styles';
 import { clsx } from 'clsx';
 import { IAbout } from '@/types/about';

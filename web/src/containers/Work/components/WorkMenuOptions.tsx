@@ -1,4 +1,4 @@
-import clsx from "clsx"
+import { twMerge } from 'tailwind-merge'
 
 import { workOptions } from "@/constants"
 import { styles } from "@/styles"
@@ -15,13 +15,13 @@ const WorkMenuOptions = ({ activeFilter, onHandleWorkFilter }: WorkMenuOptionsPr
         <div
           key={index}
           onClick={() => onHandleWorkFilter(option)}
-          className={clsx(
+          className={twMerge(
             styles.pText,
             styles.appFlex,
-            'py-2 px-4 rounded-lg font-extrabold cursor-pointer m-2 transition-all duration-300 ease-in-out',
+            'bg-white text-zinc-900 py-2 px-4 rounded-lg font-extrabold cursor-pointer m-2 transition-all duration-300 ease-in-out',
             'hover:bg-secondary hover:text-white',
             'lg:py-4 lg:px-8 lg:rounded-xl',
-            activeFilter === option ? 'bg-secondary text-white' : 'bg-white text-zinc-900',
+            activeFilter === option && 'bg-secondary text-white',
           )}
         >
           {option}
