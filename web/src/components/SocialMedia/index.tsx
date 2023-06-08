@@ -1,6 +1,6 @@
-import Link from 'next/link';
-import { FaEnvelope, FaGithub, FaLinkedin } from 'react-icons/fa';
-import { styles } from "../../styles";
+import Link from 'next/link'
+import { FaEnvelope, FaGithub, FaLinkedin } from 'react-icons/fa'
+import { styles } from '../../styles'
 
 export const SocialMedia = () => {
   return (
@@ -15,13 +15,15 @@ export const SocialMedia = () => {
       <Link
         href="https://www.linkedin.com/in/pabloalan/"
         target="_blank"
-        className={styles.appSocialLink}>
+        className={styles.appSocialLink}
+      >
         <FaLinkedin />
       </Link>
       <Link
         href="https://github.com/PabloXT14"
         target="_blank"
-        className={styles.appSocialLink}>
+        className={styles.appSocialLink}
+      >
         <FaGithub />
       </Link>
     </div>

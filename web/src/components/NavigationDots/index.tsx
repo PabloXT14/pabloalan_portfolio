@@ -1,17 +1,16 @@
-import Link from "next/link";
-import { styles } from "@/styles";
-import { menuItems } from "@/constants";
-import { clsx } from 'clsx';
+import Link from 'next/link'
+import { styles } from '@/styles'
+import { menuItems } from '@/constants'
+import { clsx } from 'clsx'
 import { twMerge } from 'tailwind-merge'
 
-type MenuItemType = typeof menuItems[number];
+type MenuItemType = (typeof menuItems)[number]
 
 interface NavigationDotsProps {
-  active: MenuItemType | string;
+  active: MenuItemType | string
 }
 
 export const NavigationDots = ({ active }: NavigationDotsProps) => {
-
   return (
     <div className={styles.appNavigation}>
       {menuItems.map((item, index) => (
@@ -22,7 +21,7 @@ export const NavigationDots = ({ active }: NavigationDotsProps) => {
           className={twMerge(
             styles.appNavigationDot,
             'bg-lightGray',
-            active === item && 'bg-secondary'
+            active === item && 'bg-secondary',
           )}
         />
       ))}

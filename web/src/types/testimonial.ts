@@ -1,6 +1,6 @@
 export interface ITestimonial {
-  name: string;
-  company: string;
-  imgUrl: string;
-  feedback: string;
+  name: string
+  company: string
+  imgUrl: string
+  feedback: string
 }

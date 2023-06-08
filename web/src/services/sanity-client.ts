@@ -1,5 +1,5 @@
-import { createClient } from 'next-sanity';
-import imageUrlBuilder from '@sanity/image-url';
+import { createClient } from 'next-sanity'
+import imageUrlBuilder from '@sanity/image-url'
 
 // CONFIGURAÇÃO CONEXÃO COM SANITY CLIENT
 export const client = createClient({
@@ -11,5 +11,5 @@ export const client = createClient({
 })
 
 // CONFIGURAÇÃO PARA TRABALAHAR COM IMAGENS NO SANITY
-const builder = imageUrlBuilder(client);
-export const urlFor = (source: string) => builder.image(source);
+const builder = imageUrlBuilder(client)
+export const urlFor = (source: string) => builder.image(source)

@@ -1,16 +1,19 @@
 import { twMerge } from 'tailwind-merge'
 
-import { workOptions } from "@/constants"
-import { styles } from "@/styles"
+import { workOptions } from '@/constants'
+import { styles } from '@/styles'
 
 interface WorkMenuOptionsProps {
-  activeFilter: typeof workOptions[number]
-  onHandleWorkFilter: (option: typeof workOptions[number]) => void
+  activeFilter: (typeof workOptions)[number]
+  onHandleWorkFilter: (option: (typeof workOptions)[number]) => void
 }
 
-const WorkMenuOptions = ({ activeFilter, onHandleWorkFilter }: WorkMenuOptionsProps) => {
+const WorkMenuOptions = ({
+  activeFilter,
+  onHandleWorkFilter,
+}: WorkMenuOptionsProps) => {
   return (
-    <div className="flex flex-wrap items-center justify-center mx-0 my-8">
+    <div className="mx-0 my-8 flex flex-wrap items-center justify-center">
       {workOptions.map((option, index) => (
         <div
           key={index}
@@ -18,9 +21,9 @@ const WorkMenuOptions = ({ activeFilter, onHandleWorkFilter }: WorkMenuOptionsPr
           className={twMerge(
             styles.pText,
             styles.appFlex,
-            'bg-white text-zinc-900 py-2 px-4 rounded-lg font-extrabold cursor-pointer m-2 transition-all duration-300 ease-in-out',
+            'm-2 cursor-pointer rounded-lg bg-white py-2 px-4 font-extrabold text-zinc-900 transition-all duration-300 ease-in-out',
             'hover:bg-secondary hover:text-white',
-            'lg:py-4 lg:px-8 lg:rounded-xl',
+            'lg:rounded-xl lg:py-4 lg:px-8',
             activeFilter === option && 'bg-secondary text-white',
           )}
         >

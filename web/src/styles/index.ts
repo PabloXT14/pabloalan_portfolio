@@ -1,8 +1,8 @@
-import { clsx } from 'clsx';
+import { clsx } from 'clsx'
 
 const styles = {
   app: clsx('bg-primary font-sans'),
-  appWhiteBg:clsx('bg-white'),
+  appWhiteBg: clsx('bg-white'),
   appPrimaryBg: clsx('bg-primary'),
   appContainer: clsx('w-full min-h-screen flex flex-row'),
   appFlex: clsx('flex justify-center items-center'),
@@ -16,7 +16,7 @@ const styles = {
     'flex flex-col',
     'justify-center items-center',
     '[&>p]:uppercase [&>p]:text-black',
-    'max-md:p-8'
+    'max-md:p-8',
   ),
   headText: clsx(
     'text-4xl font-extrabold text-center text-black capitalize break-words',
@@ -24,10 +24,7 @@ const styles = {
     'lg:text-5xl',
     'max-sm:text-3xl',
   ),
-  pText: clsx(
-    'text-sm text-left text-gray leading-normal',
-    'lg:text-3xl',
-  ),
+  pText: clsx('text-sm text-left text-gray leading-normal', 'lg:text-3xl'),
   boldText: clsx(
     'text-base font-extrabold text-black text-left',
     'lg:text-3xl',
@@ -35,7 +32,7 @@ const styles = {
   ),
   appSocial: clsx(
     'flex justify-end items-center flex-col p-4',
-    'max-md:hidden'
+    'max-md:hidden',
   ),
   appSocialLink: clsx(
     'flex justify-center items-center',
@@ -53,8 +50,8 @@ const styles = {
   appNavigationDot: clsx(
     'w-3 h-3 rounded-full m-2 transition-colors duration-200 ease-in-out',
     'hover:bg-secondary',
-    'lg:w-5 lg:h-5'
-  )
+    'lg:w-5 lg:h-5',
+  ),
 }
 
-export { styles };
+export { styles }

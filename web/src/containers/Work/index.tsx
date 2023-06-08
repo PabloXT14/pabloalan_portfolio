@@ -1,19 +1,19 @@
-import { useState } from "react";
-import { workOptions } from "@/constants"
-import { useQuery } from "react-query";
-import { urlFor, client } from "@/services/sanity-client";
-import { motion, TargetAndTransition } from "framer-motion";
-import { styles } from "@/styles";
-import { clsx } from "clsx";
-import { AppWrap, MotionWrap } from "@/wrapper";
-import { IWork } from "@/types/work";
-import { WorkItem } from "./components/WorkItem";
-import { WorkMenuOptions } from "./components/WorkMenuOptions";
+import { useState } from 'react'
+import { workOptions } from '@/constants'
+import { useQuery } from 'react-query'
+import { urlFor, client } from '@/services/sanity-client'
+import { motion, TargetAndTransition } from 'framer-motion'
+import { styles } from '@/styles'
+import { clsx } from 'clsx'
+import { AppWrap, MotionWrap } from '@/wrapper'
+import { IWork } from '@/types/work'
+import { WorkItem } from './components/WorkItem'
+import { WorkMenuOptions } from './components/WorkMenuOptions'
 
 async function getWorks() {
-  const worksQuery = '*[_type == "works"] | order(_createdAt desc)';
+  const worksQuery = '*[_type == "works"] | order(_createdAt desc)'
 
-  const worksData = await client.fetch(worksQuery).then(data => {
+  const worksData = await client.fetch(worksQuery).then((data) => {
     const dataRefactored = data.map((work: IWork) => {
       return {
         ...work,
@@ -21,40 +21,41 @@ async function getWorks() {
       }
     })
 
-    return dataRefactored;
-  });
+    return dataRefactored
+  })
 
-  return worksData as IWork[];
+  return worksData as IWork[]
 }
 
 const Work = () => {
-  const [activeFilter, setActiveFilter] = useState<typeof workOptions[number]>('All');
+  const [activeFilter, setActiveFilter] =
+    useState<(typeof workOptions)[number]>('All')
   const [animateCard, setAnimateCard] = useState<TargetAndTransition>({
     y: 0,
-    opacity: 1
-  });
+    opacity: 1,
+  })
 
   const worksQuery = useQuery({
     queryKey: ['works'],
     queryFn: getWorks,
-  });
-  const { data: works } = worksQuery;
+  })
+  const { data: works } = worksQuery
 
-  let filterWork: IWork[] = works
-    ? works.filter(work => work.tags.includes(activeFilter))
-    : [];
+  const filterWork: IWork[] = works
+    ? works.filter((work) => work.tags.includes(activeFilter))
+    : []
 
-  function handleWorkFilter(option: typeof workOptions[number]) {
-    setAnimateCard({ y: 100, opacity: 0 });
+  function handleWorkFilter(option: (typeof workOptions)[number]) {
+    setAnimateCard({ y: 100, opacity: 0 })
 
     setTimeout(() => {
-      setAnimateCard({ y: 0, opacity: 1 });
-      setActiveFilter(option);
-    }, 500);
+      setAnimateCard({ y: 0, opacity: 1 })
+      setActiveFilter(option)
+    }, 500)
   }
 
   return (
-    <div className="flex flex-col items-center justify-center flex-1 w-full">
+    <div className="flex w-full flex-1 flex-col items-center justify-center">
       <h2 className={styles.headText}>
         Minha Seção de <span>Portfólio</span> Criativo
       </h2>
@@ -67,15 +68,10 @@ const Work = () => {
       <motion.div
         animate={animateCard}
         transition={{ duration: 0.5, delayChildren: 0.5 }}
-        className={clsx(
-          'flex flex-wrap justify-center items-start w-full',
-        )}
+        className={clsx('flex w-full flex-wrap items-start justify-center')}
       >
         {filterWork.map((work, index) => (
-          <WorkItem
-            key={work.title+index}
-            work={work}
-          />
+          <WorkItem key={work.title + index} work={work} />
         ))}
       </motion.div>
     </div>
@@ -85,8 +81,8 @@ const Work = () => {
 export default AppWrap({
   WrappedComponent: MotionWrap({
     WrappedComponent: Work,
-    classNames: clsx('w-full')
+    classNames: clsx('w-full'),
   }),
-  idName: "work",
-  classNames: styles.appPrimaryBg
+  idName: 'work',
+  classNames: styles.appPrimaryBg,
 })

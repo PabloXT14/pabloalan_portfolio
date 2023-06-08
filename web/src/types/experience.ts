@@ -1,10 +1,10 @@
 export interface IWorkExperience {
-  name: string;
-  company: string;
-  description: string;
+  name: string
+  company: string
+  description: string
 }
 
 export interface IExperience {
-  year: string;
-  works: IWorkExperience[];
+  year: string
+  works: IWorkExperience[]
 }

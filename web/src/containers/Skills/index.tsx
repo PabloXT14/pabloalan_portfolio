@@ -1,81 +1,84 @@
-import { client, urlFor } from "@/services/sanity-client";
-import { ISkill } from "@/types/skill";
-import { IExperience } from "@/types/experience";
-import { AppWrap, MotionWrap } from "@/wrapper"
-import { useQuery } from "react-query";
-import { motion } from "framer-motion";
-import { clsx } from "clsx";
-import { styles } from "@/styles";
-import { SkillItem } from "./components/SkillItem";
-import { ExperienceItem } from "./components/ExperienceItem";
+import { client, urlFor } from '@/services/sanity-client'
+import { ISkill } from '@/types/skill'
+import { IExperience } from '@/types/experience'
+import { AppWrap, MotionWrap } from '@/wrapper'
+import { useQuery } from 'react-query'
+import { motion } from 'framer-motion'
+import { clsx } from 'clsx'
+import { styles } from '@/styles'
+import { SkillItem } from './components/SkillItem'
+import { ExperienceItem } from './components/ExperienceItem'
 
 async function getSkills() {
-  const skillsQuery = '*[_type == "skills"] | order(_updatedAt asc)';
+  const skillsQuery = '*[_type == "skills"] | order(_updatedAt asc)'
 
-  const skillsData = await client.fetch(skillsQuery).then(data => {
+  const skillsData = await client.fetch(skillsQuery).then((data) => {
     const dataRefactored = data.map((skill: ISkill) => {
       return {
         ...skill,
-        icon: urlFor(skill.icon).url()
+        icon: urlFor(skill.icon).url(),
       }
-    });
+    })
 
-    return dataRefactored;
-  });
+    return dataRefactored
+  })
 
-  return skillsData as ISkill[];
+  return skillsData as ISkill[]
 }
 
 async function getExperiences() {
-  const experiencesQuery = '*[_type == "experiences"] | order(year desc)';
+  const experiencesQuery = '*[_type == "experiences"] | order(year desc)'
 
-  const experiencesData = await client.fetch(experiencesQuery).then(data => data);
+  const experiencesData = await client
+    .fetch(experiencesQuery)
+    .then((data) => data)
 
-  return experiencesData as IExperience[];
+  return experiencesData as IExperience[]
 }
 
 const Skills = () => {
   const skillsQuery = useQuery({
     queryKey: ['skills'],
     queryFn: getSkills,
-  });
+  })
   const experiencesQuery = useQuery({
     queryKey: ['experiences'],
     queryFn: getExperiences,
   })
 
-  const { data: skills } = skillsQuery;
-  const { data: experiences } = experiencesQuery;
+  const { data: skills } = skillsQuery
+  const { data: experiences } = experiencesQuery
 
   return (
-    <div className={clsx('flex flex-col flex-1 w-full items-center')}>
+    <div className={clsx('flex w-full flex-1 flex-col items-center')}>
       <h2 className={clsx(styles.headText)}>Habilidades & Experiências</h2>
 
-      <div className={clsx(
-        'w-11/12 mt-12 flex flex-col items-center',
-        'max-2md:w-full max-2md:flex-col',
-      )}>
+      <div
+        className={clsx(
+          'mt-12 flex w-11/12 flex-col items-center',
+          'max-2md:w-full max-2md:flex-col',
+        )}
+      >
         <motion.div
           className={clsx(
-            'flex-1 flex flex-wrap items-start justify-center mr-12',
-            'max-2md:mr-0 max-2md:justify-center max-2md:items-center',
+            'mr-12 flex flex-1 flex-wrap items-start justify-center',
+            'max-2md:mr-0 max-2md:items-center max-2md:justify-center',
           )}
         >
-          {skills && skills.map(skill => (
-            <SkillItem key={skill.name} skill={skill} />
-          ))}
+          {skills &&
+            skills.map((skill) => <SkillItem key={skill.name} skill={skill} />)}
         </motion.div>
 
-        <div className={clsx(
-          'flex-1 flex justify-start items-start flex-col mt-8',
-          'max-2md:mt-8',
-        )}>
-          {experiences && experiences.map((experience) => (
-            <ExperienceItem
-              key={experience.year}
-              experience={experience} 
-            />
-          ))}
+        <div
+          className={clsx(
+            'mt-8 flex flex-1 flex-col items-start justify-start',
+            'max-2md:mt-8',
+          )}
+        >
+          {experiences &&
+            experiences.map((experience) => (
+              <ExperienceItem key={experience.year} experience={experience} />
+            ))}
         </div>
       </div>
     </div>
@@ -87,6 +90,6 @@ export default AppWrap({
     WrappedComponent: Skills,
     classNames: clsx('flex flex-col flex-1 w-full'),
   }),
-  idName: "skills",
-  classNames: styles.appWhiteBg
+  idName: 'skills',
+  classNames: styles.appWhiteBg,
 })

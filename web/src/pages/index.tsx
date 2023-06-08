@@ -1,20 +1,10 @@
 import Head from 'next/head'
-import { clsx } from 'clsx';
 
-import {
-  About,
-  Footer,
-  Header,
-  Skills,
-  Testimonial,
-  Work
-} from '@/containers';
-import { Navbar } from '@/components';
-
-import { styles } from '@/styles';
+import { About, Footer, Header, Skills, Work } from '@/containers'
+import { Navbar } from '@/components'
+import { styles } from '@/styles'
 
 export default function Home() {
-
   return (
     <>
       <Head>
@@ -23,7 +13,7 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <div className={clsx(styles.app)}>
+      <div className={styles.app}>
         <Navbar />
         <Header />
         <About />

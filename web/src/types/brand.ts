@@ -1,4 +1,4 @@
 export interface IBrand {
-  name: string;
-  imgUrl: string;
+  name: string
+  imgUrl: string
 }

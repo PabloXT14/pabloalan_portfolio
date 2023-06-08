@@ -1,32 +1,31 @@
-import Link from 'next/link';
-import { useState } from 'react';
-import * as Dialog from '@radix-ui/react-dialog';
-import { BiMenuAltRight, BiX } from 'react-icons/bi';
-import { motion } from 'framer-motion';
-import { clsx } from 'clsx';
+import Link from 'next/link'
+import { useState } from 'react'
+import * as Dialog from '@radix-ui/react-dialog'
+import { BiMenuAltRight, BiX } from 'react-icons/bi'
+import { motion } from 'framer-motion'
+import { clsx } from 'clsx'
 
-import { menuItems } from '@/constants';
-
+import { menuItems } from '@/constants'
 
 const MobileMenu = () => {
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(false)
 
   return (
     <Dialog.Root open={open} onOpenChange={setOpen}>
       <Dialog.Trigger asChild>
         <button
           className={clsx(
-            'flex items-center justify-center rounded-full w-9 h-9 p-1 bg-secondary text-white',
-            '2md:hidden'
+            'flex h-9 w-9 items-center justify-center rounded-full bg-secondary p-1 text-white',
+            '2md:hidden',
           )}
           aria-label="Menu options"
         >
-          <BiMenuAltRight className='w-full h-full' />
+          <BiMenuAltRight className="h-full w-full" />
         </button>
       </Dialog.Trigger>
 
       <Dialog.Portal>
-        <Dialog.Overlay className='fixed inset-0 bg-black/50 2md:hidden' />
+        <Dialog.Overlay className="fixed inset-0 bg-black/50 2md:hidden" />
         <Dialog.Content>
           <motion.div
             initial={{ x: '100%' }}
@@ -34,35 +33,31 @@ const MobileMenu = () => {
             exit={{ x: '100%' }}
             transition={{ type: 'spring', bounce: 0, duration: 0.4 }}
             className={clsx(
-              'fixed top-0 bottom-0 right-0 z-50 w-3/5 h-screen p-4',
-              'bg-white bg-repeat bg-cover shadow-menu-mobile bg-menu-mobile',
-              '2md:hidden'
+              'fixed top-0 bottom-0 right-0 z-50 h-screen w-3/5 p-4',
+              'bg-white bg-menu-mobile bg-cover bg-repeat shadow-menu-mobile',
+              '2md:hidden',
             )}
           >
             <Dialog.Close asChild>
               <button
                 className={clsx(
-                  'absolute top-4 right-10 flex items-center justify-center rounded-full w-9 h-9 p-1 bg-secondary text-white right',
+                  'right absolute top-4 right-10 flex h-9 w-9 items-center justify-center rounded-full bg-secondary p-1 text-white',
                 )}
                 aria-label="Close"
               >
-                <BiX className='w-full h-full' />
+                <BiX className="h-full w-full" />
               </button>
             </Dialog.Close>
 
-            <ul
-              className={clsx(
-                'flex flex-col items-start justify-start w-full p-0 m-0 list-none'
-              )}
-            >
+            <ul className="m-0 flex w-full list-none flex-col items-start justify-start p-0">
               {menuItems.map((item) => (
                 <li
                   key={item}
                   className={clsx(
                     'm-4',
-                    'text-lg text-gray font-semibold no-underline uppercase',
+                    'text-lg font-semibold uppercase text-gray no-underline',
                     'transition-all duration-300 ease-in-out',
-                    'hover:text-secondary'
+                    'hover:text-secondary',
                   )}
                 >
                   <Link
@@ -76,7 +71,6 @@ const MobileMenu = () => {
               ))}
             </ul>
           </motion.div>
-
         </Dialog.Content>
       </Dialog.Portal>
     </Dialog.Root>
@@ -84,37 +78,3 @@ const MobileMenu = () => {
 }
 
 export { MobileMenu }
-
-
-{/* <motion.div
-  whileInView={{ x: [300, 0] }}
-  transition={{ duration: 0.85, ease: 'easeInOut' }}
-  className={clsx(
-    'flex flex-col items-end justify-end w-3/5 h-screen p-4 bg-white bg-repeat bg-cover shadow-menu-mobile bg-menu-mobile'
-  )}
->
-
-  <ul className="flex flex-col items-start justify-start w-full h-full p-0 m-0 list-none">
-    {menuItems.map((item) => (
-      <li
-        key={item}
-        className="m-4"
-      >
-        <Menubar.Item>
-          <Link
-            href={`#${item}`}
-            scroll={false}
-            onClick={() => setOpen(false)}
-            className={clsx(
-              'text-base text-gray font-sans font-medium no-underline uppercase',
-              'transition-all duration-300 ease-in-out',
-              'hover:text-secondary'
-            )}
-          >
-            {item}
-          </Link>
-        </Menubar.Item>
-      </li>
-    ))}
-  </ul>
-</motion.div> */}

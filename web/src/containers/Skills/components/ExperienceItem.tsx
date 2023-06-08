@@ -1,37 +1,26 @@
-import { motion } from "framer-motion";
-import { HiCursorClick } from 'react-icons/hi';
-import { IExperience } from "@/types/experience";
-import { Tooltip } from "react-tooltip";
-import { clsx } from "clsx";
-import { styles } from "@/styles";
+import { motion } from 'framer-motion'
+import { HiCursorClick } from 'react-icons/hi'
+import { IExperience } from '@/types/experience'
+import { Tooltip } from 'react-tooltip'
+import { clsx } from 'clsx'
+import { styles } from '@/styles'
 
 interface ExperienceItemProps {
-  experience: IExperience;
+  experience: IExperience
 }
 
 const ExperienceItem = ({ experience }: ExperienceItemProps) => {
-
   return (
     <motion.div
-      className={clsx(
-        'w-full flex flex-row justify-start items-start my-4'
-      )}
+      className={clsx('my-4 flex w-full flex-row items-start justify-start')}
     >
-      <div className={clsx(
-        'mr-12',
-        'max-sm:mr-4'
-      )}>
-        <p className={clsx(
-          styles.boldText,
-          'font-extrabold text-secondary'
-        )}>
+      <div className={clsx('mr-12', 'max-sm:mr-4')}>
+        <p className={clsx(styles.boldText, 'font-extrabold text-secondary')}>
           {experience.year}
         </p>
       </div>
 
-      <motion.div className={clsx(
-        'flex-1'
-      )}>
+      <motion.div className={clsx('flex-1')}>
         {experience.works.map((work, index) => (
           <div key={`${work.name}_${index}`}>
             <motion.div
@@ -40,20 +29,14 @@ const ExperienceItem = ({ experience }: ExperienceItemProps) => {
               whileInView={{ opacity: [0, 1] }}
               transition={{ duration: 0.5 }}
               className={clsx(
-                'flex flex-col justify-start items-start mb-4 cursor-pointer'
+                'mb-4 flex cursor-pointer flex-col items-start justify-start',
               )}
             >
-              <h4 className={clsx(
-                styles.boldText,
-                'font-medium flex gap-2'
-              )}>
+              <h4 className={clsx(styles.boldText, 'flex gap-2 font-medium')}>
                 {work.name}
                 <HiCursorClick />
               </h4>
-              <p className={clsx(
-                styles.pText,
-                'font-normal text-gray mt-1'
-              )}>
+              <p className={clsx(styles.pText, 'mt-1 font-normal text-gray')}>
                 {work.company}
               </p>
             </motion.div>
@@ -61,8 +44,8 @@ const ExperienceItem = ({ experience }: ExperienceItemProps) => {
               id={`${work.name}_${index}`}
               classNameArrow={clsx('!bg-secondary')}
               className={clsx(
-                '!max-w-xs !bg-white !shadow-2xl !rounded-md !p-4 !text-gray !text-center !opacity-100',
-                'lg:!text-3xl lg:!max-w-lg',
+                '!max-w-xs !rounded-md !bg-white !p-4 !text-center !text-gray !opacity-100 !shadow-2xl',
+                'lg:!max-w-lg lg:!text-3xl',
                 'max-sm:!w-11/12',
               )}
             />

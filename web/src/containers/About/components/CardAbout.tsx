@@ -1,12 +1,12 @@
-import Image from "next/image";
-import clsx from "clsx";
-import { motion } from "framer-motion"
+import Image from 'next/image'
+import clsx from 'clsx'
+import { motion } from 'framer-motion'
 
-import { styles } from "@/styles";
-import { IAbout } from "@/types/about"
+import { styles } from '@/styles'
+import { IAbout } from '@/types/about'
 
 interface CardAboutProps {
-  about: IAbout;
+  about: IAbout
 }
 
 const CardAbout = ({ about }: CardAboutProps) => {
@@ -16,8 +16,8 @@ const CardAbout = ({ about }: CardAboutProps) => {
       whileHover={{ scale: 1.1 }}
       transition={{ duration: 0.5, type: 'tween' }}
       className={clsx(
-        'flex flex-col items-start justify-start w-48 m-8',
-        'lg:w-96 lg:my-8 lg:mx-16',
+        'm-8 flex w-48 flex-col items-start justify-start',
+        'lg:my-8 lg:mx-16 lg:w-96',
       )}
     >
       <Image
@@ -25,22 +25,19 @@ const CardAbout = ({ about }: CardAboutProps) => {
         width={1200}
         height={900}
         alt={about.title}
-        className={clsx(
-          'object-cover w-full h-44 rounded-2xl',
-          'lg:h-80'
-        )}
+        className={clsx('h-44 w-full rounded-2xl object-cover', 'lg:h-80')}
       />
 
-      <h3 className={clsx(styles.boldText, 'mt-5 mx-auto')}>
-        {about.title}
-      </h3>
+      <h3 className={clsx(styles.boldText, 'mx-auto mt-5')}>{about.title}</h3>
 
-      <p className={clsx(
-        styles.pText,
-        'mt-3 line-clamp-4',
-        'transition-all duration-300 ease-in-out cursor-pointer',
-        'hover:line-clamp-none'
-      )}>
+      <p
+        className={clsx(
+          styles.pText,
+          'mt-3 line-clamp-4',
+          'cursor-pointer transition-all duration-300 ease-in-out',
+          'hover:line-clamp-none',
+        )}
+      >
         {about.description}
       </p>
     </motion.div>

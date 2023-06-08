@@ -1,24 +1,26 @@
-import Image from "next/image";
-import clsx from "clsx";
+import Image from 'next/image'
+import clsx from 'clsx'
 
-import { styles } from "@/styles";
-import { ITestimonial } from "@/types/testimonial";
+import { styles } from '@/styles'
+import { ITestimonial } from '@/types/testimonial'
 
 interface TestimonialItemProps {
-  testimonial: ITestimonial;
+  testimonial: ITestimonial
 }
 
 const TestimonialItem = ({ testimonial }: TestimonialItemProps) => {
   return (
-    <div className={clsx(
-      styles.appFlex,
-      'flex flex-row p-8',
-      'w-3/5 min-h-[250px] bg-white rounded-2xl shadow-testimonial-item',
-      'transition-all duration-300 ease-in-out',
-      'max-2md:w-full',
-      'max-1.5md:flex-col',
-      'lg:min-h-[450px]',
-    )}>
+    <div
+      className={clsx(
+        styles.appFlex,
+        'flex flex-row p-8',
+        'min-h-[250px] w-3/5 rounded-2xl bg-white shadow-testimonial-item',
+        'transition-all duration-300 ease-in-out',
+        'max-2md:w-full',
+        'max-1.5md:flex-col',
+        'lg:min-h-[450px]',
+      )}
+    >
       <Image
         src={testimonial.imgUrl}
         alt={testimonial.name}
@@ -26,39 +28,42 @@ const TestimonialItem = ({ testimonial }: TestimonialItemProps) => {
         height={100}
         className={clsx(
           'rounded-full object-cover',
-          'lg:w-[150px] lg:h-[150px]',
+          'lg:h-[150px] lg:w-[150px]',
         )}
       />
 
-      <div className={clsx(
-        'flex flex-col justify-center items-start flex-1 h-full py-0 px-8 text-left',
-        'max-1.5md:mt-8 max-1.5md:p-0',
-      )}>
-        <p className={clsx(
-          styles.pText,
-          'text-xl text-black font-sans line-clamp-3',
-          'lg:text-4xl'
-        )}>
+      <div
+        className={clsx(
+          'flex h-full flex-1 flex-col items-start justify-center py-0 px-8 text-left',
+          'max-1.5md:mt-8 max-1.5md:p-0',
+        )}
+      >
+        <p
+          className={clsx(
+            styles.pText,
+            'font-sans text-xl text-black line-clamp-3',
+            'lg:text-4xl',
+          )}
+        >
           {testimonial.feedback}
         </p>
 
         <div>
-          <h4 className={clsx(
-            styles.boldText,
-            'font-semibold text-secondary mt-8'
-          )}>
+          <h4
+            className={clsx(
+              styles.boldText,
+              'mt-8 font-semibold text-secondary',
+            )}
+          >
             {testimonial.name}
           </h4>
-          <h5 className={clsx(
-            styles.pText,
-            'font-normal text-gray mt-1'
-          )}>
+          <h5 className={clsx(styles.pText, 'mt-1 font-normal text-gray')}>
             {testimonial.company}
           </h5>
         </div>
       </div>
     </div>
-  );
+  )
 }
 
-export { TestimonialItem };
+export { TestimonialItem }
