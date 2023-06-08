@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unknown-property */
 import type { AppProps } from 'next/app'
 import { QueryClient, QueryClientProvider } from 'react-query'
 import '@/styles/globals.css'

@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import { FaEnvelope, FaGithub, FaLinkedin } from 'react-icons/fa'
-import { styles } from '../../styles'
+
+import { styles } from '@/styles'
 
 export const SocialMedia = () => {
   return (

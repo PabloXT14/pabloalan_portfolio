@@ -1,14 +1,15 @@
 import { useState } from 'react'
-import { workOptions } from '@/constants'
 import { useQuery } from 'react-query'
-import { urlFor, client } from '@/services/sanity-client'
 import { motion, TargetAndTransition } from 'framer-motion'
-import { styles } from '@/styles'
-import { clsx } from 'clsx'
+import { twMerge } from 'tailwind-merge'
+
+import { urlFor, client } from '@/services/sanity-client'
+import { workOptions } from '@/constants'
 import { AppWrap, MotionWrap } from '@/wrapper'
 import { IWork } from '@/types/work'
 import { WorkItem } from './components/WorkItem'
 import { WorkMenuOptions } from './components/WorkMenuOptions'
+import { styles } from '@/styles'
 
 async function getWorks() {
   const worksQuery = '*[_type == "works"] | order(_createdAt desc)'
@@ -68,7 +69,7 @@ const Work = () => {
       <motion.div
         animate={animateCard}
         transition={{ duration: 0.5, delayChildren: 0.5 }}
-        className={clsx('flex w-full flex-wrap items-start justify-center')}
+        className="flex w-full flex-wrap items-start justify-center"
       >
         {filterWork.map((work, index) => (
           <WorkItem key={work.title + index} work={work} />
@@ -81,7 +82,7 @@ const Work = () => {
 export default AppWrap({
   WrappedComponent: MotionWrap({
     WrappedComponent: Work,
-    classNames: clsx('w-full'),
+    classNames: twMerge('w-full'),
   }),
   idName: 'work',
   classNames: styles.appPrimaryBg,

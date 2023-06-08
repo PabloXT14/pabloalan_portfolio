@@ -1,8 +1,8 @@
 import Link from 'next/link'
+import { twMerge } from 'tailwind-merge'
+
 import { styles } from '@/styles'
 import { menuItems } from '@/constants'
-import { clsx } from 'clsx'
-import { twMerge } from 'tailwind-merge'
 
 type MenuItemType = (typeof menuItems)[number]
 

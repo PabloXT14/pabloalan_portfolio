@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import clsx from 'clsx'
+import { twMerge } from 'tailwind-merge'
 
 import { images } from '@/constants'
 import { styles } from '@/styles'
@@ -7,13 +7,13 @@ import { styles } from '@/styles'
 const Overview = () => {
   return (
     <div
-      className={clsx(
+      className={twMerge(
         'mx-auto mt-6 flex w-[78%] items-start gap-4 ',
         'max-2md:w-full max-2md:flex-col',
       )}
     >
       <div
-        className={clsx(
+        className={twMerge(
           'rounded-2xl bg-secondary px-2',
           'max-2md:mx-auto',
           'lg:h-80',
@@ -24,10 +24,10 @@ const Overview = () => {
           width={1200}
           height={900}
           alt={'profile'}
-          className={clsx('h-52 w-full rounded-2xl object-cover', 'lg:h-80')}
+          className={twMerge('h-52 w-full rounded-2xl object-cover', 'lg:h-80')}
         />
       </div>
-      <p className={clsx(styles.pText, 'flex-1 text-base')}>
+      <p className={twMerge(styles.pText, 'flex-1 text-base')}>
         Sou um desenvolvedor de software apaixonado pela área de tecnologia, com
         foco em web e experiência em JavaScript e TypeScript, incluindo o uso de
         React e Node.js. Sempre em busca de soluções inovadoras para resolver

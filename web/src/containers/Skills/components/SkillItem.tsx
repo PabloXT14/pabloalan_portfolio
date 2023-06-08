@@ -1,7 +1,7 @@
 import Image from 'next/image'
-import { motion } from 'framer-motion'
+import { twMerge } from 'tailwind-merge'
+
 import { ISkill } from '@/types/skill'
-import { clsx } from 'clsx'
 import { styles } from '@/styles'
 
 interface SkillItemProps {
@@ -11,21 +11,21 @@ interface SkillItemProps {
 const SkillItem = ({ skill }: SkillItemProps) => {
   return (
     <div
-      className={clsx(
+      className={twMerge(
         styles.appFlex,
         'm-4 flex-col text-center',
         'lg:my-4 lg:mx-8',
       )}
     >
       <div
-        className={clsx(
+        className={twMerge(
           styles.appFlex,
-          'h-[90px] w-[90px] rounded-full shadow-skill-item',
+          'h-[90px] w-[90px] rounded-full bg-white shadow-skill-item',
           'transition-all duration-300 ease-in-out',
           'hover:-translate-y-2',
           'lg:h-[150px] lg:w-[150px]',
           'max-sm:h-[70px] max-sm:w-[70px]',
-          skill.bgColor ? `bg-[${skill.bgColor}]` : 'bg-white',
+          skill.bgColor && `bg-[${skill.bgColor}]`,
         )}
       >
         <Image
@@ -33,11 +33,11 @@ const SkillItem = ({ skill }: SkillItemProps) => {
           alt={skill.name}
           width={100}
           height={100}
-          className={clsx('h-1/2 w-1/2')}
+          className="h-1/2 w-1/2"
         />
       </div>
       <p
-        className={clsx(
+        className={twMerge(
           styles.pText,
           'mt-2 max-w-[90px] break-words text-center font-medium',
           'lg:mt-4',

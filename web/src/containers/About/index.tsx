@@ -1,11 +1,11 @@
 import { useQuery } from 'react-query'
-import { styles } from '../../styles'
-import { clsx } from 'clsx'
+
 import { IAbout } from '@/types/about'
 import { AppWrap, MotionWrap } from '@/wrapper'
 import { client, urlFor } from '@/services/sanity-client'
 import { Overview } from './components/Overview'
 import { CardAbout } from './components/CardAbout'
+import { styles } from '@/styles'
 
 async function getAbouts() {
   const aboutsQuery = '*[_type == "abouts"] | order(_updatedAt desc)'
@@ -33,8 +33,8 @@ const About = () => {
   const { data: abouts } = aboutsQuery
 
   return (
-    <div className={clsx('w-full flex-1 flex-col')}>
-      <h2 className={clsx(styles.headText)}>
+    <div className="w-full flex-1 flex-col">
+      <h2 className={styles.headText}>
         <span>Visão</span> geral sobre <span>Mim</span>
       </h2>
 

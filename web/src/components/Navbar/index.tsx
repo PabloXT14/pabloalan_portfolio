@@ -1,27 +1,15 @@
 import Link from 'next/link'
-import { useState } from 'react'
 import Image from 'next/image'
-import { HiMenuAlt4, HiX } from 'react-icons/hi'
-import { motion } from 'framer-motion'
-import { clsx } from 'clsx'
+import { twMerge } from 'tailwind-merge'
 
 import { images, menuItems } from '@/constants/'
 import { styles } from '@/styles'
 
-import { ThemeSwitch } from '../ThemeSwitch'
 import { MobileMenu } from '../MobileMenu'
 
 export const Navbar = () => {
-  const [toggle, setToggle] = useState(false)
-
   return (
-    <nav
-      className={clsx(
-        'fixed z-20 flex w-full items-center justify-between px-8 py-4',
-        'border border-solid border-white/20 bg-white/25 backdrop-blur-sm',
-        '',
-      )}
-    >
+    <nav className="fixed z-20 flex w-full items-center justify-between border border-solid border-white/20 bg-white/25 px-8 py-4 backdrop-blur-sm">
       <div className="flex items-center justify-start">
         <Image
           src={images.logoPabloAlan}
@@ -34,7 +22,7 @@ export const Navbar = () => {
         {menuItems.map((item) => (
           <li
             key={`link=${item}`}
-            className={clsx(
+            className={twMerge(
               styles.pText,
               'flex items-center justify-center',
               'mx-4 cursor-pointer flex-col',
@@ -53,11 +41,7 @@ export const Navbar = () => {
         ))}
       </ul>
 
-      <div className={clsx('flex items-center gap-2')}>
-        {/* THEME SWITCH */}
-        {/* <ThemeSwitch /> */}
-
-        {/* MOBILE MENU */}
+      <div className={twMerge('flex items-center gap-2')}>
         <MobileMenu />
       </div>
     </nav>

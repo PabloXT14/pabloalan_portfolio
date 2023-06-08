@@ -1,9 +1,10 @@
-import { FunctionComponent } from 'react'
-import { NavigationDots, SocialMedia } from '@/components'
-import { menuItems } from '@/constants'
-import { styles } from '@/styles'
-import { clsx } from 'clsx'
 import Link from 'next/link'
+import { FunctionComponent } from 'react'
+import { twMerge } from 'tailwind-merge'
+
+import { menuItems } from '@/constants'
+import { NavigationDots, SocialMedia } from '@/components'
+import { styles } from '@/styles'
 
 interface AppWrapProps {
   WrappedComponent: FunctionComponent
@@ -17,27 +18,26 @@ const AppWrap = ({ WrappedComponent, idName, classNames }: AppWrapProps) => {
     return (
       <div
         id={idName}
-        className={clsx(
+        className={twMerge(
           styles.appContainer,
-          idName === 'home'
-            ? 'relative bg-header-cover bg-cover bg-center bg-repeat'
-            : '',
+          idName === 'home' &&
+            'relative bg-header-cover bg-cover bg-center bg-repeat',
           classNames,
         )}
       >
         <SocialMedia />
         <div
-          className={clsx(
+          className={twMerge(
             styles.appWrapper,
             styles.appFlex,
-            idName === 'home' ? 'p-0' : '',
+            idName === 'home' && 'p-0',
           )}
         >
           <WrappedComponent />
 
           {idName === 'contact' && (
-            <div className={clsx(styles.copyright)}>
-              <p className={clsx(styles.pText, 'text-center')}>
+            <div className={styles.copyright}>
+              <p className={twMerge(styles.pText, 'text-center')}>
                 Credits to{' '}
                 <Link
                   href="https://www.youtube.com/@javascriptmastery"

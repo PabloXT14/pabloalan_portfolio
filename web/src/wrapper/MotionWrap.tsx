@@ -1,6 +1,6 @@
 import { FunctionComponent } from 'react'
 import { motion } from 'framer-motion'
-import { clsx } from 'clsx'
+import { twMerge } from 'tailwind-merge'
 
 interface MotionWrapProps {
   WrappedComponent: FunctionComponent
@@ -13,7 +13,7 @@ const MotionWrap = ({ WrappedComponent, classNames }: MotionWrapProps) => {
       <motion.div
         whileInView={{ y: [100, 50, 0], opacity: [0, 0, 1] }}
         transition={{ duration: 0.5 }}
-        className={clsx(classNames)}
+        className={twMerge(classNames)}
       >
         <WrappedComponent />
       </motion.div>

@@ -1,11 +1,11 @@
+import { useRef } from 'react'
 import { useForm } from 'react-hook-form'
 import { z } from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { clsx } from 'clsx'
+import { twMerge } from 'tailwind-merge'
 import emailjs from '@emailjs/browser'
 
 import { styles } from '@/styles'
-import { useRef } from 'react'
 
 const sendContactMessageSchema = z.object({
   username: z
@@ -72,14 +72,14 @@ const FooterForm = () => {
         <form
           ref={formRef}
           onSubmit={handleSubmit(sendContactMessage)}
-          className={clsx(
+          className={twMerge(
             styles.appFlex,
             'my-4 mx-8 w-3/5 flex-col',
             'max-2md:my-4 max-2md:w-full',
           )}
         >
           <div
-            className={clsx(
+            className={twMerge(
               'my-3 flex w-full cursor-pointer flex-col',
               'transition-all duration-300 ease-in-out',
               'hover:shadow-form-input',
@@ -89,7 +89,7 @@ const FooterForm = () => {
               type="text"
               placeholder="Seu Nome"
               {...register('username')}
-              className={clsx(
+              className={twMerge(
                 styles.pText,
                 'w-full rounded-md border-0 bg-white p-4 font-sans text-secondary shadow-md outline-0',
                 errors.username &&
@@ -102,7 +102,7 @@ const FooterForm = () => {
           </div>
 
           <div
-            className={clsx(
+            className={twMerge(
               'my-3 flex w-full cursor-pointer flex-col',
               'transition-all duration-300 ease-in-out',
               'hover:shadow-form-input',
@@ -112,7 +112,7 @@ const FooterForm = () => {
               type="email"
               placeholder="Seu Email"
               {...register('email')}
-              className={clsx(
+              className={twMerge(
                 styles.pText,
                 'w-full rounded-md border-0 bg-white p-4 font-sans text-secondary shadow-md outline-0',
                 errors.email &&
@@ -125,7 +125,7 @@ const FooterForm = () => {
           </div>
 
           <div
-            className={clsx(
+            className={twMerge(
               'my-3 w-full cursor-pointer',
               'transition-all duration-300 ease-in-out',
               'hover:shadow-form-input',
@@ -134,7 +134,7 @@ const FooterForm = () => {
             <textarea
               placeholder="Sua Mensagem"
               {...register('message')}
-              className={clsx(
+              className={twMerge(
                 styles.pText,
                 'h-[170px] w-full resize-none overflow-y-auto rounded-md border-0 bg-white p-4 font-sans  text-secondary shadow-md outline-0',
                 errors.message &&
@@ -148,7 +148,7 @@ const FooterForm = () => {
 
           <button
             type="submit"
-            className={clsx(
+            className={twMerge(
               styles.pText,
               'mt-8 rounded-xl border-0 bg-secondary py-4 px-8 text-center font-sans font-medium text-white outline-0',
               'cursor-pointer ease-in-form-button',
@@ -163,10 +163,10 @@ const FooterForm = () => {
 
       {isSubmitSuccessful ? (
         <div className="my-auto">
-          <h3 className={clsx(styles.headText, 'text-3xl')}>
+          <h3 className={twMerge(styles.headText, 'text-3xl')}>
             Obrigado pela mensagem!
             <br />
-            Te retornarei o mais breve possivel
+            Te retornarei o mais breve possível
           </h3>
         </div>
       ) : null}

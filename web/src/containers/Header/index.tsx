@@ -2,7 +2,7 @@ import Image from 'next/image'
 import { motion, Variants } from 'framer-motion'
 import { images } from '../../constants'
 import { styles } from '@/styles'
-import { clsx } from 'clsx'
+import { twMerge } from 'tailwind-merge'
 import { AppWrap } from '@/wrapper'
 
 const scaleVariants: Variants = {
@@ -21,7 +21,7 @@ const languagesImages = [images.node, images.react, images.typescript]
 const Header = () => {
   return (
     <div
-      className={clsx(
+      className={twMerge(
         'flex h-full w-full flex-1 flex-row px-8 pt-16 pb-0',
         'lg:pt-32',
         'max-3md:flex-col',
@@ -31,13 +31,13 @@ const Header = () => {
       <motion.div
         whileInView={{ x: [-100, 0], opacity: [0, 1] }}
         transition={{ duration: 0.5 }}
-        className={clsx(
+        className={twMerge(
           'my-0 mx-8 flex h-full flex-[0.65] flex-col items-start justify-start',
           'max-3md:mx-0 max-3md:w-full',
         )}
       >
         <div
-          className={clsx(
+          className={twMerge(
             'flex w-full flex-col items-end justify-end gap-12',
             'max-3md:items-start max-3md:justify-start',
           )}
@@ -52,20 +52,20 @@ const Header = () => {
 
           <div className="flex w-auto flex-col items-center justify-center rounded-2xl bg-white px-8 py-4 shadow-header-badge">
             <p
-              className={clsx(
-                'w-full text-center font-bold uppercase text-zinc-900',
+              className={twMerge(
                 styles.pText,
+                'w-full text-center font-bold uppercase text-zinc-900',
               )}
             >
               Desenvolvedor
             </p>
-            <p className={`${styles.pText} w-full text-center`}>
+            <p className={twMerge(styles.pText, 'w-full text-center')}>
               especializado em
             </p>
             <p
-              className={clsx(
-                'w-full text-center font-bold uppercase text-zinc-900',
+              className={twMerge(
                 styles.pText,
+                'w-full text-center font-bold uppercase text-zinc-900',
               )}
             >
               Front-end
@@ -77,7 +77,7 @@ const Header = () => {
       <motion.div
         whileInView={{ opacity: [0, 1] }}
         transition={{ duration: 0.5, delayChildren: 0.5 }}
-        className={clsx(
+        className={twMerge(
           'relative flex h-full flex-1 items-end justify-end',
           'max-3md:my-8 max-3md:mx-0 max-3md:justify-center',
         )}
@@ -101,7 +101,7 @@ const Header = () => {
       <motion.div
         variants={scaleVariants}
         whileInView={scaleVariants}
-        className={clsx(
+        className={twMerge(
           'ml-4 flex h-full flex-[0.75] flex-col items-start justify-evenly',
           'max-3md:ml-0 max-3md:w-full max-3md:flex-row max-3md:flex-wrap',
         )}
@@ -109,7 +109,7 @@ const Header = () => {
         {languagesImages.map((circleImg, index) => (
           <div
             key={`circle-${index}`}
-            className={clsx(
+            className={twMerge(
               'flex h-[100px] w-[100px] items-center justify-center rounded-full bg-white shadow-header-badge',
               'last:h-[70px] last:w-[70px] even:m-7 even:h-[150px] even:w-[150px]',
               ' lg:first:h-[200px] lg:first:w-[200px] lg:last:h-[170px] lg:last:w-[170px] lg:even:h-[400px] lg:even:w-[400px]',
