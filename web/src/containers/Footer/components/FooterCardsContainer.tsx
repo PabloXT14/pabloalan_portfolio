@@ -35,7 +35,7 @@ const FooterCardsContainer = () => {
       </Link>
 
       <Link
-        href="https://wa.me/message/KHI7YP3U7DFZP1"
+        href="https://wa.link/8ep38j"
         target="_blank"
         className={twMerge(
           'my-4 flex w-full max-w-[290px] cursor-pointer flex-row items-center justify-start rounded-xl bg-white p-4 shadow-md',
