@@ -59,16 +59,16 @@ const Header = () => {
             >
               Desenvolvedor
             </p>
-            <p className={twMerge(styles.pText, 'w-full text-center')}>
+            {/* <p className={twMerge(styles.pText, 'w-full text-center')}>
               especializado em
-            </p>
+            </p> */}
             <p
               className={twMerge(
                 styles.pText,
                 'w-full text-center font-bold uppercase text-zinc-900',
               )}
             >
-              Front-end
+              Full-stack
             </p>
           </div>
         </div>

@@ -27,15 +27,13 @@ const Overview = () => {
           className={twMerge('h-52 w-full rounded-2xl object-cover', 'lg:h-80')}
         />
       </div>
-      <p className={twMerge(styles.pText, 'flex-1 text-base')}>
-        Sou um desenvolvedor de software apaixonado pela área de tecnologia, com
-        foco em web e experiência em JavaScript e TypeScript, incluindo o uso de
-        React e Node.js. Sempre em busca de soluções inovadoras para resolver
-        problemas usando a tecnologia como ferramenta. Sou dedicado, curioso e
-        comprometido em aprender continuamente, sempre buscando me atualizar nas
-        últimas tendências e melhores práticas da indústria. Segue algumas das
-        principais ferramentas e ambientes que tenho me expecializado
-        atualmente!
+      <p className={twMerge(styles.pText, 'flex-1 self-center text-base')}>
+        Desenvolvedor Full-stack especializado em React, Next.js, Tailwind CSS e
+        Node.js, combinando habilidades frontend e back-end para criar soluções
+        integradas. Transformo ideias de design em interfaces visuais atraentes
+        e funcionais, garantindo uma experiência de usuário coesa. Apaixonado
+        por tecnologia, estou constantemente em busca de aprimoramento para
+        contribuir de forma abrangente para projetos inovadores.
       </p>
     </div>
   )

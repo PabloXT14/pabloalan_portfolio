@@ -35,7 +35,7 @@ const About = () => {
   return (
     <div className="w-full flex-1 flex-col">
       <h2 className={styles.headText}>
-        <span>Visão</span> geral sobre <span>Mim</span>
+        <span>Visão</span> geral
       </h2>
 
       <Overview />
