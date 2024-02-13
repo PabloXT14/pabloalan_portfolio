@@ -17,8 +17,8 @@ const NAV_ITEMS = [
 
 export const Header = () => {
   return (
-    <header className="absolute top-0 w-full z-10 h-24 flex items-center justify-center">
-      <div className="container flex justify-between items-center">
+    <header className="absolute top-0 z-10 flex h-24 w-full items-center justify-center">
+      <div className="container flex items-center justify-between">
         <Link href="/">
           <Image
             width={58}
