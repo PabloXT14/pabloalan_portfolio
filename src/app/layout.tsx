@@ -14,8 +14,16 @@ const plexMono = IBM_Plex_Mono({
 })
 
 export const metadata: Metadata = {
-  title: 'Portfolio - Pablo Alan',
+  title: {
+    default: 'Home',
+    template: '%s | Pablo Alan',
+  },
   description: 'Meu portfólio pessoal contendo informações e projetos',
+  icons: {
+    icon: {
+      url: '/icon.svg',
+    },
+  },
 }
 
 export default function RootLayout({
