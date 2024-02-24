@@ -1,4 +1,5 @@
 import { SectionTitle } from '@/components/section-title'
+import { ExperienceItem } from './experience-item'
 
 export const WorkExperienceSection = () => {
   return (
@@ -14,7 +15,10 @@ export const WorkExperienceSection = () => {
         </p>
       </div>
 
-      <div className="flex flex-col gap-4"></div>
+      <div className="flex flex-col gap-4">
+        <ExperienceItem />
+        <ExperienceItem />
+      </div>
     </section>
   )
 }
