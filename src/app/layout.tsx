@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { Inter, IBM_Plex_Mono } from 'next/font/google'
 import './globals.css'
 import { Header } from '@/components/header'
+import { ContactFormSection } from '@/components/contact-form-section'
 
 const inter = Inter({
   variable: '--font-inter',
@@ -37,6 +38,7 @@ export default function RootLayout({
       <body className={`${inter.className} ${plexMono.variable}`}>
         <Header />
         {children}
+        <ContactFormSection />
       </body>
     </html>
   )
