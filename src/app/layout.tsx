@@ -3,6 +3,7 @@ import { Inter, IBM_Plex_Mono } from 'next/font/google'
 import './globals.css'
 import { Header } from '@/components/header'
 import { ContactFormSection } from '@/components/contact-form-section'
+import { Footer } from '@/components/footer'
 
 const inter = Inter({
   variable: '--font-inter',
@@ -39,6 +40,7 @@ export default function RootLayout({
         <Header />
         {children}
         <ContactFormSection />
+        <Footer />
       </body>
     </html>
   )
