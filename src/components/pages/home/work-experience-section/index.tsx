@@ -3,8 +3,8 @@ import { ExperienceItem } from './experience-item'
 
 export const WorkExperienceSection = () => {
   return (
-    <section className="container flex gap-16 py-16">
-      <div className="max-w-[420px]">
+    <section className="container flex flex-col gap-10 py-16 md:flex-row md:gap-4 lg:gap-16">
+      <div className="md:max-w-[420px]">
         <SectionTitle
           subtitle="experiências"
           title="Experiência Profissional"
