@@ -1,7 +1,9 @@
+import { PageIntroductionSection } from '@/components/pages/projects/page-introduction-section'
+
 export default function Projects() {
   return (
     <>
-      <h1>Projects</h1>
+      <PageIntroductionSection />
     </>
   )
 }
