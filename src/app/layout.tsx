@@ -4,6 +4,7 @@ import './globals.css'
 import { Header } from '@/components/header'
 import { ContactFormSection } from '@/components/contact-form-section'
 import { Footer } from '@/components/footer'
+import { BackToTop } from '@/components/back-to-top'
 
 const inter = Inter({
   variable: '--font-inter',
@@ -41,6 +42,7 @@ export default function RootLayout({
         {children}
         <ContactFormSection />
         <Footer />
+        <BackToTop />
       </body>
     </html>
   )
