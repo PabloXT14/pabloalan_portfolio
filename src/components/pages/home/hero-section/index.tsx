@@ -1,3 +1,5 @@
+'use client'
+
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import Image from 'next/image'
@@ -29,6 +31,14 @@ const MOCK_CONTACTS = [
 ]
 
 export const HeroSection = () => {
+  const handleContact = () => {
+    const contactSection = document.querySelector('#contact')
+
+    if (contactSection) {
+      contactSection.scrollIntoView({ behavior: 'smooth' })
+    }
+  }
+
   return (
     <section className="flex w-full flex-col justify-end bg-hero-image bg-cover bg-center bg-no-repeat py-32 pb-10 sm:pb-32 lg:h-[755px] lg:pb-[110px]">
       <div className="container flex flex-col-reverse items-center justify-between lg:flex-row">
@@ -52,7 +62,7 @@ export const HeroSection = () => {
           </div>
 
           <div className="mt-6 flex flex-col sm:flex-row sm:items-center sm:gap-5 lg:mt-10">
-            <Button variant="shadow" className="w-max">
+            <Button variant="shadow" className="w-max" onClick={handleContact}>
               Entre em contato
               <HiArrowNarrowRight size={18} />
             </Button>
