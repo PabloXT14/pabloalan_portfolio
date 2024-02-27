@@ -1,7 +1,9 @@
+import { ProjectDetailsSection } from '@/components/pages/project/project-details-section'
+
 export default function Project() {
   return (
     <>
-      <h1>Project</h1>
+      <ProjectDetailsSection />
     </>
   )
 }
