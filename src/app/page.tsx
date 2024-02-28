@@ -2,9 +2,10 @@ import { HeroSection } from '@/components/pages/home/hero-section'
 import { HighlightedProjectsSection } from '@/components/pages/home/highlighted-projects-section'
 import { KnownTechsSection } from '@/components/pages/home/known-techs-section'
 import { WorkExperienceSection } from '@/components/pages/home/work-experience-section'
+import { HomePageData } from '@/types/page-info'
 import { fetchHygraphQuery } from '@/utils/fetch-hygraph-query'
 
-const getPageData = async () => {
+const getPageData = async (): Promise<HomePageData> => {
   const query = `
     query PageInfoQuery {
       page(where: {slug: "home"}) {
@@ -35,9 +36,9 @@ const getPageData = async () => {
 }
 
 export default async function Home() {
-  const response = await getPageData()
+  const { page } = await getPageData()
 
-  console.log(response)
+  console.log(page)
 
   return (
     <>
