@@ -1,36 +1,18 @@
 'use client'
 
+import { CMSIcon } from '@/components/cms-icon'
+import { RichText } from '@/components/rich-text'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
+import { HomePageInfo } from '@/types/page-info'
 import Image from 'next/image'
 import { HiArrowNarrowRight } from 'react-icons/hi'
-import {
-  TbBrandGithub,
-  TbBrandLinkedin,
-  TbBrandWhatsapp,
-  TbBrandYoutube,
-} from 'react-icons/tb'
 
-const MOCK_CONTACTS = [
-  {
-    url: 'https://github.com/pabloxt14',
-    icon: <TbBrandGithub />,
-  },
-  {
-    url: 'https://www.linkedin.com/in/pabloxt14',
-    icon: <TbBrandLinkedin />,
-  },
-  {
-    url: 'https://www.linkedin.com/in/pabloxt14',
-    icon: <TbBrandYoutube />,
-  },
-  {
-    url: 'https://www.linkedin.com/in/pabloxt14',
-    icon: <TbBrandWhatsapp />,
-  },
-]
+type HeroSectionProps = {
+  homeInfo: HomePageInfo
+}
 
-export const HeroSection = () => {
+export const HeroSection = ({ homeInfo }: HeroSectionProps) => {
   const handleContact = () => {
     const contactSection = document.querySelector('#contact')
 
@@ -47,17 +29,13 @@ export const HeroSection = () => {
           <p className="font-mono text-sky-400">Olá, meu nome é</p>
           <h2 className="mt-2 text-4xl font-medium">Pablo Alan</h2>
 
-          <p className="my-6 text-sm text-gray-400 sm:text-base">
-            Olá, meu nome é Pablo Alan e sou um desenvolvedor front-end
-            apaixonado por tecnologia. Com mais de 2 anos de experiência. Meu
-            objetivo é criar interfaces de usuário bonitas e funcionais, além de
-            liderar equipes técnicas em projetos desafiadores. Estou sempre
-            aberto a novas oportunidades e desafios.
-          </p>
+          <div className="my-6 text-sm text-gray-400 sm:text-base">
+            <RichText content={homeInfo.introduction.raw} />
+          </div>
 
           <div className="flex flex-wrap gap-x-2 gap-y-3 lg:max-w-[340px]">
-            {Array.from({ length: 5 }).map((_, index) => {
-              return <Badge key={index}>Next.js</Badge>
+            {homeInfo.introTechnologies.map((tech) => {
+              return <Badge key={tech.name}>{tech.name}</Badge>
             })}
           </div>
 
@@ -68,7 +46,7 @@ export const HeroSection = () => {
             </Button>
 
             <div className="flex h-20 items-center gap-3">
-              {MOCK_CONTACTS.map((contact, index) => {
+              {homeInfo.socials.map((contact, index) => {
                 return (
                   <a
                     key={`contact-${index}`}
@@ -76,7 +54,7 @@ export const HeroSection = () => {
                     target="_blank"
                     className="text-2xl text-gray-600 transition-colors hover:text-gray-100"
                   >
-                    {contact.icon}
+                    <CMSIcon icon={contact.iconSvg} />
                   </a>
                 )
               })}
@@ -88,7 +66,7 @@ export const HeroSection = () => {
         <Image
           width={420}
           height={404}
-          src="/images/profile-pic.png"
+          src={homeInfo.profilePicture.url}
           alt="Foto de perfil do Pablo Alan"
           className="mb-6 h-[300px] w-[300px] rounded-lg object-cover shadow-2xl lg:mb-0 lg:h-[404px] lg:w-[420px]"
         />
