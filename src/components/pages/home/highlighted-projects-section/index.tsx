@@ -4,8 +4,15 @@ import { ProjectCard } from './project-card'
 import { Button } from '@/components/ui/button'
 import { HiArrowNarrowRight } from 'react-icons/hi'
 import Link from 'next/link'
+import { Project } from '@/types/projects'
 
-export const HighlightedProjectsSection = () => {
+type HighlightedProjectsSectionProps = {
+  projects: Project[]
+}
+
+export const HighlightedProjectsSection = ({
+  projects,
+}: HighlightedProjectsSectionProps) => {
   return (
     <div className="container py-16">
       <SectionTitle subtitle="destaques" title="Projetos em Destaque" />
@@ -13,12 +20,12 @@ export const HighlightedProjectsSection = () => {
       <HorizontalDivider className="mb-16" />
 
       <div>
-        <ProjectCard />
-        <HorizontalDivider className="my-16" />
-        <ProjectCard />
-        <HorizontalDivider className="my-16" />
-        <ProjectCard />
-        <HorizontalDivider className="my-16" />
+        {projects?.map((project) => (
+          <div key={project.slug}>
+            <ProjectCard project={project} />
+            <HorizontalDivider className="my-16" />
+          </div>
+        ))}
 
         <p className="flex items-center gap-5">
           <span className="text-gray-400">Se interessou?</span>
