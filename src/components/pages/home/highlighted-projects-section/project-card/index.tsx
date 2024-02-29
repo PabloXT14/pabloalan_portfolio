@@ -1,17 +1,22 @@
 import { Link } from '@/components/link'
 import { Badge } from '@/components/ui/badge'
+import { Project } from '@/types/projects'
 import Image from 'next/image'
 import { HiArrowNarrowRight } from 'react-icons/hi'
 
-export const ProjectCard = () => {
+type ProjectCardProps = {
+  project: Project
+}
+
+export const ProjectCard = ({ project }: ProjectCardProps) => {
   return (
     <div className="flex flex-col gap-6 lg:flex-row lg:gap-12">
       <div className="h-[200px] w-full rounded-lg object-cover sm:h-[300px] lg:min-h-full lg:w-[420px]">
         <Image
           width={420}
           height={304}
-          src="https://media.graphassets.com/FRhUdgUQTHmLmwf9u0BA"
-          alt="project image"
+          src={project.thumbnail.url}
+          alt={`Thumbnail do projeto ${project.title}`}
           className="h-full w-full rounded-lg object-cover"
         />
       </div>
@@ -24,26 +29,22 @@ export const ProjectCard = () => {
             src="/images/icons/project-title-icon.svg"
             alt=""
           />
-          BookWise
+          {project.title}
         </h3>
 
         <p className="my-6 line-clamp-3 text-gray-400">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi error
-          earum minus quisquam expedita architecto, ut sint libero sequi harum,
-          quasi maiores tempora nisi eveniet sit minima laboriosam porro nam.
-          Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+          {project.shortDescription}
         </p>
 
         <div className="mb-8 flex flex-wrap gap-x-2 gap-y-3 lg:max-w-[350px]">
-          <Badge>Next.js</Badge>
-          <Badge>React</Badge>
-          <Badge>Tailwind</Badge>
-          <Badge>Typescript</Badge>
-          <Badge>GraphQL</Badge>
-          <Badge>Prisma</Badge>
+          {project.technologies.map((tech) => (
+            <Badge key={`${project.title}-tech-${tech.name}`}>
+              {tech.name}
+            </Badge>
+          ))}
         </div>
 
-        <Link href="/projects/book-wise">
+        <Link href={`/projects/${project.slug}`}>
           Ver projeto
           <HiArrowNarrowRight />
         </Link>
