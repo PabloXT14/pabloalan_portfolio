@@ -1,24 +1,19 @@
 import { SectionTitle } from '@/components/section-title'
 import { KnownTech } from './known-tech'
-import { TbBrandNextjs } from 'react-icons/tb'
+import { KnownTech as IKnownTech } from '@/types/projects'
 
-export const KnownTechsSection = () => {
+type KnownTechsSectionProps = {
+  techs: IKnownTech[]
+}
+
+export const KnownTechsSection = ({ techs }: KnownTechsSectionProps) => {
   return (
     <section className="container py-16">
       <SectionTitle title="Conhecimentos" subtitle="competências" />
 
       <div className="mt-16 grid grid-cols-[repeat(auto-fit,minmax(264px,1fr))] gap-3">
-        {Array.from({ length: 8 }).map((_, index) => {
-          return (
-            <KnownTech
-              key={`known-tech-${index}`}
-              tech={{
-                name: 'Next.js',
-                icon: <TbBrandNextjs size={24} />,
-                startedDate: '2022-01-01',
-              }}
-            />
-          )
+        {techs.map((tech) => {
+          return <KnownTech key={tech.name} tech={tech} />
         })}
       </div>
     </section>
