@@ -28,3 +28,7 @@ export type HomePageData = {
 export type ProjectsPageData = {
   projects: Project[]
 }
+
+export type ProjectPageData = {
+  project: Project
+}
