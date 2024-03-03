@@ -32,3 +32,9 @@ export type ProjectsPageData = {
 export type ProjectPageData = {
   project: Project
 }
+
+export type ProjectsPageStaticData = {
+  projects: {
+    slug: string
+  }[]
+}
