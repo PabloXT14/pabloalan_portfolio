@@ -11,6 +11,19 @@ export const RichText = ({ ...props }: RichTextProps) => {
         bold: ({ children }) => (
           <b className="font-medium text-gray-50">{children}</b>
         ),
+        ul: ({ children }) => (
+          <ul className="flex list-inside list-disc flex-col gap-1 pl-2">
+            {children}
+          </ul>
+        ),
+        a: ({ children, ...props }) => (
+          <a
+            {...props}
+            className="underline transition-colors hover:text-sky-500"
+          >
+            {children}
+          </a>
+        ),
       }}
     />
   )
