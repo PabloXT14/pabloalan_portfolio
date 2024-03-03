@@ -51,7 +51,7 @@ export default async function Project({ params: { slug } }: ProjectProps) {
   return (
     <>
       <ProjectDetailsSection project={project} />
-      <ProjectShowcaseSection />
+      <ProjectShowcaseSection sections={project.sections} />
     </>
   )
 }
