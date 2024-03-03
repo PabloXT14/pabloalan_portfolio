@@ -22,7 +22,8 @@ export const metadata: Metadata = {
     default: 'Home',
     template: '%s | Pablo Alan',
   },
-  description: 'Meu portfólio pessoal contendo informações e projetos',
+  description:
+    'Eu sou um desenvolvedor Full Stack, e este é o meu portfólio pessoal, contendo informações, habilidades e projetos desenvolvidos por mim.',
   icons: {
     icon: {
       url: '/icon.svg',
