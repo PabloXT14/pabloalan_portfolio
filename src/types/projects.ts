@@ -22,6 +22,7 @@ export type Project = {
   shortDescription: string
   description: {
     raw: RichTextContent
+    text: string
   }
   technologies: KnownTech[]
   pageThumbnail: {
