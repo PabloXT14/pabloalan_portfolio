@@ -7,7 +7,7 @@ import { differenceInMonths, differenceInYears, format } from 'date-fns'
 import { ptBR } from 'date-fns/locale'
 import Image from 'next/image'
 import { motion } from 'framer-motion'
-import { badgeAnimation } from '@/lib/animations'
+import { badgeAnimation, fadeUpAnimation } from '@/lib/animations'
 
 type ExperienceItemProps = {
   experience: WorkExperience
@@ -49,9 +49,7 @@ export const ExperienceItem = ({ experience }: ExperienceItemProps) => {
   return (
     <motion.div
       className="grid grid-cols-[40px,1fr] gap-4 md:gap-10"
-      initial={{ opacity: 0, y: 50 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, y: 50 }}
+      {...fadeUpAnimation}
       transition={{ duration: 0.5 }}
     >
       {/* Logo da empresa */}
