@@ -1,7 +1,9 @@
-import * as React from 'react'
-import { cva, type VariantProps } from 'class-variance-authority'
+'use client'
 
+import { ComponentProps } from 'react'
+import { cva, type VariantProps } from 'class-variance-authority'
 import { cn } from '@/lib/utils'
+import { motion } from 'framer-motion'
 
 const badgeVariants = cva(
   'flex items-center justify-center rounded-lg px-3 py-1',
@@ -22,13 +24,15 @@ const badgeVariants = cva(
   },
 )
 
-export interface BadgeProps
-  extends React.HTMLAttributes<HTMLDivElement>,
-    VariantProps<typeof badgeVariants> {}
+export type BadgeProps = ComponentProps<typeof motion.div> &
+  VariantProps<typeof badgeVariants>
 
 function Badge({ className, variant, ...props }: BadgeProps) {
   return (
-    <div className={cn(badgeVariants({ variant }), className)} {...props} />
+    <motion.div
+      className={cn(badgeVariants({ variant }), className)}
+      {...props}
+    />
   )
 }
 
