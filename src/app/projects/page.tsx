@@ -31,7 +31,7 @@ export default async function Projects() {
   return (
     <>
       <PageIntroductionSection />
-      <ProjectsListSection />
+      <ProjectsListSection projects={projects} />
     </>
   )
 }
