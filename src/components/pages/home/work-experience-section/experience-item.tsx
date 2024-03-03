@@ -1,9 +1,13 @@
+'use client'
+
 import { RichText } from '@/components/rich-text'
 import { Badge } from '@/components/ui/badge'
 import { WorkExperience } from '@/types/work-experience'
 import { differenceInMonths, differenceInYears, format } from 'date-fns'
 import { ptBR } from 'date-fns/locale'
 import Image from 'next/image'
+import { motion } from 'framer-motion'
+import { badgeAnimation } from '@/lib/animations'
 
 type ExperienceItemProps = {
   experience: WorkExperience
@@ -43,7 +47,13 @@ export const ExperienceItem = ({ experience }: ExperienceItemProps) => {
       : `${months} mes${months > 1 ? 'es' : ''}`
 
   return (
-    <div className="grid grid-cols-[40px,1fr] gap-4 md:gap-10">
+    <motion.div
+      className="grid grid-cols-[40px,1fr] gap-4 md:gap-10"
+      initial={{ opacity: 0, y: 50 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: 50 }}
+      transition={{ duration: 0.5 }}
+    >
       {/* Logo da empresa */}
       <div className="flex flex-col items-center gap-4">
         <div className="rounded-full border border-gray-500 p-0.5">
@@ -82,13 +92,17 @@ export const ExperienceItem = ({ experience }: ExperienceItemProps) => {
           Competências
         </p>
         <div className="mb-8 flex flex-wrap gap-x-2 gap-y-3 lg:max-w-[350px]">
-          {technologies.map((tech) => (
-            <Badge key={`experience-${companyName}-tech-${tech.name}`}>
+          {technologies.map((tech, i) => (
+            <Badge
+              key={`experience-${companyName}-tech-${tech.name}`}
+              {...badgeAnimation}
+              transition={{ duration: 0.2, delay: i * 0.1 }}
+            >
               {tech.name}
             </Badge>
           ))}
         </div>
       </div>
-    </div>
+    </motion.div>
   )
 }
