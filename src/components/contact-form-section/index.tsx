@@ -7,6 +7,7 @@ import { useForm } from 'react-hook-form'
 import { z } from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
 import axios from 'axios'
+import { toast } from 'sonner'
 
 const contactFormSchema = z.object({
   name: z.string().min(3).max(100),
@@ -31,10 +32,12 @@ export const ContactFormSection = () => {
       const { data: response } = await axios.post('/api/contact', data)
 
       reset()
-      alert(response.message)
+      toast.success(response.message)
     } catch (error) {
       console.error(error)
-      alert('Erro ao enviar mensagem. Tente novamente mais tarde!')
+      toast.error(
+        'Ocorreu um erro ao enviar a mensagem. Tente novamente ou mais tarde!',
+      )
     }
   }
 

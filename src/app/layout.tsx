@@ -5,6 +5,7 @@ import { Header } from '@/components/header'
 import { ContactFormSection } from '@/components/contact-form-section'
 import { Footer } from '@/components/footer'
 import { BackToTop } from '@/components/back-to-top'
+import { Toaster } from '@/components/toaster'
 
 const inter = Inter({
   variable: '--font-inter',
@@ -39,6 +40,7 @@ export default function RootLayout({
   return (
     <html lang="pt-BR">
       <body className={`${inter.className} ${plexMono.variable}`}>
+        <Toaster />
         <Header />
         {children}
         <ContactFormSection />
