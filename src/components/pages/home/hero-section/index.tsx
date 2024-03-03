@@ -8,6 +8,7 @@ import { HomePageInfo } from '@/types/page-info'
 import Image from 'next/image'
 import { HiArrowNarrowRight } from 'react-icons/hi'
 import { motion } from 'framer-motion'
+import { badgeAnimation } from '@/lib/animations'
 
 type HeroSectionProps = {
   homeInfo: HomePageInfo
@@ -45,9 +46,7 @@ export const HeroSection = ({ homeInfo }: HeroSectionProps) => {
               return (
                 <Badge
                   key={`intro-tech-${tech.name}`}
-                  initial={{ opacity: 0, scale: 0 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0 }}
+                  {...badgeAnimation}
                   transition={{ duration: 0.2, delay: i * 0.1 }}
                 >
                   {tech.name}

@@ -6,6 +6,7 @@ import { Project } from '@/types/projects'
 import Image from 'next/image'
 import { HiArrowNarrowRight } from 'react-icons/hi'
 import { motion } from 'framer-motion'
+import { badgeAnimation } from '@/lib/animations'
 
 type ProjectCardProps = {
   project: Project
@@ -69,9 +70,7 @@ export const ProjectCard = ({ project }: ProjectCardProps) => {
           {project.technologies.map((tech, i) => (
             <Badge
               key={`${project.title}-tech-${tech.name}`}
-              initial={{ opacity: 0, scale: 0 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0 }}
+              {...badgeAnimation}
               transition={{ duration: 0.2, delay: 0.5 + i * 0.1 }}
             >
               {tech.name}
