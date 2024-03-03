@@ -6,6 +6,7 @@ import { Button } from '../ui/button'
 import { useForm } from 'react-hook-form'
 import { z } from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
+import axios from 'axios'
 
 const contactFormSchema = z.object({
   name: z.string().min(3).max(100),
@@ -16,12 +17,25 @@ const contactFormSchema = z.object({
 type ContactFormData = z.infer<typeof contactFormSchema>
 
 export const ContactFormSection = () => {
-  const { register, handleSubmit } = useForm<ContactFormData>({
+  const {
+    register,
+    handleSubmit,
+    formState: { isSubmitting },
+    reset,
+  } = useForm<ContactFormData>({
     resolver: zodResolver(contactFormSchema),
   })
 
-  function onSubmit(data: ContactFormData) {
-    console.log(data)
+  const onSubmit = async (data: ContactFormData) => {
+    try {
+      const { data: response } = await axios.post('/api/contact', data)
+
+      reset()
+      alert(response.message)
+    } catch (error) {
+      console.error(error)
+      alert('Erro ao enviar mensagem. Tente novamente mais tarde!')
+    }
   }
 
   return (
@@ -59,7 +73,11 @@ export const ContactFormSection = () => {
             maxLength={500}
           />
 
-          <Button variant="shadow" className="mx-auto mt-6 w-max">
+          <Button
+            variant="shadow"
+            className="mx-auto mt-6 w-max"
+            disabled={isSubmitting}
+          >
             Enviar mensagem
             <HiArrowNarrowRight size={18} />
           </Button>
