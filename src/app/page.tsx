@@ -4,6 +4,11 @@ import { KnownTechsSection } from '@/components/pages/home/known-techs-section'
 import { WorkExperienceSection } from '@/components/pages/home/work-experience-section'
 import { HomePageData } from '@/types/page-info'
 import { fetchHygraphQuery } from '@/utils/fetch-hygraph-query'
+import { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: 'Home | Pablo Alan',
+}
 
 const getPageData = async (): Promise<HomePageData> => {
   const query = `
