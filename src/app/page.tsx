@@ -27,7 +27,7 @@ const getPageData = async (): Promise<HomePageData> => {
           url
           iconSvg
         }
-        knownTechs {
+        knownTechs(first: 30) {
           iconSvg
           name
           startDate
