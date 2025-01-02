@@ -44,7 +44,7 @@ const getPageData = async (): Promise<HomePageData> => {
           }
         }
       }
-      workExperiences {
+      workExperiences(orderBy: startDate_DESC) {
         companyLogo {
           url
         }
