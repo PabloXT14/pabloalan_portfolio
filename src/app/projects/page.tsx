@@ -1,8 +1,9 @@
+import type { Metadata } from 'next'
+import { fetchHygraphQuery } from '@/utils/fetch-hygraph-query'
+
 import { PageIntroductionSection } from '@/components/pages/projects/page-introduction-section'
 import { ProjectsListSection } from '@/components/pages/projects/projects-list-section'
-import { ProjectsPageData } from '@/types/page-info'
-import { fetchHygraphQuery } from '@/utils/fetch-hygraph-query'
-import { Metadata } from 'next'
+import type { ProjectsPageData } from '@/types/page-info'
 
 export const metadata: Metadata = {
   title: 'Projetos',

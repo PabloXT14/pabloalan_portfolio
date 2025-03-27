@@ -1,10 +1,12 @@
+import type { Metadata } from 'next'
+
 import { HeroSection } from '@/components/pages/home/hero-section'
 import { HighlightedProjectsSection } from '@/components/pages/home/highlighted-projects-section'
 import { KnownTechsSection } from '@/components/pages/home/known-techs-section'
 import { WorkExperienceSection } from '@/components/pages/home/work-experience-section'
-import { HomePageData } from '@/types/page-info'
+
+import type { HomePageData } from '@/types/page-info'
 import { fetchHygraphQuery } from '@/utils/fetch-hygraph-query'
-import { Metadata } from 'next'
 
 export const metadata: Metadata = {
   title: 'Home | Pablo Alan',
