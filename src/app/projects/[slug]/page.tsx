@@ -9,7 +9,9 @@ type Params = Promise<{
   slug: string
 }>
 
-const getProjectDetails = async (slug: string): Promise<ProjectPageData> => {
+const getProjectDetails = async (
+  slug: string,
+): Promise<ProjectPageData | null> => {
   const query = `
     query ProjectQuery() {
       project(where: { slug: "${slug}" }) {
@@ -42,7 +44,9 @@ const getProjectDetails = async (slug: string): Promise<ProjectPageData> => {
 
   const revalidate = 1000 * 60 * 60 * 24 // 24 hours in milliseconds
 
-  return fetchHygraphQuery(query, revalidate)
+  const data = (await fetchHygraphQuery(query, revalidate)) as ProjectPageData
+
+  return data?.project ? data : null
 }
 
 export default async function Project(props: { params: Params }) {
@@ -50,7 +54,13 @@ export default async function Project(props: { params: Params }) {
 
   const { slug } = params
 
-  const { project } = await getProjectDetails(slug)
+  const data = await getProjectDetails(slug)
+
+  if (!data) {
+    return <h1>Projeto não encontrado</h1>
+  }
+
+  const { project } = data
 
   return (
     <>
@@ -82,7 +92,12 @@ export async function generateMetadata(props: {
   const { slug } = params
 
   const data = await getProjectDetails(slug)
-  const project = data.project
+
+  if (!data) {
+    return {}
+  }
+
+  const { project } = data
 
   return {
     title: project.title,
