@@ -28,11 +28,17 @@ const getPageData = async (): Promise<ProjectsPageData> => {
 
   const revalidate = 1000 * 60 * 60 * 24 // 24 hours in milliseconds
 
-  return fetchHygraphQuery(query, revalidate)
+  const response = await fetchHygraphQuery(query, revalidate)
+
+  return response as ProjectsPageData
 }
 
 export default async function Projects() {
   const { projects } = await getPageData()
+
+  if (!projects) {
+    return null
+  }
 
   return (
     <>
