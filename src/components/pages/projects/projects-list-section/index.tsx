@@ -15,7 +15,6 @@ type ProjectsListSectionProps = {
 }
 
 export const ProjectsListSection = ({ projects }: ProjectsListSectionProps) => {
-
   useEffect(() => {
     if (projects.length === 0) {
       toast.error('Nenhum projeto encontrado')
