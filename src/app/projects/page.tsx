@@ -1,6 +1,5 @@
 import type { Metadata } from 'next'
 import { fetchHygraphQuery } from '@/utils/fetch-hygraph-query'
-import { toast } from 'sonner'
 
 import { PageIntroductionSection } from '@/components/pages/projects/page-introduction-section'
 import { ProjectsListSection } from '@/components/pages/projects/projects-list-section'
@@ -36,10 +35,6 @@ const getPageData = async (): Promise<ProjectsPageData> => {
 
 export default async function Projects() {
   const data = await getPageData()
-
-  if (!data || !data.projects) {
-    return toast.info('Nenhum projeto encontrado.')
-  }
 
   const { projects } = data
 
