@@ -37,7 +37,7 @@ export default async function Projects() {
   const data = await getPageData()
 
   if (!data) {
-    return <h1>Projetos nao encontrados</h1>
+    return null
   }
 
   const { projects } = data
