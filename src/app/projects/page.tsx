@@ -36,11 +36,11 @@ const getPageData = async (): Promise<ProjectsPageData> => {
 export default async function Projects() {
   const data = await getPageData()
 
-  const { projects } = data
-
-  if (!projects) {
+  if (!data) {
     return <h1>Projetos nao encontrados</h1>
   }
+
+  const { projects } = data
 
   return (
     <>
