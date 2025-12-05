@@ -39,7 +39,7 @@ export default async function Projects() {
   const { projects } = data
 
   if (!projects) {
-    return null
+    return <h1>Projetos nao encontrados</h1>
   }
 
   return (
