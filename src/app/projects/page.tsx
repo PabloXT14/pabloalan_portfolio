@@ -34,13 +34,7 @@ const getPageData = async (): Promise<ProjectsPageData> => {
 }
 
 export default async function Projects() {
-  const data = await getPageData()
-
-  if (!data) {
-    return null
-  }
-
-  const { projects } = data
+  const { projects } = await getPageData()
 
   return (
     <>
