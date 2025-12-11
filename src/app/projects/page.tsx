@@ -9,6 +9,8 @@ export const metadata: Metadata = {
   title: 'Projetos',
 }
 
+export const dynamic = "force-dynamic" // TEMPORÁRIO ATE LIMITE DE LEITURA DO HYGRAPH resetar o valor mensal
+
 const getPageData = async (): Promise<ProjectsPageData> => {
   const query = `
     query ProjectQuery {
