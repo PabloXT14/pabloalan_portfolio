@@ -14,7 +14,7 @@ export const dynamic = "force-dynamic" // TEMPORÁRIO ATE LIMITE DE LEITURA DO H
 const getPageData = async (): Promise<ProjectsPageData> => {
   const query = `
     query ProjectQuery {
-      projects {
+      projects (first: 30) {
         shortDescription
         slug
         title
