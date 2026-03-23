@@ -70,19 +70,20 @@ export default async function Project(props: { params: Params }) {
   )
 }
 
-export async function generateStaticParams() {
-  const query = `
-    query ProjectsSlugsQuery() {
-      projects(first: 100) {
-        slug
-      }
-    }
-  `
+// SEM USO POR ENQUANTO, POIS O LIMITE DE LEITURA DO HYGRAPH FOI ATINGIDO E PRECISAMOS AGUARDAR O RESET MENSAL PARA VOLTAR A GERAR AS PÁGINAS ESTATICAMENTE (SSG) - POR ENQUANTO, AS PÁGINAS ESTÃO SENDO GERADAS DINAMICAMENTE (SSR - QUE É O PADRÃO DO NEXT.JS)
+// export async function generateStaticParams() {
+//   const query = `
+//     query ProjectsSlugsQuery() {
+//       projects(first: 100) {
+//         slug
+//       }
+//     }
+//   `
 
-  const { projects } = await fetchHygraphQuery<ProjectsPageStaticData>(query)
+//   const { projects } = await fetchHygraphQuery<ProjectsPageStaticData>(query)
 
-  return projects
-}
+//   return projects
+// }
 
 export async function generateMetadata(props: {
   params: Params
